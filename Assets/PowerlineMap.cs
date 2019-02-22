@@ -43,9 +43,6 @@ public class PowerlineMap : MonoBehaviour
         s.Append(Camera.main.transform.DOMove(newPosition, duration));
         s.Join(Camera.main.DOOrthoSize(zoomFactor * 1.2f * 5, duration));
         s.Play();
-        //Camera.main.transform.DOMove(newPosition, duration);
-        //Camera.main.DOOrthoSize(zoomFactor * 1.2f * 5, 5f);
-        //Camera.main.orthographicSize = zoomFactor * 1.2f * 5;
     }
 
     
