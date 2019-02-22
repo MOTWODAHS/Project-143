@@ -10,13 +10,13 @@ public class fillInLine : MonoBehaviour
 
     private BGCcMath math;
     private List<Vector3> positions = new List<Vector3>();
-    private LineRenderer renderer;
+    private LineRenderer fillrenderer;
     private float distance;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<LineRenderer>();
+        fillrenderer = GetComponent<LineRenderer>();
         math = curve.GetComponent<BGCcMath>();
     }
 
@@ -30,8 +30,8 @@ public class fillInLine : MonoBehaviour
         }
         positions.Add(position);
         Vector3[] positionsArray = positions.ToArray();
-        renderer.positionCount = positionsArray.Length;
-        renderer.SetPositions(positionsArray);
+        fillrenderer.positionCount = positionsArray.Length;
+        fillrenderer.SetPositions(positionsArray);
         return temp;
     }
 

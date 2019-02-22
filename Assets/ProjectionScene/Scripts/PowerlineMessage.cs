@@ -19,8 +19,6 @@ public class PowerlineMessage : MonoBehaviour
     private Queue<string> messages = new Queue<string>();
     //distance on the curve
     private float distance = 0;
-    //move with cursor or not
-    private bool moveWithCursor = false;
 
     public void AddMessageToQueue(string message)
     {
