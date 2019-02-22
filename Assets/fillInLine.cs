@@ -14,6 +14,7 @@ public class fillInLine : MonoBehaviour
     private List<Vector3> positions = new List<Vector3>();
     private LineRenderer fillrenderer;
     private float distance;
+    private bool finished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class fillInLine : MonoBehaviour
     }
 
     [ContextMenu("Stretchline")]
-    private void stretchLine()
+    private void StretchLine()
     {
         //First disable the line renderer
         fillrenderer.enabled = false;
@@ -98,25 +99,28 @@ public class fillInLine : MonoBehaviour
 
     }
 
-    
-
     // Update is called once per frame
     void Update()
     {
-        //If Left Mouse Button is Held Down
-        if (Input.GetMouseButton(0))
+        if (!finished)
         {
-            Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            point.z = 0;
-            float newDistance;
-            Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
+            //If Left Mouse Button is Held Down
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                point.z = 0;
+                float newDistance;
+                Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
 
-            if (newDistance - distance < 10 && newDistance - distance > 0)
-            {
-                distance = fillIntoLine(pointOnCurve, distance, newDistance);
-            } else if (newDistance == math.GetDistance())
-            {
-                Debug.Log("Finished filling the line");
+                if (newDistance - distance < 10 && newDistance - distance > 0)
+                {
+                    distance = fillIntoLine(pointOnCurve, distance, newDistance);
+                }
+                else if (newDistance == math.GetDistance())
+                {
+                    finished = true;
+                    StretchLine();
+                }
             }
         }
     }
