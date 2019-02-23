@@ -127,7 +127,7 @@ public class fillInLine : MonoBehaviour
                 float newDistance;
                 Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
 
-                if (newDistance - distance < 10 && newDistance - distance > 0)
+                if (newDistance - distance < 2 && newDistance - distance > 0)
                 {
                     distance = fillIntoLine(pointOnCurve, distance, newDistance);
                 }

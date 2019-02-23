@@ -49,7 +49,7 @@ public class PowerlineMap : MonoBehaviour
         s = DOTween.Sequence();
         float duration = 3f;
         s.Append(Camera.main.transform.DOMove(newPosition, duration));
-        s.Join(Camera.main.DOOrthoSize(Camera.main.orthographicSize * zoomFactor + 0.2f, duration));
+        s.Join(Camera.main.DOOrthoSize(Camera.main.orthographicSize * zoomFactor + 1f, duration));
         s.Play();
     }
 
@@ -95,6 +95,7 @@ public class PowerlineMap : MonoBehaviour
         } else if (Input.GetMouseButtonUp(0) && !placed)
         {
             placed = true;
+            ZoomToPoint();
             s.OnComplete(()=>
             {
                 InitializePowerline();
