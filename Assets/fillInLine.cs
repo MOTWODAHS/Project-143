@@ -9,6 +9,7 @@ public class fillInLine : MonoBehaviour
 {
     public BGCurve curve;
     public Transform controlPoints;
+    public RectTransform enterNameTextBox;
 
     private BGCcMath math;
     private List<Vector3> positions = new List<Vector3>();
@@ -21,6 +22,19 @@ public class fillInLine : MonoBehaviour
     {
         fillrenderer = GetComponent<LineRenderer>();
         math = curve.GetComponent<BGCcMath>();
+    }
+
+    public void StartEndPoints(Transform start, Transform end)
+    {
+        Vector3 startHandlePos1 = (curve[0].PositionWorld - start.position) * 0.1f + start.position;
+        Vector3 startHandlePos2 = -(curve[0].PositionWorld - start.position) * 0.1f + start.position;
+
+        Vector3 endHandlePos1 = -(curve[curve.PointsCount - 1].PositionWorld - end.position) * 0.1f + start.position;
+        Vector3 endHandlePos2 = (curve[curve.PointsCount - 1].PositionWorld - end.position) * 0.1f + start.position;
+
+        int childCount = controlPoints.childCount;
+        controlPoints.GetChild(0).transform.position = start.position;
+        controlPoints.GetChild(childCount-1).transform.position = end.position;
     }
 
     private float fillIntoLine(Vector3 position, float distance, float newDistance)
@@ -69,17 +83,18 @@ public class fillInLine : MonoBehaviour
             }
         }
         sequence.Play();
+        sequence.OnComplete(() =>
+        {
+            enterNameTextBox.DOAnchorPosY(95, 1.0f);
+        });
     }
 
     private void MoveHandleAtPointI(int index, Vector3[] vector3s)
     {
 
         Vector3 handle1Pos = vector3s[index] + (vector3s[index-1] - vector3s[index]) * 0.1f;
-        Debug.Log("Index is" + index + 1);
-        Debug.Log("vector3sLength" + vector3s.Length);
-        Vector3 handle2Pos = vector3s[index] + (vector3s[index+1] - vector3s[index]) * 0.1f;
 
-        Debug.Log(curve.PointsCount);
+        Vector3 handle2Pos = vector3s[index] + (vector3s[index+1] - vector3s[index]) * 0.1f;
         StartCoroutine(MoveHandleTo(curve[index], handle1Pos, handle2Pos));
     }
 
