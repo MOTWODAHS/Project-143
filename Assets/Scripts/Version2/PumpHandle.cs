@@ -69,6 +69,10 @@ public class PumpHandle : MonoBehaviour
         if(volume >= 6f)
         {
             Destroy(this.gameObject.GetComponent<BoxCollider>());
+            foreach(GameObject bal in gameController.balloons)
+            {
+                Destroy(bal.GetComponent<CapsuleCollider>());
+            }
             gameController.isStep3Finished = true;
         }      
     }
