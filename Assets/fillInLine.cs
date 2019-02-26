@@ -10,18 +10,22 @@ public class fillInLine : MonoBehaviour
     public BGCurve curve;
     public Transform controlPoints;
     public RectTransform enterNameTextBox;
+    public Material material;
 
     private BGCcMath math;
     private List<Vector3> positions = new List<Vector3>();
     private LineRenderer fillrenderer;
     private float distance;
     private bool finished = false;
+    private bool startdrawing = false;
+    public Transform particle;
 
     // Start is called before the first frame update
     void Start()
     {
         fillrenderer = GetComponent<LineRenderer>();
         math = curve.GetComponent<BGCcMath>();
+       
     }
 
     public void StartEndPoints(Transform start, Transform end)
@@ -57,7 +61,7 @@ public class fillInLine : MonoBehaviour
     {
         //First disable the line renderer
         fillrenderer.enabled = false;
-        //TODO: change the color of the original spline
+        curve.GetComponent<LineRenderer>().material = material;
         //calculate seven points between the start and end point
         Vector3 startPoint = curve[0].PositionWorld;
         Vector3 endPoint = curve[curve.PointsCount - 1].PositionWorld;
@@ -124,16 +128,20 @@ public class fillInLine : MonoBehaviour
             {
                 Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 point.z = 0;
+                particle.gameObject.SetActive(true);
+               
                 float newDistance;
                 Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
-
-                if (newDistance - distance < 2 && newDistance - distance > 0)
+                particle.transform.position = pointOnCurve;
+                if (newDistance - distance < 1 && newDistance - distance > 0)
                 {
                     distance = fillIntoLine(pointOnCurve, distance, newDistance);
+                    startdrawing = true;
                 }
-                else if (newDistance == math.GetDistance())
+                else if (newDistance == math.GetDistance() && startdrawing)
                 {
                     finished = true;
+                    particle.gameObject.SetActive(false);
                     StretchLine();
                 }
             }
