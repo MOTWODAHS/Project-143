@@ -40,7 +40,7 @@ public class Roof : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.gameObject.name.Equals("roofInPlace") && !transformer.enabled)
+        if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
         {
             this.gameObject.SetActive(false);
             other.GetComponent<SpriteRenderer>().enabled = true;
