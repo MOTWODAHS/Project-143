@@ -37,6 +37,16 @@ public class Roof : MonoBehaviour
         transformer.enabled = false;
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+
+        if (other.gameObject.name.Equals("roofInPlace") && !transformer.enabled)
+        {
+            this.gameObject.SetActive(false);
+            other.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class PowerlineMap : MonoBehaviour
@@ -29,6 +30,7 @@ public class PowerlineMap : MonoBehaviour
     private Vector3 destinationScale;
     private Vector3 originScale;
     private float originalHeight;
+    private GameObject interactableLine;
 
     private void PlacePowerline(Vector3 point)
     {
@@ -66,8 +68,8 @@ public class PowerlineMap : MonoBehaviour
         
         s.Append(Camera.main.transform.DOMove(newPosition, duration));
         s.Join(Camera.main.DOOrthoSize(Camera.main.orthographicSize * zoomFactor * 1.2f, duration));
-        s.Join(destinationPole.DOScale(scaleFactor * destinationScale, duration));
-        s.Join(originPole.DOScale(scaleFactor * originScale, duration));
+        //s.Join(destinationPole.DOScale(scaleFactor * destinationScale, duration));
+        //s.Join(originPole.DOScale(scaleFactor * originScale, duration));
         s.Play();
     }
 
@@ -81,14 +83,21 @@ public class PowerlineMap : MonoBehaviour
     {
         interactableLine.GetComponent<PowerlineSpline>().enabled = true;
         StartCoroutine(interactableLine.GetComponent<Transition>().FadeIn());
+        Invoke("EnableParticle", 0.5f);
         foreach (GameObject powerline in powerlines){
             StartCoroutine(powerline.GetComponent<Transition>().FadeIn());
         }
     }
 
+    private void EnableParticle()
+    {
+        ParticleSystem.EmissionModule emission = interactableLine.transform.GetChild(3).GetComponent<ParticleSystem>().emission;
+        emission.enabled = true;
+    }
+
     private void HidePrompt()
     {
-        prompt1.DOAnchorPosY(400f, 2f);
+        prompt1.DOAnchorPosY(100f, 2f);
     }
 
 
@@ -127,7 +136,6 @@ public class PowerlineMap : MonoBehaviour
         } else if (Input.GetMouseButtonUp(0) && !placed)
         {
             placed = true;
-            GameObject interactableLine;
             if (destinationPole.position.x - originPole.position.x > 0)
             {
                 interactableLine = interactableLineRight;
@@ -144,6 +152,28 @@ public class PowerlineMap : MonoBehaviour
             {
                 InitializePowerline(interactableLine);
             });
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (destinationPole.transform.position.x > 11f)
+        {
+            destinationPole.transform.position = new Vector3(11f, destinationPole.transform.position.y, destinationPole.transform.position.z);
+        }
+        else if (destinationPole.transform.position.x < -20f)
+        {
+            destinationPole.transform.position = new Vector3(-21f, destinationPole.transform.position.y, destinationPole.transform.position.z);
+        }
+
+        if (destinationPole.transform.position.y > 7.7f)
+        {
+            destinationPole.transform.position = new Vector3(destinationPole.transform.position.x, 7.7f , destinationPole.transform.position.z);
+        }
+        else if (destinationPole.transform.position.y <-8.8f)
+        {
+            destinationPole.transform.position = new Vector3(destinationPole.transform.position.x, -8.8f, destinationPole.transform.position.z);
         }
     }
 }

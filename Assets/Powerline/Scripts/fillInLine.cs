@@ -11,6 +11,7 @@ public class fillInLine : MonoBehaviour
     public Transform controlPoints;
     public RectTransform enterNameTextBox;
     public Material material;
+    public GameObject objectToDisable;
 
     private BGCcMath math;
     private List<Vector3> positions = new List<Vector3>();
@@ -126,6 +127,7 @@ public class fillInLine : MonoBehaviour
             //If Left Mouse Button is Held Down
             if (Input.GetMouseButton(0))
             {
+                objectToDisable.SetActive(false);
                 Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 point.z = 0;
                 particle.gameObject.SetActive(true);

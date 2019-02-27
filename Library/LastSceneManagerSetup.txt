@@ -1,13 +1,4 @@
 sceneSetups:
-- path: Assets/House/Scenes/House.unity
+- path: Assets/Powerline/Scenes/PowerlineScene.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/TouchScript/Examples/Cube/Cube.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/TouchScript/Examples/Checkers/Checkers.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/TouchScript/Examples/Examples.unity
-  isLoaded: 0
-  isActive: 0
