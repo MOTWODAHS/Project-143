@@ -10,7 +10,9 @@ public class PowerlineMap : MonoBehaviour
     public Transform powerPoles;
     [Space]
     public GameObject[] powerlines;
-    public GameObject interactableLine;
+    public GameObject interactableLineRight;
+    public GameObject interactableLineLeft;
+
     [Space]
     public GameObject fakeShadows;
     public Material powerDestinatonDefault;
@@ -38,11 +40,8 @@ public class PowerlineMap : MonoBehaviour
     private void ZoomToPoint()
     {
         //Get bounds of the two poles
-        Bounds bounds = new Bounds();
-        foreach(Transform child in powerPoles)
-        {
-            bounds.Encapsulate(child.GetComponent<Collider2D>().bounds);
-        }
+        Bounds bounds = originPole.GetComponent<Collider2D>().bounds;
+        bounds.Encapsulate(destinationPole.GetComponent<Collider2D>().bounds);
         powerPoleBounds = bounds;
         //Calculate middle point
         //Vector3 middlePoint = (destinationPole.position + originPole.position)/2;
@@ -78,7 +77,7 @@ public class PowerlineMap : MonoBehaviour
         o.transform.position = position;
     }
 
-    private void InitializePowerline()
+    private void InitializePowerline(GameObject interactableLine)
     {
         interactableLine.GetComponent<PowerlineSpline>().enabled = true;
         StartCoroutine(interactableLine.GetComponent<Transition>().FadeIn());
@@ -128,19 +127,22 @@ public class PowerlineMap : MonoBehaviour
         } else if (Input.GetMouseButtonUp(0) && !placed)
         {
             placed = true;
+            GameObject interactableLine;
             if (destinationPole.position.x - originPole.position.x > 0)
             {
+                interactableLine = interactableLineRight;
                 powerlines = GameObject.FindGameObjectsWithTag("PowerlineRight");
                 interactableLine.GetComponent<PowerlineSpline>().right = true;
             } else
             {
+                interactableLine = interactableLineLeft;
                 powerlines = GameObject.FindGameObjectsWithTag("PowerlineLeft");
                 interactableLine.GetComponent<PowerlineSpline>().right = false;
             }
             ZoomToPoint();
             s.OnComplete(()=>
             {
-                InitializePowerline();
+                InitializePowerline(interactableLine);
             });
         }
     }
