@@ -7,8 +7,8 @@ using TouchScript.Gestures.TransformGestures;
 
 public class PuzzlePiece : MonoBehaviour
 {
-    private TransformGesture gesture;
-    private Transformer transformer;
+    protected TransformGesture gesture;
+    protected Transformer transformer;
 
 
     private bool enlarged = false;
@@ -18,7 +18,7 @@ public class PuzzlePiece : MonoBehaviour
     protected Vector3 normalScale { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         normalScale = transform.localScale;
         enlargedScale = 1.2f * transform.localScale;
@@ -29,7 +29,7 @@ public class PuzzlePiece : MonoBehaviour
         return transformer;
     }
 
-    void ToggleScale()
+    protected void ToggleScale()
     {
         if (enlarged)
         {
@@ -42,7 +42,7 @@ public class PuzzlePiece : MonoBehaviour
         enlarged = !enlarged;
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         gesture = GetComponent<TransformGesture>();
         transformer = GetComponent<Transformer>();
@@ -59,13 +59,13 @@ public class PuzzlePiece : MonoBehaviour
         ToggleScale();
     }
 
-    protected void transformCompletedHandler(object sender, EventArgs e)
+    protected virtual void transformCompletedHandler(object sender, EventArgs e)
     {
         transformer.enabled = false;
         ToggleScale();
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    protected virtual void OnTriggerStay2D(Collider2D other)
     {
 
         if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
@@ -79,13 +79,7 @@ public class PuzzlePiece : MonoBehaviour
                 spriteRenderer.enabled = true;
             }
 
-            other.GetComponent<Collider2D>().enabled = false;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

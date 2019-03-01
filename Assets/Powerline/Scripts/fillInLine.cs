@@ -19,14 +19,18 @@ public class fillInLine : MonoBehaviour
     private float distance;
     private bool finished = false;
     private bool startdrawing = false;
+    private bool touched = false;
     public Transform particle;
 
     // Start is called before the first frame update
     void Start()
     {
+        particle.transform.position = new Vector3(curve[0].PositionWorld.x, curve[0].PositionWorld.y, particle.transform.position.z-1f);
         fillrenderer = GetComponent<LineRenderer>();
         math = curve.GetComponent<BGCcMath>();
-       
+        objectToDisable.SetActive(false);
+        particle.gameObject.SetActive(true);
+
     }
 
     public void StartEndPoints(Transform start, Transform end)
@@ -121,16 +125,16 @@ public class fillInLine : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (!finished)
+    {   if (!touched && Input.GetMouseButton(0))
         {
+            touched = true;
+        }
+        if (touched && !finished) {
             //If Left Mouse Button is Held Down
             if (Input.GetMouseButton(0))
             {
-                objectToDisable.SetActive(false);
                 Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 point.z = 0;
-                particle.gameObject.SetActive(true);
                
                 float newDistance;
                 Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
@@ -140,7 +144,7 @@ public class fillInLine : MonoBehaviour
                     distance = fillIntoLine(pointOnCurve, distance, newDistance);
                     startdrawing = true;
                 }
-                else if (newDistance == math.GetDistance() && startdrawing)
+                else if (newDistance == math.GetDistance() && newDistance - distance < 1 && startdrawing)
                 {
                     finished = true;
                     particle.gameObject.SetActive(false);

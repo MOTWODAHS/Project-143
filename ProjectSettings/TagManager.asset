@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PowerlineLeft
   - PowerlineRight
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2640781349
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Frames
+    uniqueID: 330447925
     locked: 0

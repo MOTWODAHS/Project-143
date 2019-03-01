@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using BansheeGz.BGSpline.Components;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
@@ -23,11 +23,14 @@ public class PowerlineSpline : MonoBehaviour
 
     public void SendLineMessage()
     {
-        this.message.transform.gameObject.SetActive(true);
-        this.message.text = GUImessage.text;
-        this.message.transform.position = originPole.transform.position;
-        this.message.transform.localScale *= zoomFactor;
-        StartCoroutine(SendText());
+        if (this.enabled)
+        {
+            this.message.transform.gameObject.SetActive(true);
+            this.message.text = GUImessage.text;
+            this.message.transform.position = originPole.transform.position;
+            this.message.transform.localScale *= zoomFactor;
+            StartCoroutine(SendText());
+        }
     }
 
     private IEnumerator SendText()
@@ -66,15 +69,21 @@ public class PowerlineSpline : MonoBehaviour
         }
     }
 
-    private IEnumerator EnableFilling()
+    public void EnableFilling()
     {
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
         this.fillLine.enabled = true;
     }
 
-    
+    private void EnableParticle()
+    { 
+        ParticleSystem.EmissionModule emission = transform.GetChild(3).GetComponent<ParticleSystem>().emission;
+        emission.enabled = true;
+    }
+
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
 
         Debug.Log("PowerlineSplineEnabled");
@@ -100,12 +109,23 @@ public class PowerlineSpline : MonoBehaviour
             otherLine.widthMultiplier = zoomFactor * 0.1f;
         }
 
-        StartCoroutine(EnableFilling());
+        EnableParticle();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        ParticleSystem.EmissionModule emission = transform.GetChild(3).GetComponent<ParticleSystem>().emission;
+        emission.enabled = false;
+        transform.GetChild(3).GetComponent<ParticleSystem>().Clear();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

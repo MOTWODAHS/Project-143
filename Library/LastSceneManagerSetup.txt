@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/House/Scenes/House.unity
+- path: Assets/Powerline/Scenes/PowerlineScene.unity
   isLoaded: 1
   isActive: 1
