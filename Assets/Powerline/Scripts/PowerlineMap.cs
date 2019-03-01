@@ -66,11 +66,11 @@ public class PowerlineMap : MonoBehaviour
 
         float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
         
-        s.Append(Camera.main.transform.DOMove(newPosition, duration));
-        s.Join(Camera.main.DOOrthoSize(Camera.main.orthographicSize * zoomFactor * 1.2f, duration));
+        //s.Append(Camera.main.transform.DOMove(newPosition, duration));
+        //s.Join(Camera.main.DOOrthoSize(Camera.main.orthographicSize * zoomFactor * 1.2f, duration));
         //s.Join(destinationPole.DOScale(scaleFactor * destinationScale, duration));
         //s.Join(originPole.DOScale(scaleFactor * originScale, duration));
-        s.Play();
+        //s.Play();
     }
 
     private void pickUp(GameObject o, Vector3 position)
@@ -81,6 +81,7 @@ public class PowerlineMap : MonoBehaviour
 
     private void InitializePowerline(GameObject interactableLine)
     {
+        Debug.Log(interactableLine);
         interactableLine.GetComponent<PowerlineSpline>().enabled = true;
         StartCoroutine(interactableLine.GetComponent<Transition>().FadeIn());
         Invoke("EnableParticle", 0.5f);
@@ -117,7 +118,7 @@ public class PowerlineMap : MonoBehaviour
         {
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             point.z = 0;
-            //PlacePowerline(point);
+            
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
             if (hit.collider != null)
@@ -148,10 +149,9 @@ public class PowerlineMap : MonoBehaviour
                 interactableLine.GetComponent<PowerlineSpline>().right = false;
             }
             ZoomToPoint();
-            s.OnComplete(()=>
-            {
-                InitializePowerline(interactableLine);
-            });
+            
+            InitializePowerline(interactableLine);
+
         }
 
     }
