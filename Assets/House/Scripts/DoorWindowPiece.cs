@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorPiece : PuzzlePiece
+public class DoorWindowPiece : PuzzlePiece
 {
     private Vector3 position;
     private Bounds thisBound;
@@ -48,6 +48,7 @@ public class DoorPiece : PuzzlePiece
     {
         base.OnEnable();
         bound = GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().bounds;
+        bound.Encapsulate(GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().bounds);
     }
     protected override void transformCompletedHandler(object sender, EventArgs e)
     {
