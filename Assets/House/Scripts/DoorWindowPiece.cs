@@ -56,7 +56,7 @@ public class DoorWindowPiece : PuzzlePiece
         base.ToggleScale();
 
         int placementType = PlacementType();
-        Debug.Log("Before" + pieces.Count);
+       
         if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
         {
             ResetTransform();
@@ -77,13 +77,12 @@ public class DoorWindowPiece : PuzzlePiece
         {
             pieces.Add(this);
         }
-        Debug.Log("After" + pieces.Count);
 
     }
 
     protected override void OnTriggerStay2D(Collider2D other)
     {
-        return;    
+        return; 
     }
 
 }

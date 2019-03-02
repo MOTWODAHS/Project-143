@@ -70,7 +70,6 @@ public class PuzzlePiece : MonoBehaviour
 
         if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
         {
-            Debug.Log(other.gameObject.name);
             this.gameObject.SetActive(false);
 
 
