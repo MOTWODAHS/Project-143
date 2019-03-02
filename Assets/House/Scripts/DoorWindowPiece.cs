@@ -56,24 +56,28 @@ public class DoorWindowPiece : PuzzlePiece
         base.ToggleScale();
 
         int placementType = PlacementType();
-        Debug.Log(pieces.Count);
-        if (placementType == 1 && pieces.Count + 1 > MAX_CAP)
+        Debug.Log("Before" + pieces.Count);
+        if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
         {
             ResetTransform();
         }
         else if (placementType == 0)
         {
+            if (pieces.Contains(this))
+            {
+                pieces.Remove(this);
+            }
             ResetTransform();
         }
         if (placementType == -1 && pieces.Contains(this))
         {
             pieces.Remove(this);
         }
-        else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP)
+        else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this))
         {
-            Debug.Log("adding into the list");
             pieces.Add(this);
         }
+        Debug.Log("After" + pieces.Count);
 
     }
 
