@@ -28,7 +28,7 @@ public class ProceedButton : MonoBehaviour
 
     public static void Next()
     {
-        hideButton.SetActive(true);
+        if (stage < 2) hideButton.SetActive(true);
         masks[stage].SetActive(false);
         stage++;
     }

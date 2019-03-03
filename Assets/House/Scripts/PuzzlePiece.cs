@@ -9,6 +9,7 @@ public class PuzzlePiece : MonoBehaviour
 {
     protected TransformGesture gesture;
     protected Transformer transformer;
+    private Vector3 position;
 
 
     private bool enlarged = false;
@@ -22,6 +23,12 @@ public class PuzzlePiece : MonoBehaviour
     {
         normalScale = transform.localScale;
         enlargedScale = 1.2f * transform.localScale;
+        position = GetComponent<Transform>().position;
+    }
+
+    private void ResetTransform()
+    {
+        transform.position = position;
     }
 
     public Transformer GetTransformer()
@@ -70,14 +77,17 @@ public class PuzzlePiece : MonoBehaviour
 
         if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
         {
-            this.gameObject.SetActive(false);
-            ProceedButton.Advance();
-
-            foreach(SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
+            ResetTransform();
+            if (!other.GetComponentsInChildren<SpriteRenderer>()[0].enabled)
             {
-                spriteRenderer.enabled = true;
-            }
+                ProceedButton.Advance();
 
+                foreach (SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
+                {
+                    spriteRenderer.enabled = true;
+                }
+            }
+            
         }
     }
 

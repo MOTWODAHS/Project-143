@@ -74,17 +74,14 @@ public class DoorWindowPiece : PuzzlePiece
        
         if (overlap)
         {
-            Debug.Log("overlap");
             ResetTransform();
         }
         if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
         {
-            Debug.Log("too many inside");
             ResetTransform();
         }
         else if (placementType == 0)
         {
-            Debug.Log("intersect");
             if (pieces.Contains(this))
             {
                 pieces.Remove(this);

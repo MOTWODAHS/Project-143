@@ -55,6 +55,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Light
+    uniqueID: 3856125287
+    locked: 0
   - name: Frames
     uniqueID: 330447925
+    locked: 0
+  - name: ColorButtons
+    uniqueID: 2925182061
     locked: 0

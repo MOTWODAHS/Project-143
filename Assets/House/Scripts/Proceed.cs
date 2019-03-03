@@ -20,7 +20,6 @@ public class Proceed : MonoBehaviour
 
     private void tappedHandler(object sender, System.EventArgs e)
     {
-        Debug.Log("Tapped");
         Vector2 ray = Camera.main.ScreenToWorldPoint(gesture.ScreenPosition);
 
         RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero);
