@@ -8,6 +8,7 @@ TagManager:
   - PowerlineRight
   - wall
   - roof
+  - mask
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,12 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 2640781349
+    locked: 0
+  - name: BasePieces
+    uniqueID: 2041283537
+    locked: 0
+  - name: BasePiecesFrame
+    uniqueID: 3190969521
     locked: 0
   - name: Default
     uniqueID: 0

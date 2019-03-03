@@ -26,7 +26,7 @@ public class DoorWindowPiece : PuzzlePiece
 
     private int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
     {
-        thisBound = GetComponent<BoxCollider2D>().bounds;
+        
 
         bool inWall = bound.Contains(new Vector2(thisBound.min.x, thisBound.min.y)) && 
             bound.Contains(new Vector2(thisBound.max.x, thisBound.max.y));
@@ -44,38 +44,68 @@ public class DoorWindowPiece : PuzzlePiece
         }
     }
 
+    private bool Overlap()
+    {
+        foreach(PuzzlePiece piece in pieces)
+        {
+            if (!piece.Equals(this) && piece.GetComponent<BoxCollider2D>().bounds.Intersects(thisBound))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
         bound = GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().bounds;
         bound.Encapsulate(GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().bounds);
     }
+
     protected override void transformCompletedHandler(object sender, EventArgs e)
     {
         transformer.enabled = false;
         base.ToggleScale();
+        thisBound = GetComponent<BoxCollider2D>().bounds;
 
         int placementType = PlacementType();
+        bool overlap = Overlap();
        
+        if (overlap)
+        {
+            Debug.Log("overlap");
+            ResetTransform();
+        }
         if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
         {
+            Debug.Log("too many inside");
             ResetTransform();
         }
         else if (placementType == 0)
         {
+            Debug.Log("intersect");
             if (pieces.Contains(this))
             {
                 pieces.Remove(this);
             }
             ResetTransform();
         }
-        if (placementType == -1 && pieces.Contains(this))
+        if (placementType == -1 && pieces.Contains(this) && !overlap)
         {
             pieces.Remove(this);
         }
-        else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this))
+        else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
         {
             pieces.Add(this);
+        }
+
+        if (pieces.Count > 0)
+        {
+            ProceedButton.Advance();
+        } else
+        {
+            ProceedButton.HideAdvance();
         }
 
     }

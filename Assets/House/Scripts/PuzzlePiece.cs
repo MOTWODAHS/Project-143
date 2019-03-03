@@ -71,7 +71,7 @@ public class PuzzlePiece : MonoBehaviour
         if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
         {
             this.gameObject.SetActive(false);
-
+            ProceedButton.Advance();
 
             foreach(SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
             {
