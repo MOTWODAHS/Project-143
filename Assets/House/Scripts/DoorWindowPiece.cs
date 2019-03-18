@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DoorWindowPiece : PuzzlePiece
 {
@@ -11,6 +12,7 @@ public class DoorWindowPiece : PuzzlePiece
     private static Bounds bound;
     private static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
     private const int MAX_CAP = 5;
+    private static bool hasTag = false;
 
     protected override void Start()
     {
@@ -95,6 +97,22 @@ public class DoorWindowPiece : PuzzlePiece
         else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
         {
             pieces.Add(this);
+
+            if (!hasTag)
+            {
+                GameObject thisObject = GetComponentInChildren<RectTransform>().gameObject;
+                foreach (GameObject o in GameObject.FindGameObjectsWithTag("panel"))
+                {
+                    if (!o.Equals(thisObject))
+                    {
+                        foreach (SpriteRenderer r in o.GetComponentsInChildren<SpriteRenderer>())
+                        {
+                            r.enabled = false;
+                            hasTag = true;
+                        }
+                    }
+                }
+            }
         }
 
         if (pieces.Count > 0)

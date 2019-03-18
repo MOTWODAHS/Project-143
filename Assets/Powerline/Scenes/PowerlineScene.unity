@@ -26465,7 +26465,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Where did someone talked you into talking?
+  m_text: Where did someone talk you into talking?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36ae8e284f0a13c4cae86e0913f8dc0b, type: 2}
   m_sharedMaterial: {fileID: 21283630579239478, guid: 36ae8e284f0a13c4cae86e0913f8dc0b,
@@ -26535,7 +26535,7 @@ MonoBehaviour:
   m_margin: {x: -302.57446, y: -4.0613403, z: -162.12125, w: 0}
   m_textInfo:
     textComponent: {fileID: 1916279765}
-    characterCount: 42
+    characterCount: 40
     spriteCount: 0
     spaceCount: 6
     wordCount: 7
