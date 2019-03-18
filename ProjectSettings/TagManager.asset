@@ -10,6 +10,7 @@ TagManager:
   - roof
   - mask
   - panel
+  - gameController
   layers:
   - Default
   - TransparentFX
