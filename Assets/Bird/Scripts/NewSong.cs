@@ -14,7 +14,6 @@ public class NewSong : TapableObject
 
     public override void OnTap()
     {
-        Debug.Log("Clear song");
         game.ClearSong();
     }
 }

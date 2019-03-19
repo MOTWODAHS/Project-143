@@ -47,7 +47,7 @@ public class BirdNote : MonoBehaviour
     {
         foreach(GameObject note in notes)
         {
-            Destroy(note);
+            note.GetComponent<Note>().Destroy();
         }
         notes = new List<GameObject>();
 
