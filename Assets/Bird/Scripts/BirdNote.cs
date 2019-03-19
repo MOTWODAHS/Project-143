@@ -29,15 +29,27 @@ public class BirdNote : MonoBehaviour
         {
             float distance = dist / count * j;
             Vector3 position = math.CalcPositionByDistance(distance);
-            note.transform.position = position;
+            note.transform.position = new Vector3(position.x, position.y * Random.Range(0.8f, 1.2f));
             j++;
         }
 
 
         float newdist = dist / count * j;
         Vector3 newPos = math.CalcPositionByDistance(newdist);
+        newPos = new Vector3(newPos.x, newPos.y * Random.Range(0.8f, 1.2f), newPos.z);
         GameObject obj = Instantiate(notePrefabs[i], newPos, Quaternion.identity);
+        obj.transform.localScale *= Mathf.Pow(1.1f, count);
         notes.Add(obj);
+
+    }
+
+    public void ClearSong()
+    {
+        foreach(GameObject note in notes)
+        {
+            Destroy(note);
+        }
+        notes = new List<GameObject>();
 
     }
 }
