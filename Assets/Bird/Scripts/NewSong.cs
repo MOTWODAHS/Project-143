@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewSong : TapableObject
+namespace Singing
 {
-    private GameController game;
-
-    private void Start()
+    public class NewSong : TapableObject
     {
-        Debug.Log("Start!");
-        game = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
-    }
+        private GameController game;
 
-    public override void OnTap()
-    {
-        game.ClearSong();
+        private void Start()
+        {
+            game = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
+        }
+
+        public override void OnTap()
+        {
+            game.ClearSong();
+        }
+
     }
 }
+
