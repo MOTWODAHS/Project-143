@@ -51,6 +51,12 @@ namespace Singing
         [Header("Default Notes")]
         public GameObject defualtNotes;
 
+        [Header("Hand")]
+        public GameObject hand;
+
+        [Header("Background")]
+        public GameObject background;
+
 
         private void Start()
         {
@@ -76,6 +82,8 @@ namespace Singing
                     cameraAnim.Play("CameraZoomBackward");
                     cButtons.SetActive(false);
                     staff.enabled = true;
+                    hand.SetActive(true);
+                    background.GetComponent<Collider2D>().enabled = true;
                 }
                 
             };
@@ -108,6 +116,8 @@ namespace Singing
                     notePiano.SetActive(true);
                     newSong.TransitionIn();
                     done.TransitionIn();
+                    hand.SetActive(false);
+                    background.GetComponent<Collider2D>().enabled = false;
                 }
             };
         }
@@ -244,6 +254,12 @@ namespace Singing
                     child.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
+        }
+
+        public void SendBird()
+        {
+            PlaySong();
+            hand.SetActive(false);
         }
     }
 }
