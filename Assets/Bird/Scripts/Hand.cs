@@ -27,7 +27,7 @@ namespace Singing
         {
             if (gesture.ScreenFlickVector.x > 0 && gesture.ScreenFlickVector.y > 0)
             {
-                game.SendBird();
+                game.Proceed();
                 GetComponent<Collider2D>().enabled = false;
             }
         }

@@ -84,6 +84,12 @@ namespace Singing
                     staff.enabled = true;
                     hand.SetActive(true);
                     background.GetComponent<Collider2D>().enabled = true;
+                },
+                () =>
+                {
+                    PlaySong();
+                    hand.SetActive(false);
+                    staff.enabled = false;
                 }
                 
             };
@@ -173,6 +179,7 @@ namespace Singing
         public void PlaySong()
         {
             StartCoroutine(PlaySongEnum());
+            StartCoroutine(ComposedNotesPlayEnum());
         }
 
         public IEnumerator PlaySongEnum()
@@ -181,6 +188,25 @@ namespace Singing
             {
                 yield return new WaitForSeconds(0.3f);
                 note.Play();
+            }
+        }
+
+        public IEnumerator ComposedNotesPlayEnum()
+        {
+            Debug.Log(gameStage);
+            foreach (GameObject note in birdNote.GetNotes())
+            {
+                yield return new WaitForSeconds(0.3f);
+                note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
+            }
+            if (gameStage == 4)
+            {
+                birds.transform.DOMove(new Vector3(11, 11, 0), 20f);
+                staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                foreach(GameObject g in birdNote.GetNotes())
+                {
+                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                }
             }
         }
 
@@ -193,6 +219,7 @@ namespace Singing
 
         public void OnSongChanges()
         {
+            Debug.Log(song.Count);
             if (song.Count == 0)
             {
                 newSong.TransitionOut();
@@ -202,6 +229,9 @@ namespace Singing
             {
                 newSong.TransitionIn();
                 done.TransitionIn();
+            } else if (song.Count == 10)
+            {
+                ProceedTo(3);
             }
         }
 
@@ -222,6 +252,13 @@ namespace Singing
                 {
                     rTransitions[i]();
                     gameStage--;
+                }
+            } else if (target > gameStage)
+            {
+                for(int i = gameStage; i < target; i++)
+                {
+                    transitions[i]();
+                    gameStage++;
                 }
             }
         }
@@ -256,10 +293,13 @@ namespace Singing
             }
         }
 
-        public void SendBird()
+        public void StartGame()
         {
-            PlaySong();
-            hand.SetActive(false);
+            foreach(Transform child in cButtons.transform)
+            {
+                child.GetComponent<SpriteRenderer>().DOFade(1f, 1f);
+                child.GetComponent<Collider2D>().enabled = true;
+            }
         }
     }
 }

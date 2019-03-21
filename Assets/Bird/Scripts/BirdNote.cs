@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BansheeGz.BGSpline.Curve;
 using BansheeGz.BGSpline.Components;
+using DG.Tweening;
 
 namespace Singing
 {
@@ -12,12 +13,15 @@ namespace Singing
         private BGCurve curve;
         private BGCcMath math;
         private List<GameObject> notes;
+        private Sequence s;
 
         private void Start()
         {
             curve = GetComponent<BGCurve>();
             math = curve.GetComponent<BGCcMath>();
             notes = new List<GameObject>();
+            s = DOTween.Sequence();
+            s.Play();
         }
 
         public void AddNote(int i)
@@ -31,7 +35,7 @@ namespace Singing
             {
                 float distance = dist / count * j;
                 Vector3 position = math.CalcPositionByDistance(distance);
-                note.transform.position = new Vector3(position.x, position.y * Random.Range(0.8f, 1.2f));
+                s.Append(note.transform.DOMove(new Vector3(position.x, position.y * Random.Range(0.8f, 1.2f)), 2f));
                 j++;
             }
 
@@ -53,6 +57,11 @@ namespace Singing
             }
             notes = new List<GameObject>();
 
+        }
+
+        public List<GameObject> GetNotes()
+        {
+            return notes;
         }
     }
 }
