@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace Singing
 {
-    public class GameController : MonoBehaviour
+    class GameController : MonoBehaviour, IGameController
     {
 
         private int gameStage;
@@ -293,7 +293,7 @@ namespace Singing
             }
         }
 
-        public void StartGame()
+        void IGameController.StartGame()
         {
             foreach(Transform child in cButtons.transform)
             {

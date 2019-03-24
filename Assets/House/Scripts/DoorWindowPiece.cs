@@ -6,7 +6,6 @@ using TMPro;
 
 public class DoorWindowPiece : PuzzlePiece
 {
-    private Vector3 position;
     private Bounds thisBound;
 
     private static Bounds bound;

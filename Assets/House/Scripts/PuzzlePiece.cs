@@ -9,7 +9,7 @@ public class PuzzlePiece : MonoBehaviour
 {
     protected TransformGesture gesture;
     protected Transformer transformer;
-    private Vector3 position;
+    protected Vector3 position;
 
 
     private bool enlarged = false;
