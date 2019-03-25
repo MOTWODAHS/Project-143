@@ -5,8 +5,20 @@ using UnityEngine.UI;
 
 namespace Loving
 {
-    public class NameInputField : TapableObject
+    class NameInputField : TapableObject
     {
+        private IGameController game;
+
+        private void Start()
+        {
+            game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+        }
+
+        private void OnDisable()
+        {
+            game.Proceed();
+        }
+
         public override void OnTap()
         {
             this.GetComponent<InputField>().Select();

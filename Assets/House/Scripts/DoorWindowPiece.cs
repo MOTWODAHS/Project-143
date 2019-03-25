@@ -6,12 +6,11 @@ using TMPro;
 
 public class DoorWindowPiece : PuzzlePiece
 {
-    private Bounds thisBound;
+    protected Bounds thisBound;
 
     private static Bounds bound;
     private static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
     private const int MAX_CAP = 5;
-    private static bool hasTag = false;
 
     protected override void Start()
     {
@@ -20,12 +19,7 @@ public class DoorWindowPiece : PuzzlePiece
         thisBound = GetComponent<BoxCollider2D>().bounds;
     }
 
-    private void ResetTransform()
-    {
-        transform.position = position;
-    }
-
-    private int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
+    protected int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
     {
         
 
@@ -92,35 +86,17 @@ public class DoorWindowPiece : PuzzlePiece
         if (placementType == -1 && pieces.Contains(this) && !overlap)
         {
             pieces.Remove(this);
+            ResetTransform();
         }
         else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
         {
             pieces.Add(this);
-
-            if (!hasTag)
-            {
-                GameObject thisObject = GetComponentInChildren<RectTransform>().gameObject;
-                foreach (GameObject o in GameObject.FindGameObjectsWithTag("panel"))
-                {
-                    if (!o.Equals(thisObject))
-                    {
-                        foreach (SpriteRenderer r in o.GetComponentsInChildren<SpriteRenderer>())
-                        {
-                            r.enabled = false;
-                            hasTag = true;
-                        }
-                    }
-                }
-            }
         }
 
-        if (pieces.Count > 0)
+        if (pieces.Count <= 1)
         {
-            ProceedButton.Advance();
-        } else
-        {
-            ProceedButton.HideAdvance();
-        }
+            game.Proceed();
+        } 
 
     }
 

@@ -11,6 +11,7 @@ public class PuzzlePiece : MonoBehaviour
     protected Transformer transformer;
     protected Vector3 position;
 
+    protected IGameController game;
 
     private bool enlarged = false;
 
@@ -24,9 +25,10 @@ public class PuzzlePiece : MonoBehaviour
         normalScale = transform.localScale;
         enlargedScale = 1.2f * transform.localScale;
         position = GetComponent<Transform>().position;
+        game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
     }
 
-    private void ResetTransform()
+    protected void ResetTransform()
     {
         transform.position = position;
     }
@@ -60,7 +62,7 @@ public class PuzzlePiece : MonoBehaviour
         gesture.TransformCompleted += transformCompletedHandler;
     }
 
-    private void transformStartedHandler(object sender, EventArgs e)
+    protected virtual void transformStartedHandler(object sender, EventArgs e)
     {
         transformer.enabled = true;
         ToggleScale();
@@ -80,12 +82,12 @@ public class PuzzlePiece : MonoBehaviour
             ResetTransform();
             if (!other.GetComponentsInChildren<SpriteRenderer>()[0].enabled)
             {
-                ProceedButton.Advance();
 
                 foreach (SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
                 {
-                    spriteRenderer.enabled = true;
+                    spriteRenderer.enabled = true;  
                 }
+                game.Proceed();
             }
             
         }

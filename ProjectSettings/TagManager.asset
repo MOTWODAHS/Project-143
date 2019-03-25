@@ -69,3 +69,6 @@ TagManager:
   - name: Cover
     uniqueID: 3267712577
     locked: 0
+  - name: PencilButton
+    uniqueID: 785011053
+    locked: 0

@@ -16,9 +16,9 @@ Shader "Sprites/PlainColor"
 		{
 			Tags
 			{
-				"Queue" = "Overlay"
+				"Queue" = "Transparent"
 				"IgnoreProjector" = "True"
-				"RenderType" = "Overlay"
+				"RenderType" = "Transparent"
 				"PreviewType" = "Plane"
 				"CanUseSpriteAtlas" = "True"
 			}
@@ -26,7 +26,6 @@ Shader "Sprites/PlainColor"
 			Cull Off
 			Lighting Off
 			ZWrite Off
-			Fog { Mode Off }
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			Pass
@@ -70,21 +69,33 @@ Shader "Sprites/PlainColor"
 				uniform float _EffectAmount;
 				float _Distance;
 				float4 _PickedColor;
+				sampler2D _AlphaTex;
+				float _AlphaSplitEnabled;
+
+				fixed4 SampleSpriteTexture(float2 uv)
+				{
+					fixed4 color = tex2D(_MainTex, uv);
+
+#if UNITY_TEXTURE_ALPHASPLIT_ALLOWED
+					if (_AlphaSplitEnabled)
+						color.a = tex2D(_AlphaTex, uv).r;
+#endif //UNITY_TEXTURE_ALPHASPLIT_ALLOWED
+
+					return color;
+				}
 
 				fixed4 frag(v2f IN) : COLOR
 				{
-					half4 texcol = tex2D(_MainTex, IN.texcoord);
+					half4 texcol = SampleSpriteTexture(IN.texcoord) * IN.color;
 					float distFromCenter = distance(IN.texcoord, float2(0.5, 0.5));
 
 					float a;
 					if (distFromCenter < _Distance) {
-						a = 0;
+						texcol.r = _PickedColor.r;
+						texcol.g = _PickedColor.g;
+						texcol.b = _PickedColor.b;
 					}
-					else {
-						a = 1;
-					}
-
-					texcol = _PickedColor * (1 - a) + _Color * a;
+					
 					return texcol;
 				}
 			ENDCG

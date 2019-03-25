@@ -5,7 +5,6 @@ using System;
 
 public class ColorPalettePiece : PuzzlePiece
 {
-    private Vector3 position;
     private Bounds thisBound;
     public Color color;
 
