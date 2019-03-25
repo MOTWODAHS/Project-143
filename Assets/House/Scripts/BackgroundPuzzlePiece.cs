@@ -2,42 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundPuzzlePiece : MonoBehaviour
+namespace Loving
 {
-    private Color color;
-
-    public void HoverColor()
+    public class BackgroundPuzzlePiece : MonoBehaviour
     {
-        color = new Color(0.5f, 0.5f, 0.5f);
-        GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
-    }
+        private Color color;
 
-    public void DisableHoverColor()
-    {
-        color = new Color(1.0f, 1.0f, 1.0f);
-        GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
-    }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.GetComponent<DoorWindowPiece>() != null) HoverColor();
-    //}
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<DoorWindowPiece>() != null) DisableHoverColor();
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.GetComponent<DoorWindowPiece>() != null && !other.GetComponent<DoorWindowPiece>().GetTransformer().enabled)
+        public void HoverColor()
         {
-            DisableHoverColor();
+            color = new Color(0.5f, 0.5f, 0.5f);
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
         }
 
-        if (other.GetComponent<DoorWindowPiece>() != null && other.GetComponent<DoorWindowPiece>().GetTransformer().enabled)
+        public void DisableHoverColor()
         {
-           HoverColor();
+            color = new Color(1.0f, 1.0f, 1.0f);
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
+        }
+
+        //private void OnTriggerEnter2D(Collider2D other)
+        //{
+        //    if (other.GetComponent<DoorWindowPiece>() != null) HoverColor();
+        //}
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.GetComponent<DoorWindowPiece>() != null) DisableHoverColor();
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.GetComponent<DoorWindowPiece>() != null && !other.GetComponent<DoorWindowPiece>().GetTransformer().enabled)
+            {
+                DisableHoverColor();
+            }
+
+            if (other.GetComponent<DoorWindowPiece>() != null && other.GetComponent<DoorWindowPiece>().GetTransformer().enabled)
+            {
+                HoverColor();
+            }
         }
     }
 }

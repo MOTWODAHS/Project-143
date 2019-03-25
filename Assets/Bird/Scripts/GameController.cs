@@ -301,5 +301,10 @@ namespace Singing
                 child.GetComponent<Collider2D>().enabled = true;
             }
         }
+
+        public int GetGameStage()
+        {
+            return gameStage;
+        }
     }
 }

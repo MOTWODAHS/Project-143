@@ -7,5 +7,7 @@ public interface IGameController
     void StartGame();
 
     void Proceed();
+
+    int GetGameStage();
 }
 

@@ -12,7 +12,7 @@ namespace Loving
 
         
 
-        private int gameStage = 0;
+        int gameStage = 0;
         private bool gameIsOver = false;
 
         private delegate void StageTransition();
@@ -92,6 +92,9 @@ namespace Loving
             gameStage++;
         }
 
-        
+        public int GetGameStage()
+        {
+            return gameStage;
+        }
     }
 }

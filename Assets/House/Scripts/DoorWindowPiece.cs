@@ -4,105 +4,112 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DoorWindowPiece : PuzzlePiece
-{
-    protected Bounds thisBound;
-
-    private static Bounds bound;
-    private static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
-    private const int MAX_CAP = 5;
-
-    protected override void Start()
+namespace Loving {
+    public class DoorWindowPiece : PuzzlePiece
     {
-        base.Start();
-        position = GetComponent<Transform>().position;
-        thisBound = GetComponent<BoxCollider2D>().bounds;
-    }
+        protected Bounds thisBound;
 
-    protected int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
-    {
-        
+        private static Bounds bound;
+        private static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
+        private const int MAX_CAP = 5;
 
-        bool inWall = bound.Contains(new Vector2(thisBound.min.x, thisBound.min.y)) && 
-            bound.Contains(new Vector2(thisBound.max.x, thisBound.max.y));
-        bool intersect = bound.Intersects(thisBound);
-
-        if (inWall && intersect)
+        protected override void Start()
         {
-            return 1;
-        } else if (!inWall && intersect)
-        {
-            return 0;
-        } else
-        {
-            return -1;
+            base.Start();
+            position = GetComponent<Transform>().position;
+            thisBound = GetComponent<BoxCollider2D>().bounds;
         }
-    }
 
-    private bool Overlap()
-    {
-        foreach(PuzzlePiece piece in pieces)
+        protected int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
         {
-            if (!piece.Equals(this) && piece.GetComponent<BoxCollider2D>().bounds.Intersects(thisBound))
+
+
+            bool inWall = bound.Contains(new Vector2(thisBound.min.x, thisBound.min.y)) &&
+                bound.Contains(new Vector2(thisBound.max.x, thisBound.max.y));
+            bool intersect = bound.Intersects(thisBound);
+
+            if (inWall && intersect)
             {
-                return true;
+                return 1;
+            } else if (!inWall && intersect)
+            {
+                return 0;
+            } else
+            {
+                return -1;
             }
         }
-        return false;
-    }
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        bound = GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().bounds;
-        bound.Encapsulate(GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().bounds);
-    }
-
-    protected override void transformCompletedHandler(object sender, EventArgs e)
-    {
-        transformer.enabled = false;
-        base.ToggleScale();
-        thisBound = GetComponent<BoxCollider2D>().bounds;
-
-        int placementType = PlacementType();
-        bool overlap = Overlap();
-       
-        if (overlap)
+        private bool Overlap()
         {
-            ResetTransform();
+            foreach (PuzzlePiece piece in pieces)
+            {
+                if (!piece.Equals(this) && piece.GetComponent<BoxCollider2D>().bounds.Intersects(thisBound))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
+
+        private void OnPieceCountIncrement()
         {
-            ResetTransform();
+            if (pieces.Count <= 1 && game.GetGameStage() == 2)
+            {
+                game.Proceed();
+            }
         }
-        else if (placementType == 0)
+
+        protected override void OnEnable()
         {
-            if (pieces.Contains(this))
+            base.OnEnable();
+            bound = GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().bounds;
+            bound.Encapsulate(GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().bounds);
+        }
+
+        protected override void transformCompletedHandler(object sender, EventArgs e)
+        {
+            transformer.enabled = false;
+            base.ToggleScale();
+            thisBound = GetComponent<BoxCollider2D>().bounds;
+
+            int placementType = PlacementType();
+            bool overlap = Overlap();
+
+            if (overlap)
+            {
+                ResetTransform();
+            }
+            if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
+            {
+                ResetTransform();
+            }
+            else if (placementType == 0)
+            {
+                if (pieces.Contains(this))
+                {
+                    pieces.Remove(this);
+                }
+                ResetTransform();
+            }
+            if (placementType == -1 && pieces.Contains(this) && !overlap)
             {
                 pieces.Remove(this);
+                ResetTransform();
             }
-            ResetTransform();
-        }
-        if (placementType == -1 && pieces.Contains(this) && !overlap)
-        {
-            pieces.Remove(this);
-            ResetTransform();
-        }
-        else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
-        {
-            pieces.Add(this);
+            else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
+            {
+                pieces.Add(this);
+                OnPieceCountIncrement();
+            }
+
+
         }
 
-        if (pieces.Count <= 1)
+        protected override void OnTriggerStay2D(Collider2D other)
         {
-            game.Proceed();
-        } 
+            return;
+        }
 
     }
-
-    protected override void OnTriggerStay2D(Collider2D other)
-    {
-        return; 
-    }
-
 }
