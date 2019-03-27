@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Balloonv2 : MonoBehaviour
+public class Balloonv2 : TapableObject3D
 {
+    public InstructionController instruction;
     public int balloonNumber;
     public GameControllerv2 gameController;
 
@@ -24,7 +25,7 @@ public class Balloonv2 : MonoBehaviour
     private Camera cam;
 
     public Vector3 startCameraPosition;
-    public Vector3 cameraPositionChange = new Vector3(0,3f,0);
+    public Vector3 cameraPositionChange = new Vector3(0,5.5f,0);
 
     public GameObject pump;
 
@@ -35,6 +36,8 @@ public class Balloonv2 : MonoBehaviour
     public bool moveFlag = true;
 
     Color[] balloonColor = new Color[4]{Color.yellow, Color.green, Color.blue, Color.red};
+
+    public GameObject[] startPipe;
 
     void Start()
     {
@@ -59,23 +62,27 @@ public class Balloonv2 : MonoBehaviour
             float scale = coverDistance/distance;
             this.transform.position = Vector3.Lerp(startPosition, balloonPosition.transform.position, scale);
             cam.transform.position = Vector3.Lerp(startCameraPosition, startCameraPosition + cameraPositionChange, scale);
-            pump.transform.position = Vector3.Lerp(startPumpPosition, endPumpPoint.transform.position, scale);
+            //pump.transform.position = Vector3.Lerp(startPumpPosition, endPumpPoint.transform.position, scale);
             if(scale > 1f)
             {
                 moveFlag = false;
                 gameController.isStep2Finished = true;
+                startPipe[gameController.selectedBalloonNumber].SetActive(true);
+                instruction.SetHandInstruction(2);
             }
         }
     }
 
-    void OnMouseDown()
+    public override void OnTap()
     {
         if(gameController.isBalloonSelected == false)
         {
+            instruction.DestroyHandInstruction(1);
             isSelected = true;
             gameController.isBalloonSelected = true;
             gameController.selectedBalloonNumber = balloonNumber;
             startTime = Time.time;
+            Destroy(this.gameObject.GetComponent<Collider>());
         }
         else
         {

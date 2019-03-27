@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameControllerv2 : MonoBehaviour
 {
+    public InstructionController instruction;
     //Step 1
     public GameObject upPart;
 
@@ -32,6 +33,8 @@ public class GameControllerv2 : MonoBehaviour
     public bool isStep3Finished = false;
 
     //Step4
+
+    public PumpHandle pumpHandlePosition;
     public bool moveFlag = false;
 
     public bool isCamStop = false;
@@ -50,6 +53,7 @@ public class GameControllerv2 : MonoBehaviour
 
     public GameObject Handle;
     public GameObject Body;
+    public GameObject BodyCap;
 
     public Sprite short_handle;
 
@@ -60,7 +64,9 @@ public class GameControllerv2 : MonoBehaviour
 
     public GameObject[] weight;
 
-    public GameObject pencilButton;
+    public GameObject[] pencilButton;
+
+    public string resultString;
 
     public bool isStep4Finished = false;
 
@@ -72,6 +78,15 @@ public class GameControllerv2 : MonoBehaviour
     public bool isWeightLeave = false;
 
     public bool isStep5Finished = false;
+
+    //Step 6 sending message to the host
+    public GameObject background;
+
+    public NetworkingController network;
+
+    public GameObject restartButton;
+
+    private int interactionCode = 1;
 
     void Start()
     {
@@ -87,23 +102,25 @@ public class GameControllerv2 : MonoBehaviour
             startCamPosition = cam.transform.position;
             startBalloonPosition = balloons[selectedBalloonNumber].transform.position;
             Handle.GetComponent<SpriteRenderer>().sprite = short_handle;
-            StartCoroutine(FadeAndMove(Handle,time,new Vector2(0,0),count,true));
-            StartCoroutine(FadeAndMove(Body,time,new Vector2(0,0),count,true));
+            Handle.transform.position = pumpHandlePosition.startPosition;
+            StartCoroutine(FadeAndMove(Handle,time,Vector2.zero,count,true));
+            StartCoroutine(FadeAndMove(Body,time,Vector2.zero,count,true));
+            StartCoroutine(FadeAndMove(BodyCap,time,Vector2.zero,count,true));
 
         }
         if(moveFlag && !isCamStop)
         {
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/distance;
-            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,distance,0), scale);
-            balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,distance,0), scale);
+            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,3f,0), scale);
+            balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,4.5f,0), scale);
             line[selectedBalloonNumber].GetComponent<SpriteRenderer>().color = Color.Lerp(new Color(0,0,0,0), new Color(0,0,0,1f), scale);
             if(scale >= 1f)
             {
                 isCamStop = true;
                 StartCoroutine(FadeAndMove(panel[selectedBalloonNumber],time, Vector2.zero, count, false));
                 StartCoroutine(FadeAndMove(weight[selectedBalloonNumber],time, Vector2.zero, count, false));
-                StartCoroutine(FadeAndMove(pencilButton,time, Vector2.zero, count, false));
+                StartCoroutine(FadeAndMove(pencilButton[selectedBalloonNumber],time, Vector2.zero, count, false));
                 StartCoroutine(OpenPencilButtonCollider());
             }
         }
@@ -114,18 +131,27 @@ public class GameControllerv2 : MonoBehaviour
             {
                 weight[selectedBalloonNumber].transform.parent = null;
                 isWeightLeave = true;
-                StartCoroutine(FadeAndMove(balloons[selectedBalloonNumber], 4f, Vector2.zero, 8, true));
-                StartCoroutine(FadeAndMove(panel[selectedBalloonNumber], 4f, Vector2.zero, 8, true));
-                StartCoroutine(FadeAndMove(line[selectedBalloonNumber], 4f, Vector2.zero, 8, true));
-                StartCoroutine(FadeVertex(panelVertex[selectedBalloonNumber], 4f, 8));
+                StartCoroutine(FadeAndMove(balloons[selectedBalloonNumber], 4f, Vector2.zero, 8, false));
+                StartCoroutine(FadeAndMove(panel[selectedBalloonNumber], 4f, Vector2.zero, 8, false));
+                StartCoroutine(FadeAndMove(line[selectedBalloonNumber], 4f, Vector2.zero, 8, false));
+                //StartCoroutine(FadeVertex(panelVertex[selectedBalloonNumber], 6f, 8));
+                pencilButton[selectedBalloonNumber].SetActive(false);
             }
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/4f;
-            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,4f,0), scale);
-            balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,4f,0), scale);
-            if(scale > 1f)
+            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,1.7f,0), scale);
+            balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,6f,0), scale/2);
+            if(scale > 0.7f)
             {
+                background.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                weight[selectedBalloonNumber].GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                weight[selectedBalloonNumber].GetComponent<SpriteRenderer>().sortingOrder = 1;
+            }
+            if(scale > 2f)
+            {
+                network.SendCreateBalloon(interactionCode, selectedBalloonNumber, resultString);
                 isStep5Finished = true;
+                StartCoroutine(RestartWaitDelay());
             }
         }
 
@@ -160,14 +186,16 @@ public class GameControllerv2 : MonoBehaviour
         }
         yield return new WaitForSeconds(time);
         isStep1Finished = true;
+        instruction.SetHandInstruction(1);
     }
 
     IEnumerator OpenPencilButtonCollider()
     {
         yield return new WaitForSeconds(time);
-        pencilButton.GetComponent<Collider>().enabled = true;
+        pencilButton[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
         weight[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
         isStep4Finished = true;
+        instruction.SetHandInstruction(3);
     }
 
     IEnumerator FadeVertex(GameObject obj, float time, int count)
@@ -178,5 +206,13 @@ public class GameControllerv2 : MonoBehaviour
             yield return new WaitForSeconds(oneTime);
             obj.GetComponent<TMP_Text>().color -= new Color(0,0,0,1f/count);
         }
+    }
+
+    IEnumerator RestartWaitDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        restartButton.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        restartButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        restartButton.SetActive(true);
     }
 }
