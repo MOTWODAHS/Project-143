@@ -1,2 +1,6 @@
-*.csproj
-*.sln
+/*
+/*/
+
+!.gitignore
+!/Assets/
+!/ProjectSettings/
