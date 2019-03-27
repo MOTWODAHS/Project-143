@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Loving
 {
-    public class BackgroundPuzzlePiece : MonoBehaviour
+    class BackgroundPuzzlePiece : MonoBehaviour
     {
         private Color color;
 

@@ -17,18 +17,18 @@ namespace Singing
         public void TransitionOut()
         {
             spriteRenderer.DOFade(0f, 1f);
-            if (GetComponent<BoxCollider2D>() != null)
+            if (GetComponent<Collider2D>() != null)
             {
-                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
             }
         }
 
         public void TransitionIn()
         {
             spriteRenderer.DOFade(1.0f, 1f);
-            if (GetComponent<BoxCollider2D>() != null)
+            if (GetComponent<Collider2D>() != null)
             {
-                GetComponent<BoxCollider2D>().enabled = true;
+                GetComponent<Collider2D>().enabled = true;
             }
         }
     }

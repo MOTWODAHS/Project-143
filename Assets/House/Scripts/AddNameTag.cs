@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AddNameTag : MonoBehaviour
+namespace Loving
 {
-
-    public Text text;
-    void Update()
+    public class AddNameTag : MonoBehaviour
     {
-        GetComponentInChildren<TextMeshPro>().SetText(text.text);
-        GetComponentInChildren<TextMeshPro>().text = text.text;
+
+        public Text text;
+        void Update()
+        {
+            GetComponentInChildren<TextMeshPro>().SetText(text.text);
+            GetComponentInChildren<TextMeshPro>().text = text.text;
+        }
     }
 }

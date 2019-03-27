@@ -64,7 +64,7 @@ namespace Singing
             cameraAnim = cam.GetComponent<Animator>();
             transitions = new StageTransition[]
             {
-                PlayDefaultSong, //WHen choosed a bird
+                PlayDefaultSong, //When choosed a bird
                 () =>
                 {
                     newSong.TransitionOut();
@@ -153,9 +153,9 @@ namespace Singing
                 Sequence newSequence = DOTween.Sequence();
                 newSequence.Append(child.GetComponent<SpriteRenderer>().DOFade(1f, 0.5f));
                 newSequence.AppendInterval(1.5f);
-                newSequence.Append(child.GetComponent<SpriteRenderer>().DOFade(0f, 1f));
+                newSequence.Append(child.GetComponent<SpriteRenderer>().DOFade(0f, 2f));
                 newSequence.Play();
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(2f);
             //Looks redundant I know .. make sure the onEnable function calls
@@ -201,7 +201,9 @@ namespace Singing
             }
             if (gameStage == 4)
             {
-                birds.transform.DOMove(new Vector3(11, 11, 0), 20f);
+                birds.transform.DOMove(new Vector3(12, 12, 0), 10f);
+                //State
+                birds.GetComponentInChildren<Animator>().Play("fly");
                 staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                 foreach(GameObject g in birdNote.GetNotes())
                 {

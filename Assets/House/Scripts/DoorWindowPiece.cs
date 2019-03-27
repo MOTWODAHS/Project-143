@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 
 namespace Loving {
-    public class DoorWindowPiece : PuzzlePiece
+    class DoorWindowPiece : PuzzlePiece
     {
         protected Bounds thisBound;
 

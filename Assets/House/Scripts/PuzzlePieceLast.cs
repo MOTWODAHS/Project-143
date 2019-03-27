@@ -5,29 +5,32 @@ using TouchScript.Behaviors;
 using TouchScript.Gestures.TransformGestures;
 using System;
 
-public class PuzzlePieceLast : MonoBehaviour
+namespace Loving
 {
-    private Vector3 position;
-
-    private PuzzlePiece puzzlePiece;
-
-    private void ResetTransform()
+    class PuzzlePieceLast : MonoBehaviour
     {
-        transform.position = position;
-    }
+        private Vector3 position;
 
-    void Start()
-    {
-        puzzlePiece = GetComponent<PuzzlePiece>();
-        position = base.GetComponent<Transform>().position;
-    }
+        private PuzzlePiece puzzlePiece;
 
-    private void FixedUpdate()
-    {
-        if (!puzzlePiece.GetTransformer().enabled)
+        private void ResetTransform()
         {
-            ResetTransform();
+            transform.position = position;
         }
-    }
 
+        void Start()
+        {
+            puzzlePiece = GetComponent<PuzzlePiece>();
+            position = base.GetComponent<Transform>().position;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!puzzlePiece.GetTransformer().enabled)
+            {
+                ResetTransform();
+            }
+        }
+
+    }
 }

@@ -1,7 +1,4 @@
 sceneSetups:
-- path: Assets/House/Scenes/House.unity
+- path: Assets/Powerline/Scenes/PowerlineFixedCamera.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Bird/Scenes/Bird.unity
-  isLoaded: 0
-  isActive: 0

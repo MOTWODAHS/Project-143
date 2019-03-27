@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartAndEnd : MonoBehaviour
+namespace Loving
 {
-    // Start is called before the first frame update
-    void Start()
+    class StartAndEnd : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        // Start is called before the first frame update
+        void Start()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.PageDown))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }

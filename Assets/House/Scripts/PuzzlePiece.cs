@@ -5,92 +5,95 @@ using UnityEngine;
 using TouchScript.Behaviors;
 using TouchScript.Gestures.TransformGestures;
 
-public class PuzzlePiece : MonoBehaviour
+namespace Loving
 {
-    protected TransformGesture gesture;
-    protected Transformer transformer;
-    protected Vector3 position;
-
-    protected IGameController game;
-
-    private bool enlarged = false;
-
-    protected Vector3 enlargedScale { get; set; }
-
-    protected Vector3 normalScale { get; set; }
-
-    // Start is called before the first frame update
-    protected virtual void Start()
+    class PuzzlePiece : MonoBehaviour
     {
-        normalScale = transform.localScale;
-        enlargedScale = 1.2f * transform.localScale;
-        position = GetComponent<Transform>().position;
-        game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
-    }
+        protected TransformGesture gesture;
+        protected Transformer transformer;
+        protected Vector3 position;
 
-    protected void ResetTransform()
-    {
-        transform.position = position;
-    }
+        protected IGameController game;
 
-    public Transformer GetTransformer()
-    {
-        return transformer;
-    }
+        private bool enlarged = false;
 
-    protected void ToggleScale()
-    {
-        if (enlarged)
+        protected Vector3 enlargedScale { get; set; }
+
+        protected Vector3 normalScale { get; set; }
+
+        // Start is called before the first frame update
+        protected virtual void Start()
         {
-            transform.localScale = normalScale;
+            normalScale = transform.localScale;
+            enlargedScale = 1.2f * transform.localScale;
+            position = GetComponent<Transform>().position;
+            game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
         }
-        else
+
+        protected void ResetTransform()
         {
-            transform.localScale = enlargedScale;
+            transform.position = position;
         }
-        enlarged = !enlarged;
-    }
 
-    protected virtual void OnEnable()
-    {
-        gesture = GetComponent<TransformGesture>();
-        transformer = GetComponent<Transformer>();
-
-        transformer.enabled = false;
-        // Subscribe to gesture events
-        gesture.TransformStarted += transformStartedHandler;
-        gesture.TransformCompleted += transformCompletedHandler;
-    }
-
-    protected virtual void transformStartedHandler(object sender, EventArgs e)
-    {
-        transformer.enabled = true;
-        ToggleScale();
-    }
-
-    protected virtual void transformCompletedHandler(object sender, EventArgs e)
-    {
-        transformer.enabled = false;
-        ToggleScale();
-    }
-
-    protected virtual void OnTriggerStay2D(Collider2D other)
-    {
-
-        if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
+        public Transformer GetTransformer()
         {
-            ResetTransform();
-            if (!other.GetComponentsInChildren<SpriteRenderer>()[0].enabled)
+            return transformer;
+        }
+
+        protected void ToggleScale()
+        {
+            if (enlarged)
             {
-
-                foreach (SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
-                {
-                    spriteRenderer.enabled = true;  
-                }
-                game.Proceed();
+                transform.localScale = normalScale;
             }
-            
+            else
+            {
+                transform.localScale = enlargedScale;
+            }
+            enlarged = !enlarged;
         }
-    }
 
+        protected virtual void OnEnable()
+        {
+            gesture = GetComponent<TransformGesture>();
+            transformer = GetComponent<Transformer>();
+
+            transformer.enabled = false;
+            // Subscribe to gesture events
+            gesture.TransformStarted += transformStartedHandler;
+            gesture.TransformCompleted += transformCompletedHandler;
+        }
+
+        protected virtual void transformStartedHandler(object sender, EventArgs e)
+        {
+            transformer.enabled = true;
+            ToggleScale();
+        }
+
+        protected virtual void transformCompletedHandler(object sender, EventArgs e)
+        {
+            transformer.enabled = false;
+            ToggleScale();
+        }
+
+        protected virtual void OnTriggerStay2D(Collider2D other)
+        {
+
+            if (other.gameObject.name.Equals(this.gameObject.name + "InPlace") && !transformer.enabled)
+            {
+                ResetTransform();
+                if (!other.GetComponentsInChildren<SpriteRenderer>()[0].enabled)
+                {
+
+                    foreach (SpriteRenderer spriteRenderer in other.GetComponentsInChildren<SpriteRenderer>())
+                    {
+                        spriteRenderer.enabled = true;
+                    }
+                    game.Proceed();
+                }
+
+            }
+        }
+
+    }
 }
