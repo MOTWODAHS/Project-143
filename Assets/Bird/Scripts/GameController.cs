@@ -57,6 +57,9 @@ namespace Singing
         [Header("Background")]
         public GameObject background;
 
+        [Header("EndButton")]
+        public GameObject endUI;
+
 
         private void Start()
         {
@@ -194,7 +197,6 @@ namespace Singing
 
         public IEnumerator ComposedNotesPlayEnum()
         {
-            Debug.Log(gameStage);
             foreach (GameObject note in birdNote.GetNotes())
             {
                 yield return new WaitForSeconds(0.3f);
@@ -202,7 +204,9 @@ namespace Singing
             }
             if (gameStage == 4)
             {
-                birds.transform.DOMove(new Vector3(12, 12, 0), 10f);
+                birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(()=>{
+                    endUI.SetActive(true);
+                });
                 //State
                 foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                 {
