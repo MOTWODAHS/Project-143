@@ -203,7 +203,11 @@ namespace Singing
             {
                 birds.transform.DOMove(new Vector3(12, 12, 0), 10f);
                 //State
-                birds.GetComponentInChildren<Animator>().Play("fly");
+                foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
+                {
+                    animator.Play("fly");
+                }
+                
                 staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                 foreach(GameObject g in birdNote.GetNotes())
                 {

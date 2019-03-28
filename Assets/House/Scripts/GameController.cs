@@ -49,7 +49,9 @@ namespace Loving
                 },
                 () =>
                 {
-                    mask1.SetActive(false);
+                    if (mask1 != null){
+                        mask1.SetActive(false);
+                    }
                 },
                 () =>
                 {
