@@ -12,9 +12,9 @@ public class PencilButton : TapableObject3D
 
     public GameObject[] textfield;
 
-    public Text inputFieldText;
+    public GameObject keyboard;
 
-    public GameObject inputField;
+    public KeyBoardController keyBoardController;
 
     private Tweener tweForward;
     private Tweener tweBackward;
@@ -24,14 +24,16 @@ public class PencilButton : TapableObject3D
     {
         if(gameController.selectedBalloonNumber != -1)
         {
-            textfield[gameController.selectedBalloonNumber].GetComponent<TMP_Text>().text = inputFieldText.text;
-            gameController.resultString = inputFieldText.text;
+            textfield[gameController.selectedBalloonNumber].GetComponent<TMP_Text>().text = keyBoardController.inputString;
+            gameController.resultString = keyBoardController.inputString;
         }
     }
 
     public override void OnTap()
     {
-        tweForward = inputField.GetComponent<RectTransform>().DOAnchorPos3DY(-500f,movingTime);
+        keyboard.SetActive(true);
+        gameController.weight[gameController.selectedBalloonNumber].GetComponent<BoxCollider>().enabled = false;
+        tweForward = keyboard.transform.DOLocalMoveY(6.3f,movingTime);
         tweForward.PlayForward();
         gameController.isEdited = false;
         instruction.DestroyHandInstruction(3);
@@ -41,9 +43,10 @@ public class PencilButton : TapableObject3D
     {
         if(textfield[gameController.selectedBalloonNumber].GetComponent<TMP_Text>().text != "")
         {
-            tweBackward = inputField.GetComponent<RectTransform>().DOAnchorPos3DY(-600f,movingTime);
+            tweBackward = keyboard.transform.DOLocalMoveY(4.3f,movingTime);
             tweBackward.PlayForward();
             gameController.isEdited = true;
+            gameController.weight[gameController.selectedBalloonNumber].GetComponent<BoxCollider>().enabled = true;
             instruction.SetHandInstruction(4);
         }
     }

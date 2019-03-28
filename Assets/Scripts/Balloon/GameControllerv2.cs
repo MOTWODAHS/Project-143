@@ -84,7 +84,7 @@ public class GameControllerv2 : MonoBehaviour
 
     public NetworkingController network;
 
-    public GameObject restartButton;
+    public GameObject EndingUI;
 
     private int interactionCode = 1;
 
@@ -193,7 +193,7 @@ public class GameControllerv2 : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         pencilButton[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
-        weight[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
+        //weight[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
         isStep4Finished = true;
         instruction.SetHandInstruction(3);
     }
@@ -211,8 +211,6 @@ public class GameControllerv2 : MonoBehaviour
     IEnumerator RestartWaitDelay()
     {
         yield return new WaitForSeconds(0.3f);
-        restartButton.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-        restartButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        restartButton.SetActive(true);
+        EndingUI.SetActive(true);
     }
 }

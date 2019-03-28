@@ -22,7 +22,6 @@ public class InstructionController : MonoBehaviour
             handRender[i] = handUI[i].GetComponent<SpriteRenderer>();
         }
         hand2StartPosition = handUI[2].transform.position;
-        StartCoroutine(StartMotion());
     }
 
     public void SetHandInstruction(int number)
@@ -58,9 +57,8 @@ public class InstructionController : MonoBehaviour
         handMotion[2] = handUI[2].transform.DOMove(hand2StartPosition,2).OnComplete(hand2Up);       
     }
 
-    IEnumerator StartMotion()
+    public void FirstInstruction()
     {
-        yield return new WaitForSeconds(1f);
         SetHandInstruction(0);
     }
 

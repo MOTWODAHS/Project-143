@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TouchScript.Gestures;
 
 public class PumpHandle : MonoBehaviour
 {
@@ -110,6 +111,8 @@ public class PumpHandle : MonoBehaviour
                 gameController.balloons[gameController.selectedBalloonNumber].transform.localScale = new Vector3(1.1f,1.1f,0f);
                 balloonChangeFlag = true;
                 instruction.DestroyHandInstruction(2);
+                Destroy(this.gameObject.GetComponent<TouchScript.Gestures.TransformGestures.TransformGesture>());
+                OnDragEnd();
             }
         }
     }
