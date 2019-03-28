@@ -124,6 +124,7 @@ namespace Singing
                     done.TransitionIn();
                     hand.SetActive(false);
                     background.GetComponent<Collider2D>().enabled = false;
+                    
                 }
             };
         }

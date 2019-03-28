@@ -22,6 +22,8 @@ namespace Singing
                 child.GetComponent<SpriteRenderer>().DOFade(1f, _duration);
                 child.GetComponent<Collider2D>().enabled = true;
             }
+            closeButton.GetComponent<Collider2D>().enabled = true;
+           
         }
     }
 }
