@@ -7,6 +7,8 @@ namespace Singing
 {
     class GameController : MonoBehaviour, IGameController
     {
+        private const int GAME_CODE = 2;
+        private const float PLAYBACK_INTERVAL = 0.3f;
 
         private int gameStage;
 
@@ -60,6 +62,9 @@ namespace Singing
         [Header("EndButton")]
         public GameObject endUI;
 
+        [Header("Network")]
+        public NetworkingController network;
+
 
         private void Start()
         {
@@ -94,7 +99,7 @@ namespace Singing
                     hand.SetActive(false);
                     staff.enabled = false;
                 }
-                
+
             };
             rTransitions = new StageTransition[]
             {
@@ -116,7 +121,7 @@ namespace Singing
                 },
                 () =>
                 {
-                    
+
                 },
                 () =>
                 {
@@ -127,7 +132,7 @@ namespace Singing
                     done.TransitionIn();
                     hand.SetActive(false);
                     background.GetComponent<Collider2D>().enabled = false;
-                    
+
                 }
             };
         }
@@ -151,7 +156,7 @@ namespace Singing
 
         private IEnumerator NotesFadeInOut()
         {
-           
+
             foreach (Transform child in defualtNotes.transform)
             {
                 Sequence newSequence = DOTween.Sequence();
@@ -165,6 +170,31 @@ namespace Singing
             //Looks redundant I know .. make sure the onEnable function calls
             notePiano.SetActive(false);
             notePiano.SetActive(true);
+        }
+
+        private void SendBird()
+        {
+            string bird = birds.GetComponentInChildren<SpriteRenderer>().gameObject.name;
+            int birdnumber = -1;
+            switch (bird)
+            {
+                case"B":
+                    birdnumber = 0;
+                    break;
+                case "G":
+                    birdnumber = 1;
+                    break;
+                case "O":
+                    birdnumber = 2;
+                    break;
+                case "P":
+                    birdnumber = 3;
+                    break;
+                default:
+                    break;
+
+            }
+            network.SendAction(GAME_CODE, birdnumber, songString);
         }
 
         public void AddNote(string note)
@@ -190,16 +220,17 @@ namespace Singing
         {
             foreach (AudioSource note in song)
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
                 note.Play();
             }
         }
 
+        //Ending happens here.
         public IEnumerator ComposedNotesPlayEnum()
         {
             foreach (GameObject note in birdNote.GetNotes())
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
                 note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
             }
             if (gameStage == 4)
@@ -207,7 +238,8 @@ namespace Singing
                 birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(()=>{
                     endUI.SetActive(true);
                 });
-                //State
+
+                Invoke("SendBird", 9f);
                 foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                 {
                     animator.Play("fly");
@@ -220,7 +252,7 @@ namespace Singing
                 }
             }
         }
-
+         
         public void ClearSong()
         {
             song = new List<AudioSource>();
