@@ -149,7 +149,7 @@ public class GameControllerv2 : MonoBehaviour
             }
             if(scale > 2f)
             {
-                network.SendCreateBalloon(interactionCode, selectedBalloonNumber, resultString);
+                network.SendAction(interactionCode, selectedBalloonNumber, resultString);
                 isStep5Finished = true;
                 StartCoroutine(RestartWaitDelay());
             }

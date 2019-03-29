@@ -12,7 +12,8 @@ public class SelectionButton : TapableObject
         if(string.Equals(interaction_Name,"Balloon"))
         {
             SceneManager.LoadScene("Balloon");
-        } else if(string.Equals(interaction_Name, "Bird"))
+        } 
+        else if(string.Equals(interaction_Name, "Bird"))
         {
             SceneManager.LoadScene("Bird");
         }

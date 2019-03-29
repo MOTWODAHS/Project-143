@@ -52,7 +52,7 @@ public class NetworkingController : MonoBehaviour
         */
         print("disconnect");
     }
-    public void SendCreateBalloon(int interactionCode, int selectedObjectNumber, string message)
+    public void SendAction(int interactionCode, int selectedObjectNumber, string message)
     {
         string sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
         sendData = new byte[1024];   
