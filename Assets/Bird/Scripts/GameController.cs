@@ -262,6 +262,7 @@ namespace Singing
         {
             song = new List<AudioSource>();
             birdNote.ClearSong();
+            songString = "";
             OnSongChanges();
         }
 

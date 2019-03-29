@@ -22,4 +22,21 @@ public class SelectionButton : TapableObject
             print("Coming soon");
         }
     }
+    /* 
+    public void OnMouseDown()
+    {
+        if(string.Equals(interaction_Name,"Balloon"))
+        {
+            SceneManager.LoadScene("Balloon");
+        } 
+        else if(string.Equals(interaction_Name, "Bird"))
+        {
+            SceneManager.LoadScene("Bird");
+        }
+        else
+        {
+            print("Coming soon");
+        }
+    }
+    */
 }

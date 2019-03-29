@@ -154,7 +154,24 @@ public class GameControllerv2 : MonoBehaviour
                 StartCoroutine(RestartWaitDelay());
             }
         }
-
+        /* 
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            network.SendAction(interactionCode, 0, "");
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            network.SendAction(interactionCode, 1, "");
+        }
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            network.SendAction(interactionCode, 2, "");
+        }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            network.SendAction(interactionCode, 3, "");
+        }
+        */
     }
 
     public void Step1Event()
