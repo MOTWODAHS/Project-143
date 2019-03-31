@@ -174,9 +174,12 @@ namespace Singing
 
         private void SendBird()
         {
-            
-            string bird = birds.GetComponentInChildren<SpriteRenderer>().gameObject.name;
-            Debug.Log(bird);
+            string bird = "B";
+            foreach(Transform child in birds.transform) {
+                if (child.GetComponentInChildren<SpriteRenderer>().enabled){
+                    bird = child.gameObject.name;
+                }
+            }
             int birdnumber = -1;
             switch (bird)
             {
@@ -259,6 +262,7 @@ namespace Singing
         {
             song = new List<AudioSource>();
             birdNote.ClearSong();
+            songString = "";
             OnSongChanges();
         }
 

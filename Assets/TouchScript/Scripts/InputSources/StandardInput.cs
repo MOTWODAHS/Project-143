@@ -289,7 +289,9 @@ namespace TouchScript.InputSources
                     switch (Windows8API)
                     {
                         case Windows8APIType.Windows8:
-                            enableWindows8Touch();
+                            //enableWindows8Touch();
+                            enableTouch();
+                            enableMouse();
                             break;
                         case Windows8APIType.Windows7:
                             enableWindows7Touch();
