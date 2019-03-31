@@ -174,11 +174,13 @@ namespace Singing
 
         private void SendBird()
         {
+            
             string bird = birds.GetComponentInChildren<SpriteRenderer>().gameObject.name;
+            Debug.Log(bird);
             int birdnumber = -1;
             switch (bird)
             {
-                case"B":
+                case "B":
                     birdnumber = 0;
                     break;
                 case "G":

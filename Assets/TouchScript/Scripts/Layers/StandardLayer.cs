@@ -180,6 +180,7 @@ namespace TouchScript.Layers
         /// <inheritdoc />
         public override HitResult Hit(IPointer pointer, out HitData hit)
         {
+            Debug.Log("hit");
             if (base.Hit(pointer, out hit) != HitResult.Hit) return HitResult.Miss;
 
             var result = HitResult.Miss;

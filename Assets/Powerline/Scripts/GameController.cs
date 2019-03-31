@@ -8,11 +8,22 @@ namespace Powerline
     {
 
         private int gameStage = 0;
+
         private bool gameIsOver = false;
+
+        private IGameController game;
 
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
+
+        [Header("Before Picking Up An Pole")]
+        public Collider2D destinationPoleCollider;
+
+        private void Start()
+        {
+            game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+        }
 
         public int GetGameStage()
         {
@@ -26,14 +37,10 @@ namespace Powerline
 
         public void StartGame()
         {
-            throw new System.NotImplementedException();
+            destinationPoleCollider.enabled = true;
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
 
         // Update is called once per frame
         void Update()
