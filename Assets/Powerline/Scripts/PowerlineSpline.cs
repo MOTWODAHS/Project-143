@@ -9,6 +9,8 @@ namespace Talking
 {
     public class PowerlineSpline : MonoBehaviour
     {
+
+        private GameController game;
         public Transform originPole;
         public Transform destinationPole;
         public fillInLine fillLine;
@@ -73,7 +75,7 @@ namespace Talking
 
         public void EnableFilling()
         {
-            StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
+            //StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
             this.fillLine.enabled = true;
         }
 
@@ -89,11 +91,12 @@ namespace Talking
         {
 
             Debug.Log("PowerlineSplineEnabled");
-            transform.position = PowerlineMap.powerPoleBounds.center;
+            game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+            transform.position = game.getBound().center;
 
             //Scale
-            float boundX = PowerlineMap.powerPoleBounds.extents.x;
-            float boundY = PowerlineMap.powerPoleBounds.extents.y;
+            float boundX = game.getBound().extents.x;
+            float boundY = game.getBound().extents.y;
 
             Bounds thisBound = GetComponent<Collider2D>().bounds;
             zoomFactor = Mathf.Max(0.5f * boundX / thisBound.extents.x, (0.5f * boundY / thisBound.extents.y));
@@ -110,8 +113,6 @@ namespace Talking
             {
                 otherLine.widthMultiplier = zoomFactor * 0.1f;
             }
-
-            EnableParticle();
 
         }
 

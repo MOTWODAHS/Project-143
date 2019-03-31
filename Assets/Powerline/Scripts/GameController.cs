@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Powerline
+namespace Talking
 {
     class GameController : MonoBehaviour, IGameController
     {
@@ -16,6 +16,8 @@ namespace Powerline
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
+
+        Bounds bound;
 
         [Header("Before Picking Up An Pole")]
         public Collider2D destinationPoleCollider;
@@ -40,12 +42,14 @@ namespace Powerline
             destinationPoleCollider.enabled = true;
         }
 
-
-
-        // Update is called once per frame
-        void Update()
+        public Bounds getBound()
         {
+            return bound;
+        }
 
+        public void setBound(Bounds bound)
+        {
+            this.bound = bound;
         }
     }
 }

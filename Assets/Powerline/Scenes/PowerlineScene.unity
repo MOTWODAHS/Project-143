@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92068448}
   m_LocalRotation: {x: 0.30708614, y: 0.15058507, z: -0.4137292, w: 0.84371233}
-  m_LocalPosition: {x: -2.8, y: 0.38, z: -0.7}
+  m_LocalPosition: {x: -2.8, y: -0.38, z: -0.7}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1128931894}
@@ -366,8 +366,8 @@ MonoBehaviour:
   fakeShadow: {fileID: 562198912}
   originPole: {fileID: 1192113343}
   destinationPole: {fileID: 92068450}
-  interactableLineRight: {fileID: 1128931893}
-  interactableLineLeft: {fileID: 1466138763}
+  interactableLineRight: {fileID: 1713837084}
+  interactableLineLeft: {fileID: 1759845419}
 --- !u!114 &92068453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 242884266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 80bc668a4a3a277469f9e765dd106a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &242884270
@@ -1616,7 +1616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &470114464
 Transform:
   m_ObjectHideFlags: 0
@@ -6891,7 +6891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &669925934
 Transform:
   m_ObjectHideFlags: 0
@@ -12795,7 +12795,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027269213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 80bc668a4a3a277469f9e765dd106a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1046629851
@@ -13255,7 +13255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128931893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 80bc668a4a3a277469f9e765dd106a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1131756514
@@ -14500,7 +14500,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466138763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 80bc668a4a3a277469f9e765dd106a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1466138767
@@ -20210,10 +20210,10 @@ GameObject:
   - component: {fileID: 1713837087}
   - component: {fileID: 1713837090}
   - component: {fileID: 1713837091}
-  - component: {fileID: 1713837092}
   - component: {fileID: 1713837094}
   - component: {fileID: 1713837095}
   - component: {fileID: 1713837093}
+  - component: {fileID: 1713837096}
   m_Layer: 0
   m_Name: Labyrinth
   m_TagString: Untagged
@@ -20878,18 +20878,6 @@ MonoBehaviour:
   - {fileID: 1128931897}
   - {fileID: 1466138769}
   right: 0
---- !u!114 &1713837092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713837084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1713837093
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -20954,6 +20942,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: BansheeGz.BGSpline.Components.BGCcCursorChangeLinear+PointReachedEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1713837096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713837084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80bc668a4a3a277469f9e765dd106a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1716436446
 GameObject:
   m_ObjectHideFlags: 0
@@ -21208,7 +21208,6 @@ GameObject:
   - component: {fileID: 1759845423}
   - component: {fileID: 1759845422}
   - component: {fileID: 1759845421}
-  - component: {fileID: 1759845420}
   - component: {fileID: 1759845430}
   - component: {fileID: 1759845429}
   - component: {fileID: 1759845428}
@@ -21219,18 +21218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1759845420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759845419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d69206aa20382c4eabd0893743c66b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1759845421
 MonoBehaviour:
   m_ObjectHideFlags: 0

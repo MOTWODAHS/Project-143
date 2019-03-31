@@ -13,11 +13,13 @@ namespace Talking
 
         private Transformer transformer;
 
-        private IGameController game;
+        private GameController game;
 
         private GameObject interactableLine;
 
         private GameObject[] powerlines;
+
+        private List<Coroutine> coroutines;
 
         [Header("Before player picks up a powerline")]
         public GameObject fakeShadow;
@@ -33,27 +35,54 @@ namespace Talking
 
         private void Start()
         {
-            game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+            coroutines = new List<Coroutine>();
+            game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
             gesture = GetComponent<TransformGesture>();
             transformer = GetComponent<Transformer>();
             gesture.TransformStarted += transformStartedHandler;
+            gesture.TransformCompleted += transformCompletedHandler;
 
         }
 
         private void InitializePowerline(GameObject interactableLine)
         {
+            coroutines = new List<Coroutine>();
+
             interactableLine.GetComponent<PowerlineSpline>().enabled = true;
-            Transition.coroutines.Add(StartCoroutine(interactableLine.GetComponent<Transition>().FadeIn(0f, 0.5f)));
+
+            Debug.Log("interactableLine is:" + interactableLine);
+            Debug.Log("Transition is:" + interactableLine.GetComponent<Transition>());
+            coroutines.Add(StartCoroutine(interactableLine.GetComponent<Transition>().lineRendererFadeIn()));
             foreach (GameObject powerline in powerlines)
             {
-                Transition.coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().FadeIn(0f, 0.5f)));
+                coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().lineRendererFadeIn()));
             }
         }
 
         private void PickUp()
-        {
+        {   
             destinationPole.transform.rotation = Quaternion.Euler(0, 0, 0);
             fakeShadow.SetActive(false);
+            foreach(Coroutine c in coroutines)
+            {
+                StopCoroutine(c);
+            }
+
+
+            if (interactableLine != null)
+            {
+                interactableLine.GetComponent<PowerlineSpline>().enabled = false;
+                interactableLine.GetComponent<Transition>().hide();
+            }
+          
+            if (powerlines != null)
+            {
+                foreach (GameObject powerline in powerlines)
+                {
+                    powerline.GetComponent<Transition>().hide();
+                }
+            }         
+
         }
 
         private void Drop()
@@ -71,8 +100,13 @@ namespace Talking
                 interactableLine.GetComponent<PowerlineSpline>().right = false;
             }
 
-            InitializePowerline(interactableLine);
+            //Update Bounds
+            Bounds bounds = originPole.GetComponent<Collider2D>().bounds;
+            bounds.Encapsulate(destinationPole.GetComponent<Collider2D>().bounds);
 
+            game.setBound(bounds);
+
+            InitializePowerline(interactableLine);
         }
 
         private void transformStartedHandler(object sender, EventArgs e)
@@ -86,6 +120,5 @@ namespace Talking
             transformer.enabled = false;
             Drop();
         }
-
     }
 }

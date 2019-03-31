@@ -85,21 +85,19 @@ namespace Talking
         private void InitializePowerline(GameObject interactableLine)
         {
             interactableLine.GetComponent<PowerlineSpline>().enabled = true;
-            Transition.coroutines.Add(StartCoroutine(interactableLine.GetComponent<Transition>().FadeIn(0f, 0.5f)));
-            //Invoke("EnableParticle", 0.5f);
             foreach (GameObject powerline in powerlines)
             {
-                Transition.coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().FadeIn(0f, 0.5f)));
+                //Transition.coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().FadeIn(0f, 0.5f)));
             }
         }
 
         private void HidePowerlines(GameObject interactableLine)
         {
-            foreach (Coroutine coroutine in Transition.coroutines)
-            {
-                StopCoroutine(coroutine);
-            }
-            Transition.coroutines = new List<Coroutine>();
+            //foreach (Coroutine coroutine in Transition.coroutines)
+            //{
+            //    StopCoroutine(coroutine);
+            //}
+            //Transition.coroutines = new List<Coroutine>();
             if (interactableLine)
             {
 
@@ -154,7 +152,7 @@ namespace Talking
                         interactableLine.GetComponent<PowerlineSpline>().EnableFilling();
                         foreach (GameObject powerline in powerlines)
                         {
-                            StartCoroutine(powerline.GetComponent<Transition>().FadeIn(0.5f, 1f));
+                            //StartCoroutine(powerline.GetComponent<Transition>().FadeIn(0.5f, 1f));
                         }
                         hit.collider.enabled = false;
                         destinationPole.GetComponent<BoxCollider2D>().enabled = false;
