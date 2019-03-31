@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Talking
 {
@@ -13,18 +14,64 @@ namespace Talking
 
         private IGameController game;
 
+        private GameObject interactiveLine;
+
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
+
 
         Bounds bound;
 
         [Header("Before Picking Up An Pole")]
         public Collider2D destinationPoleCollider;
+        public PowerlinePiece powerlinePiece;
+
+        [Header("Hand")]
+        public GameObject hand;
 
         private void Start()
         {
             game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+            transitions = new StageTransition[]
+            {
+                () =>
+                {
+                    hand.SetActive(false);
+                    interactiveLine.GetComponentInChildren<FillInLine>().enabled = true;
+                    ZoomToPoint();
+                }
+            };
+        }
+
+        private void ZoomToPoint()
+        {
+            //Get bounds of the two poles
+            Bounds bounds = powerlinePiece.originPole.GetComponent<Collider2D>().bounds;
+            bounds.Encapsulate(powerlinePiece.destinationPole.GetComponent<Collider2D>().bounds);
+            //Calculate middle point
+            Vector3 middlePoint = bounds.center;
+            //Calculate new bound
+            float distanceX = bounds.extents.x;
+            float distanceY = bounds.extents.y;
+            float verticalExtent = 2f * Camera.main.orthographicSize;
+            float horizontalExtent = verticalExtent * Camera.main.aspect;
+            float zoomFactor = Mathf.Max(2f * distanceX / horizontalExtent, 2f * distanceY / verticalExtent);
+            //Move to the point
+            Vector3 newPosition = new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z);
+
+            Sequence s = DOTween.Sequence();
+
+            float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
+
+            s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
+            s.Join(Camera.main.DOOrthoSize(newOrthoSize, 2f));
+            s.Play();
+        }
+
+        internal void SetInteractiveLine(GameObject obj)
+        {
+            interactiveLine = obj;
         }
 
         public int GetGameStage()
@@ -34,7 +81,8 @@ namespace Talking
 
         public void Proceed()
         {
-            throw new System.NotImplementedException();
+            transitions[gameStage]();
+            gameStage++;
         }
 
         public void StartGame()

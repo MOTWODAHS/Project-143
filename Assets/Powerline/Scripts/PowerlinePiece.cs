@@ -28,10 +28,12 @@ namespace Talking
 
         public Transform destinationPole;
 
+        [Header("After player drops a powerline")]
         public GameObject interactableLineRight;
 
         public GameObject interactableLineLeft;
 
+        public Transition hand;
 
         private void Start()
         {
@@ -50,13 +52,14 @@ namespace Talking
 
             interactableLine.GetComponent<PowerlineSpline>().enabled = true;
 
-            Debug.Log("interactableLine is:" + interactableLine);
-            Debug.Log("Transition is:" + interactableLine.GetComponent<Transition>());
             coroutines.Add(StartCoroutine(interactableLine.GetComponent<Transition>().lineRendererFadeIn()));
             foreach (GameObject powerline in powerlines)
             {
                 coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().lineRendererFadeIn()));
             }
+
+            hand.TransitionIn();
+            hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, 0);
         }
 
         private void PickUp()
@@ -81,7 +84,12 @@ namespace Talking
                 {
                     powerline.GetComponent<Transition>().hide();
                 }
-            }         
+            }
+            
+            if (hand != null)
+            {
+                hand.hide();
+            }
 
         }
 
@@ -99,6 +107,7 @@ namespace Talking
                 powerlines = GameObject.FindGameObjectsWithTag("PowerlineLeft");
                 interactableLine.GetComponent<PowerlineSpline>().right = false;
             }
+            game.SetInteractiveLine(interactableLine);
 
             //Update Bounds
             Bounds bounds = originPole.GetComponent<Collider2D>().bounds;

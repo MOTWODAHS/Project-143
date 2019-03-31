@@ -70,12 +70,21 @@ public class Transition : MonoBehaviour
 
     public void hide()
     {
-        lineRenderer.material.SetFloat("_Transparency", 0f);
-
-        if (GetComponent<Collider2D>() != null)
+        if (lineRenderer != null)
         {
-            GetComponent<Collider2D>().enabled = true;
+            lineRenderer.material.SetFloat("_Transparency", 0f);
+
+            if (GetComponent<Collider2D>() != null)
+            {
+                GetComponent<Collider2D>().enabled = true;
+            }
         }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = new Color(255, 255, 255, 0);
+        }
+       
     }
 }
 
