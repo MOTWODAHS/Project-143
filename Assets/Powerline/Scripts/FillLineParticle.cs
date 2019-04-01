@@ -25,12 +25,13 @@ namespace Talking
         private void transformStartedHandler(object sender, EventArgs e)
         {
             transformer.enabled = true;
-            
+            //game.EnableFillInLine(true);
         }
 
         private void transformCompletedHandler(object sender, EventArgs e)
         {
             transformer.enabled = false;
+            //game.EnableFillInLine(false);
         }
     }
 }

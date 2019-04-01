@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Talking
 {
-    public class PowerlineSpline: MonoBehaviour
+    class PowerlineSpline: MonoBehaviour
     {
 
         private GameController game;
@@ -22,7 +22,7 @@ namespace Talking
 
         public TextMeshPro message;
 
-        public Text GUImessage;
+        public KeyBoardController keyboardController;
 
         public BGCcMath nextLineMathRight;
 
@@ -36,12 +36,12 @@ namespace Talking
 
         public void SendLineMessage()
         {
-            if (this.enabled)
+            if (enabled)
             {
-                this.message.transform.gameObject.SetActive(true);
-                this.message.text = GUImessage.text;
-                this.message.transform.position = originPole.transform.position;
-                this.message.transform.localScale *= zoomFactor;
+                message.transform.gameObject.SetActive(true);
+                message.text = keyboardController.inputString;
+                message.transform.position = originPole.transform.position;
+                message.transform.localScale *= zoomFactor;
                 StartCoroutine(SendText());
             }
         }

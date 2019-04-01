@@ -7,20 +7,36 @@ using DG.Tweening;
 
 namespace Talking
 {
-    public class FillInLine : MonoBehaviour
+    class FillInLine : MonoBehaviour
     {
-        public BGCurve curve;
-        public Transform controlPoints;
-        public RectTransform enterNameTextBox;
-        public Material material;
+        
 
         private BGCcMath math;
+
         private List<Vector3> positions = new List<Vector3>();
+
         private LineRenderer fillrenderer;
+
         private float distance;
+
         private bool finished = false;
+
         private bool startdrawing = false;
+
         private bool touched = false;
+
+        private Vector3 touchPosition;
+
+        private GameController game;
+
+        public BGCurve curve;
+
+        public Transform controlPoints;
+
+        public RectTransform enterNameTextBox;
+
+        public Material material;
+
         public Transform particle;
 
         // Start is called before the first frame update
@@ -30,7 +46,7 @@ namespace Talking
             fillrenderer = GetComponent<LineRenderer>();
             math = curve.GetComponent<BGCcMath>();
             particle.gameObject.SetActive(true);
-
+            game = game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
         }
 
         public void StartEndPoints(Transform start, Transform end)
@@ -126,34 +142,34 @@ namespace Talking
         // Update is called once per frame
         void Update()
         {
-            //if (!touched && Input.GetMouseButton(0))
-            //{
-            //    touched = true;
-            //}
-            //if (touched && !finished)
-            //{
-            //    //If Left Mouse Button is Held Down
-            //    if (Input.GetMouseButton(0))
-            //    {
-            //        Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //        point.z = 0;
 
-            //        float newDistance;
-            //        Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
-            //        particle.transform.position = pointOnCurve;
-            //        if (newDistance - distance < 1 && newDistance - distance > 0)
-            //        {
-            //            distance = fillIntoLine(pointOnCurve, distance, newDistance);
-            //            startdrawing = true;
-            //        }
-            //        else if (newDistance == math.GetDistance() && newDistance - distance < 1 && startdrawing)
-            //        {
-            //            finished = true;
-            //            particle.gameObject.SetActive(false);
-            //            StretchLine();
-            //        }
-            //    }
-            //}
+            if (!finished && touchPosition != null)
+            {
+                Vector3 point = touchPosition;
+                point.z = 0;
+
+                float newDistance;
+                Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
+                if (newDistance - distance < 1 && newDistance - distance > 0)
+                {
+                    distance = FillIntoLine(pointOnCurve, distance, newDistance);
+                    particle.transform.position = pointOnCurve;
+                    startdrawing = true;
+                }
+                else if (newDistance == math.GetDistance() && newDistance - distance < 1 && startdrawing)
+                {
+                    finished = true;
+                    particle.gameObject.SetActive(false);
+                    StretchLine();
+                    game.Proceed();
+                }
+            
+            }
+        }
+
+        public void setTouchLocation(Vector3 position)
+        {
+            touchPosition = position;
         }
     }
 }

@@ -20,6 +20,10 @@ namespace Talking
 
         private StageTransition[] transitions;
 
+        private FillInLine fillInLine;
+
+        private FillInCollider fillInCollider;
+
 
         Bounds bound;
 
@@ -30,6 +34,10 @@ namespace Talking
         [Header("Hand")]
         public GameObject hand;
 
+        [Header("Keyboard")]
+        public GameObject keyboard;
+
+
         private void Start()
         {
             game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
@@ -38,8 +46,23 @@ namespace Talking
                 () =>
                 {
                     hand.SetActive(false);
-                    interactiveLine.GetComponentInChildren<FillInLine>().enabled = true;
+                    fillInLine = interactiveLine.GetComponentInChildren<FillInLine>();
+                    fillInCollider = interactiveLine.GetComponentInChildren<FillInCollider>();
+                    fillInCollider.GetComponent<BoxCollider>().enabled = true;
+                    fillInLine.enabled = true;
                     ZoomToPoint();
+                },
+                () =>
+                {
+                    fillInLine.enabled =false;
+                    fillInCollider.GetComponent<BoxCollider>().enabled = false;
+                    fillInCollider.enabled = false;
+                    keyboard.SetActive(true);
+                },
+                () =>
+                {
+                    keyboard.SetActive(false);
+                    interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage(); 
                 }
             };
         }
@@ -62,6 +85,7 @@ namespace Talking
 
             Sequence s = DOTween.Sequence();
 
+            Camera.main.transform.localScale *= zoomFactor * 1.2f;
             float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
 
             s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
@@ -99,5 +123,6 @@ namespace Talking
         {
             this.bound = bound;
         }
+
     }
 }
