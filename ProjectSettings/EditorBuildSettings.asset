@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Bird/Scenes/Bird.unity
     guid: 50a9764c0a607f94ba446b797e27a7c5
+  - enabled: 1
+    path: Assets/Powerline/Scenes/PowerlineScene.unity
+    guid: 10aef2f1315d032458c6ba4429226e49
   m_configObjects: {}

@@ -5055,7 +5055,7 @@ MonoBehaviour:
   curve: {fileID: 1713837086}
   controlPoints: {fileID: 607715571}
   enterNameTextBox: {fileID: 0}
-  material: {fileID: 2100000, guid: 1c439e4747c0d8c49b8352ae9284edae, type: 2}
+  material: {fileID: 2100000, guid: 5ef1d079d3acc3146b70865b2410db03, type: 2}
   particle: {fileID: 1966810127}
 --- !u!120 &1365175621
 LineRenderer:
@@ -11376,7 +11376,7 @@ MonoBehaviour:
   curve: {fileID: 1759845426}
   controlPoints: {fileID: 1864673153}
   enterNameTextBox: {fileID: 0}
-  material: {fileID: 2100000, guid: 1c439e4747c0d8c49b8352ae9284edae, type: 2}
+  material: {fileID: 2100000, guid: 5ef1d079d3acc3146b70865b2410db03, type: 2}
   particle: {fileID: 1481792401}
 --- !u!120 &1707432153
 LineRenderer:
