@@ -7,30 +7,42 @@ using UnityEngine.UI;
 
 namespace Talking
 {
-    public class PowerlineSpline : MonoBehaviour
+    class PowerlineSpline: MonoBehaviour
     {
+
+        private GameController game;
+
+        private float zoomFactor;
+
         public Transform originPole;
+
         public Transform destinationPole;
-        public fillInLine fillLine;
+
+        public FillInLine fillLine;
+
         public TextMeshPro message;
-        public Text GUImessage;
+
+        public KeyBoardController keyboardController;
+
         public BGCcMath nextLineMathRight;
+
         public BGCcMath nextLineMathLeft;
 
         public LineRenderer[] otherLines;
 
         public bool right;
 
-        private float zoomFactor;
+        
 
         public void SendLineMessage()
         {
-            if (this.enabled)
+            if (enabled)
             {
-                this.message.transform.gameObject.SetActive(true);
-                this.message.text = GUImessage.text;
-                this.message.transform.position = originPole.transform.position;
-                this.message.transform.localScale *= zoomFactor;
+                message.transform.gameObject.SetActive(true);
+                message.text = keyboardController.inputString;
+                game.setMessage(message.text);
+                message.transform.position = originPole.transform.position;
+                message.transform.localScale *= zoomFactor;
                 StartCoroutine(SendText());
             }
         }
@@ -73,28 +85,22 @@ namespace Talking
 
         public void EnableFilling()
         {
-            StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
+            //StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
             this.fillLine.enabled = true;
         }
-
-        private void EnableParticle()
-        {
-            ParticleSystem.EmissionModule emission = transform.GetChild(3).GetComponent<ParticleSystem>().emission;
-            emission.enabled = true;
-        }
-
 
         // Start is called before the first frame update
         void OnEnable()
         {
-
-            Debug.Log("PowerlineSplineEnabled");
-            transform.position = PowerlineMap.powerPoleBounds.center;
+            Debug.Log("On enabling Poweling spline");
+            game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+            transform.position = game.getBound().center;
 
             //Scale
-            float boundX = PowerlineMap.powerPoleBounds.extents.x;
-            float boundY = PowerlineMap.powerPoleBounds.extents.y;
+            float boundX = game.getBound().extents.x;
+            float boundY = game.getBound().extents.y;
 
+            GetComponent<Collider2D>().enabled = true;
             Bounds thisBound = GetComponent<Collider2D>().bounds;
             zoomFactor = Mathf.Max(0.5f * boundX / thisBound.extents.x, (0.5f * boundY / thisBound.extents.y));
 
@@ -111,24 +117,11 @@ namespace Talking
                 otherLine.widthMultiplier = zoomFactor * 0.1f;
             }
 
-            EnableParticle();
-
         }
 
         private void OnDisable()
         {
-            ParticleSystem.EmissionModule emission = transform.GetChild(3).GetComponent<ParticleSystem>().emission;
-            emission.enabled = false;
-            transform.GetChild(3).GetComponent<ParticleSystem>().Clear();
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.PageDown))
-            {
-                Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
-            }
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 }

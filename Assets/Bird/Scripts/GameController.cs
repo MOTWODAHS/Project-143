@@ -183,7 +183,7 @@ namespace Singing
             int birdnumber = -1;
             switch (bird)
             {
-                case"B":
+                case "B":
                     birdnumber = 0;
                     break;
                 case "G":
