@@ -61,7 +61,7 @@ public class Balloonv2 : TapableObject3D
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/distance;
             this.transform.position = Vector3.Lerp(startPosition, balloonPosition.transform.position, scale);
-            cam.transform.position = Vector3.Lerp(startCameraPosition, startCameraPosition + cameraPositionChange, scale);
+            cam.transform.position = Vector3.Lerp(new Vector3(0,0,-10f), new Vector3 (0,5.5f,-10f), scale);
             //pump.transform.position = Vector3.Lerp(startPumpPosition, endPumpPoint.transform.position, scale);
             if(scale > 1f)
             {

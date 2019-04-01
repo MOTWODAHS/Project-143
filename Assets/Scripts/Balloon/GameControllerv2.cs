@@ -112,7 +112,7 @@ public class GameControllerv2 : MonoBehaviour
         {
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/distance;
-            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,3f,0), scale);
+            cam.transform.position = Vector3.Lerp(new Vector3(0,5.5f,-10f), new Vector3(0,8.5f,-10f), scale);
             balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,4.5f,0), scale);
             line[selectedBalloonNumber].GetComponent<SpriteRenderer>().color = Color.Lerp(new Color(0,0,0,0), new Color(0,0,0,1f), scale);
             if(scale >= 1f)
@@ -139,7 +139,7 @@ public class GameControllerv2 : MonoBehaviour
             }
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/4f;
-            cam.transform.position = Vector3.Lerp(startCamPosition, startCamPosition + new Vector3(0,1.7f,0), scale);
+            cam.transform.position = Vector3.Lerp(new Vector3(0,8.5f,-10f), new Vector3(0,10.2f,-10f), scale);
             balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,6f,0), scale/2);
             if(scale > 0.7f)
             {
