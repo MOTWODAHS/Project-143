@@ -35,6 +35,8 @@ namespace Talking
 
         public Transition hand;
 
+        public GameObject firstHand;
+
         private void Start()
         {
             coroutines = new List<Coroutine>();
@@ -63,7 +65,8 @@ namespace Talking
         }
 
         private void PickUp()
-        {   
+        {
+            firstHand.SetActive(false);
             destinationPole.transform.rotation = Quaternion.Euler(0, 0, 0);
             fakeShadow.SetActive(false);
             foreach(Coroutine c in coroutines)

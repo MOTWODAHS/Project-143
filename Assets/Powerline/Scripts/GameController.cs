@@ -24,6 +24,10 @@ namespace Talking
 
         private FillInCollider fillInCollider;
 
+        private string message;
+
+        private const float delay_to_send = 7f;
+
 
         Bounds bound;
 
@@ -33,9 +37,16 @@ namespace Talking
 
         [Header("Hand")]
         public GameObject hand;
+        public GameObject firstHand;
 
         [Header("Keyboard")]
         public GameObject keyboard;
+
+        [Header("NetworkingManager")]
+        public NetworkingController network;
+
+        [Header("Ending UI")]
+        public GameObject endingUI;
 
 
         private void Start()
@@ -62,9 +73,16 @@ namespace Talking
                 () =>
                 {
                     keyboard.SetActive(false);
-                    interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage(); 
+                    interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage();
+                    Invoke("SendMessageToNetwork", delay_to_send);
                 }
             };
+        }
+
+        private void SendMessageToNetwork()
+        {
+            network.SendAction(3, -1, message);
+            endingUI.SetActive(true);
         }
 
         private void ZoomToPoint()
@@ -112,6 +130,7 @@ namespace Talking
         public void StartGame()
         {
             destinationPoleCollider.enabled = true;
+            firstHand.GetComponent<Transition>().TransitionIn();
         }
 
         public Bounds getBound()
@@ -124,5 +143,9 @@ namespace Talking
             this.bound = bound;
         }
 
+        public void setMessage(string str)
+        {
+            message = str;
+        }
     }
 }

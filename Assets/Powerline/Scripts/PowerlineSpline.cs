@@ -40,6 +40,7 @@ namespace Talking
             {
                 message.transform.gameObject.SetActive(true);
                 message.text = keyboardController.inputString;
+                game.setMessage(message.text);
                 message.transform.position = originPole.transform.position;
                 message.transform.localScale *= zoomFactor;
                 StartCoroutine(SendText());
