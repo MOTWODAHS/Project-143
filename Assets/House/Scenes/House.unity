@@ -769,9 +769,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!50 &158034605
 Rigidbody2D:
@@ -1890,9 +1890,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!50 &366043695
 Rigidbody2D:
@@ -3337,9 +3337,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!50 &617185464
 Rigidbody2D:
@@ -3431,6 +3431,7 @@ MonoBehaviour:
   pivot: {fileID: 1092473469}
   altBlueprintAnim: {fileID: 537337896}
   envelopeAnim: {fileID: 2044109534}
+  texture: {fileID: 8400000, guid: 91b6c128a36d2214a854ed0fbfd59ee6, type: 2}
 --- !u!4 &618004810
 Transform:
   m_ObjectHideFlags: 0
@@ -4179,7 +4180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 757306108}
   - component: {fileID: 757306107}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dash_house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4701,9 +4702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!114 &793167003
 MonoBehaviour:
@@ -5562,7 +5563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1081761322}
   - component: {fileID: 1081761321}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6426,6 +6427,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1198944536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198944539}
+  - component: {fileID: 1198944538}
+  - component: {fileID: 1198944537}
+  m_Layer: 0
+  m_Name: HouseRenderCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1198944537
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198944536}
+  m_Enabled: 1
+--- !u!20 &1198944538
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198944536}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 25.182268
+  orthographic: 1
+  orthographic size: 4.0276866
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 823
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 91b6c128a36d2214a854ed0fbfd59ee6, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1198944539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198944536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.95, y: -0.27, z: -5.11}
+  m_LocalScale: {x: 1.1001, y: 1.1001, z: 1.1001}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1199574368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6709,9 +6792,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!114 &1237126316
 MonoBehaviour:
@@ -10392,9 +10475,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!50 &1962033626
 Rigidbody2D:
@@ -10597,7 +10680,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 2871
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 74819302cb56069409a7455db48f7db1, type: 2}
   m_TargetDisplay: 0
@@ -11466,9 +11549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!50 &2056170649
 Rigidbody2D:
