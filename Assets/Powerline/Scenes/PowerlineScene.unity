@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 92068453}
   - component: {fileID: 92068452}
   - component: {fileID: 92068454}
+  - component: {fileID: 92068455}
   m_Layer: 0
   m_Name: powerlineDest
   m_TagString: Untagged
@@ -466,7 +467,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  basicEditor: 1
+  basicEditor: 0
   generalProps: 0
   limitsProps: 0
   advancedProps: 0
@@ -512,12 +513,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978a486d8ecf8437cbb87e8534908895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSmoothing: 0
+  enableSmoothing: 1
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
-  allowChangingFromOutside: 0
+  scaleThreshold: 0.010000001
+  allowChangingFromOutside: 1
+--- !u!114 &92068455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92068448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99db9df86d0a3f46a96a72ba726d43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &117495616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,6 +2206,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortingLayerName: ColorButtons
   SortingOrder: 0
+--- !u!1 &612758741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612758742}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612758742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612758741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.53, y: 3.41, z: 3.754161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &635370475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5054,7 +5097,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve: {fileID: 1713837086}
   controlPoints: {fileID: 607715571}
-  enterNameTextBox: {fileID: 0}
   material: {fileID: 2100000, guid: 5ef1d079d3acc3146b70865b2410db03, type: 2}
   particle: {fileID: 1966810127}
 --- !u!120 &1365175621
@@ -11375,7 +11417,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve: {fileID: 1759845426}
   controlPoints: {fileID: 1864673153}
-  enterNameTextBox: {fileID: 0}
   material: {fileID: 2100000, guid: 5ef1d079d3acc3146b70865b2410db03, type: 2}
   particle: {fileID: 1481792401}
 --- !u!120 &1707432153
@@ -12449,7 +12490,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713837084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -13944,9 +13985,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!65 &1860236880
 BoxCollider:

@@ -33,8 +33,6 @@ namespace Talking
 
         public Transform controlPoints;
 
-        public RectTransform enterNameTextBox;
-
         public Material material;
 
         public Transform particle;
@@ -108,10 +106,6 @@ namespace Talking
                 }
             }
             sequence.Play();
-            sequence.OnComplete(() =>
-            {
-                enterNameTextBox.DOAnchorPosY(95, 1.0f);
-            });
         }
 
         private void MoveHandleAtPointI(int index, Vector3[] vector3s)

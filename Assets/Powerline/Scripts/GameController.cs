@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TouchScript.Behaviors;
+using TouchScript.Gestures.TransformGestures;
+using TouchScript.Gestures;
 
 namespace Talking
 {
@@ -68,6 +71,7 @@ namespace Talking
                     fillInLine.enabled =false;
                     fillInCollider.GetComponent<BoxCollider>().enabled = false;
                     fillInCollider.enabled = false;
+                    Debug.Log(interactiveLine.name);
                     keyboard.SetActive(true);
                 },
                 () =>
