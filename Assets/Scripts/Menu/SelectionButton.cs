@@ -21,6 +21,10 @@ public class SelectionButton : TapableObject
         {
             SceneManager.LoadScene("PowerlineScene");
         }
+        else if(string.Equals(interaction_Name, "House"))
+        {
+            SceneManager.LoadScene("House");
+        }
         else
         {
             print("Coming soon");

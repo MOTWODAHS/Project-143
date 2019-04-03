@@ -7,7 +7,6 @@ namespace Loving
 {
     class ColorPalettePiece : PuzzlePiece
     {
-        private Bounds thisBound;
         public Color color;
 
         protected override void Start()
@@ -15,11 +14,6 @@ namespace Loving
             base.Start();
             position = GetComponent<Transform>().position;
             thisBound = GetComponent<CircleCollider2D>().bounds;
-        }
-
-        private void ResetTransform()
-        {
-            transform.position = position;
         }
 
         protected override void transformCompletedHandler(object sender, EventArgs e)

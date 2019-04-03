@@ -7,15 +7,20 @@ namespace Loving
 {
     class GameController : MonoBehaviour, IGameController
     {
-        [Header("Cover")]
-        public GameObject cover;
 
         int gameStage = 0;
+
         private bool gameIsOver = false;
+
+        private string sendStr = "";
+
+        private const float DELAY_TO_SEND = 8f;
 
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
+        [Header("Cover")]
+        public Collider2D cover;
 
         [Header("Stage1")]
         public GameObject mask1;
@@ -35,6 +40,8 @@ namespace Loving
         public Animator altBlueprintAnim;
         public Animator envelopeAnim;
         public RenderTexture texture;
+        public NetworkingController network;
+        public GameObject endUI;
 
 
         void Start()
@@ -71,7 +78,7 @@ namespace Loving
                 },
                 () =>
                 {
-                    SendInfoToNetwork();
+                    SaveHouseTexture();
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
@@ -80,6 +87,7 @@ namespace Loving
                     {
                         altBlueprintAnim.Play("ending");
                         envelopeAnim.Play("ending");
+                        Invoke("SendInfoToNetwork", DELAY_TO_SEND);
                     });
                    
                 }
@@ -87,7 +95,7 @@ namespace Loving
         }
 
         [ContextMenu("Send House")]
-        private void SendInfoToNetwork()
+        private void SaveHouseTexture()
         {
             Texture2D houseImage = new Texture2D(1024, 1024, TextureFormat.ARGB32, false);
             RenderTexture.active = texture;
@@ -96,15 +104,23 @@ namespace Loving
             byte[] bytes;
             bytes = houseImage.EncodeToPNG();
 
-            string path = Application.persistentDataPath + "/p.png";
-            Debug.Log("Image saved to: " + path);
-            System.IO.File.WriteAllBytes(path, bytes);
+            //string path = Application.persistentDataPath + "/p.png";
+            //Debug.Log("Image saved to: " + path);
+            //System.IO.File.WriteAllBytes(path, bytes);
+
+            sendStr = bytes.ToString();
             RenderTexture.active = null;
+        }
+
+        private void SendInfoToNetwork()
+        {
+            network.SendAction(4, -1, sendStr);
+            endUI.SetActive(true);
         }
 
         void IGameController.StartGame()
         {
-            cover.SetActive(false);
+            cover.gameObject.SetActive(false);
         }
 
         void IGameController.Proceed()
