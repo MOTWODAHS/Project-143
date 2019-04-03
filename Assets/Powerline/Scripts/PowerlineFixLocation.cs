@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerlineFixLocation : MonoBehaviour
 {
-    private const int x_limit = 9;
+    private const int x_limit = 10;
     private const float y_limit = 2.5f;
     void FixedUpdate()
     {

@@ -71,7 +71,6 @@ namespace Talking
                     fillInLine.enabled =false;
                     fillInCollider.GetComponent<BoxCollider>().enabled = false;
                     fillInCollider.enabled = false;
-                    Debug.Log(interactiveLine.name);
                     keyboard.SetActive(true);
                 },
                 () =>

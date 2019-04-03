@@ -21,6 +21,8 @@ namespace Talking
 
         private List<Coroutine> coroutines;
 
+        private const float HAND_Z_OFFSET = -2f;
+
         [Header("Before player picks up a powerline")]
         public GameObject fakeShadow;
 
@@ -61,7 +63,7 @@ namespace Talking
             }
 
             hand.TransitionIn();
-            hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, 0);
+            hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, HAND_Z_OFFSET);
         }
 
         private void PickUp()
