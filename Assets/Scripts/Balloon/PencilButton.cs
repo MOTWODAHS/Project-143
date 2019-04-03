@@ -20,6 +20,8 @@ public class PencilButton : TapableObject3D
     private Tweener tweBackward;
     public float movingTime = 3f;
 
+    public bool isInstructionSet = false;
+
     void Update()
     {
         if(gameController.selectedBalloonNumber != -1)
@@ -36,7 +38,7 @@ public class PencilButton : TapableObject3D
         tweForward = keyboard.transform.DOLocalMoveY(6.3f,movingTime);
         tweForward.PlayForward();
         gameController.isEdited = false;
-        instruction.DestroyHandInstruction(3);
+        //instruction.DestroyHandInstruction(3);
     }
 
     public void OnButtonDown()
@@ -47,7 +49,11 @@ public class PencilButton : TapableObject3D
             tweBackward.PlayForward();
             gameController.isEdited = true;
             gameController.weight[gameController.selectedBalloonNumber].GetComponent<BoxCollider>().enabled = true;
-            instruction.SetHandInstruction(4);
+            if(!isInstructionSet)
+            {
+                instruction.SetHandInstruction(4);
+                isInstructionSet = true;
+            }
         }
     }
 }

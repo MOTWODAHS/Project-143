@@ -212,7 +212,8 @@ public class GameControllerv2 : MonoBehaviour
         pencilButton[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
         //weight[selectedBalloonNumber].GetComponent<Collider>().enabled = true;
         isStep4Finished = true;
-        instruction.SetHandInstruction(3);
+        //instruction.SetHandInstruction(3);
+        pencilButton[selectedBalloonNumber].GetComponent<PencilButton>().OnTap();
     }
 
     IEnumerator FadeVertex(GameObject obj, float time, int count)

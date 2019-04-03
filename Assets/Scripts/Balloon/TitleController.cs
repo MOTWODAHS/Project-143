@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
 {
-    public GameObject title;
-
     private TMP_Text text;
 
     public GameObject pack;
@@ -16,13 +14,8 @@ public class TitleController : MonoBehaviour
     public InstructionController instruction;
     void Start()
     {
-        text = title.GetComponent<TMP_Text>();
-        this.gameObject.GetComponent<Text>().DOText("Who in your life has helped you smile?",8f).SetEase(Ease.Linear).OnComplete(StartGame);
-    }
-
-    void Update()
-    {
-        text.text = this.gameObject.GetComponent<Text>().text;
+        text = this.gameObject.GetComponent<TMP_Text>();
+        text.DOColor(new Color (0,0,0,1f),5f).SetEase(Ease.Linear).OnComplete(StartGame);
     }
 
     void StartGame()
