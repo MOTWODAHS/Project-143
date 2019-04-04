@@ -63,7 +63,6 @@ namespace Loving
         {
             thisBound = GetComponent<Collider2D>().bounds;
 
-            Debug.Log(bound);
             bool inWall = bound.Contains(new Vector2(thisBound.min.x, thisBound.min.y)) &&
                 bound.Contains(new Vector2(thisBound.max.x, thisBound.max.y));
             bool intersect = bound.Intersects(thisBound);

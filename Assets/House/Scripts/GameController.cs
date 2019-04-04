@@ -97,6 +97,10 @@ namespace Loving
                         Invoke("SendInfoToNetwork", DELAY_TO_SEND);
                     });
                    
+                },
+                () =>
+                {
+
                 }
             };
         }

@@ -11,7 +11,15 @@ namespace Loving {
 
         private const int MAX_CAP = 5;
 
-        private bool Overlap()
+        protected void OnPieceCountIncrement()
+        {
+            if (pieces.Count <= 1 && game.GetGameStage() == 2)
+            {
+                game.Proceed();
+            }
+        }
+
+        protected bool Overlap()
         {
             foreach (PuzzlePiece piece in pieces)
             {
@@ -21,14 +29,6 @@ namespace Loving {
                 }
             }
             return false;
-        }
-
-        private void OnPieceCountIncrement()
-        {
-            if (pieces.Count <= 1 && game.GetGameStage() == 2)
-            {
-                game.Proceed();
-            }
         }
 
         protected override void Start()

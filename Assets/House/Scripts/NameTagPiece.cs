@@ -38,13 +38,26 @@ namespace Loving
         {
             transformer.enabled = false;
             ToggleScale();
-
             thisBound = GetComponent<BoxCollider2D>().bounds;
 
             int placementType = PlacementType();
+            bool overlap = Overlap();
 
-            if (placementType == 1)
+            if (overlap)
             {
+                ResetTransform();
+            }
+            else if (placementType == 0)
+            {
+                ResetTransform();
+            }
+            if (placementType == -1 && !overlap)
+            {
+                ResetTransform();
+            }
+            else if (placementType == 1 && !overlap)
+            {
+                placed = true;
                 TogglePencilButton();
             }
 
