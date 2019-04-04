@@ -2836,8 +2836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a051b87f8568047afca1d0e2542542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortingLayerName: ColorButtons
-  SortingOrder: 0
+  SortingLayerName: PencilButton
+  SortingOrder: 1
 --- !u!1 &612758741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,8 +3776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a051b87f8568047afca1d0e2542542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortingLayerName: ColorButtons
-  SortingOrder: 0
+  SortingLayerName: PencilButton
+  SortingOrder: 1
 --- !u!1 &831600482
 GameObject:
   m_ObjectHideFlags: 0
@@ -14803,8 +14803,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36ae8e284f0a13c4cae86e0913f8dc0b, type: 2}
-  m_sharedMaterial: {fileID: 21283630579239478, guid: 36ae8e284f0a13c4cae86e0913f8dc0b,
+  m_fontAsset: {fileID: 11400000, guid: e091cca017e603247ba7186d459f9002, type: 2}
+  m_sharedMaterial: {fileID: 21837778521094956, guid: e091cca017e603247ba7186d459f9002,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
