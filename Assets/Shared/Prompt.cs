@@ -21,15 +21,17 @@ public class Prompt : MonoBehaviour
 
     private IEnumerator DisplayPrompt()
     {
-        foreach(char chr in prompt)
+        TextMeshProUGUI textmeshPro = GetComponent<TextMeshProUGUI>();
+        textmeshPro.text = prompt;
+        float startTime = Time.time;
+        while(Time.time - startTime < 5f)
         {
-            displayedText += chr;
-            this.GetComponent<TextMeshProUGUI>().text = displayedText;
-            if (chr != ' ')
-            {
-                yield return new WaitForSeconds(0.2f);
-            }
+            float a = (Time.time - startTime) / 5f;
+            //Debug.Log(GetComponent<TextMeshPro>().color);
+            textmeshPro.color = new Color(1, 1, 1, a);
+            yield return new WaitForSeconds(0.2f);
         }
+        GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
         game.StartGame();
     }
 
