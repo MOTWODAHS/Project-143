@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 2752811130091070117}
   - component: {fileID: 2752811130091070138}
   - component: {fileID: 2752811130091070116}
+  - component: {fileID: 8255697021325043189}
+  - component: {fileID: 7909452473075953566}
   m_Layer: 0
   m_Name: door0
   m_TagString: Untagged
@@ -193,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c724fea95a3d594eac255261115b59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundsStr: 
 --- !u!50 &2752811130091070138
 Rigidbody2D:
   serializedVersion: 4
@@ -226,6 +229,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d3ef8ebe526cf4f8827d5d0d9efbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8255697021325043189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752811130091070140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b062f6d112ee02e4d8b6396a6614b8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7909452473075953566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752811130091070140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  numberOfTapsRequired: 1
+  timeLimit: Infinity
+  distanceLimit: Infinity
+  combinePointers: 0
+  combinePointersInterval: 0.3
 --- !u!1 &6557799039155924786
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ namespace Loving
         #endregion
 
         #region Protected Variables
+        protected bool placed = false;
+
         protected Bounds bound;
 
         protected Bounds thisBound;
@@ -21,6 +23,10 @@ namespace Loving
         protected Transformer transformer;
 
         protected Vector3 position;
+
+        protected Quaternion rotation;
+
+        protected Vector3 localScale;
 
         protected IGameController game;
 
@@ -38,13 +44,19 @@ namespace Loving
         {
             normalScale = transform.localScale;
             enlargedScale = 1.2f * transform.localScale;
-            position = GetComponent<Transform>().position;
+            position = transform.position;
+            rotation = transform.rotation;
+            localScale = transform.localScale;
             game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
         }
 
         protected void ResetTransform()
         {
+            placed = false;
             transform.position = position;
+            transform.rotation = rotation;
+            transform.localScale = localScale;
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(1f, 1f, 1f));
         }
 
         protected int PlacementType() // 1: inwall; 0: intersect; -1: mutual-exclusive
@@ -74,11 +86,11 @@ namespace Loving
         {
             if (enlarged)
             {
-                transform.localScale = normalScale;
+                transform.localScale = transform.localScale / 1.2f;
             }
             else
             {
-                transform.localScale = enlargedScale;
+                transform.localScale = transform.localScale * 1.2f;
             }
             enlarged = !enlarged;
         }
@@ -116,6 +128,9 @@ namespace Loving
             if (placementType != 1)
             {
                 ResetTransform();
+            } else
+            {
+                placed = true;
             }
         }
 
@@ -144,6 +159,8 @@ namespace Loving
         {
             return transformer;
         }
+
+        public bool isPlaced() { return placed; }
         #endregion
     }
 }

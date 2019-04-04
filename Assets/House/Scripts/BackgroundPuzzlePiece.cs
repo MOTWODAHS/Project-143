@@ -7,6 +7,7 @@ namespace Loving
     class BackgroundPuzzlePiece : MonoBehaviour
     {
         private Color color;
+        private Color saveColor = new Color(1f,1f,1f);
 
         public void HoverColor()
         {
@@ -16,14 +17,17 @@ namespace Loving
 
         public void DisableHoverColor()
         {
-            color = new Color(1.0f, 1.0f, 1.0f);
-            GetComponent<SpriteRenderer>().material.SetColor("_Color", color);
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", saveColor);
         }
 
         //private void OnTriggerEnter2D(Collider2D other)
         //{
         //    if (other.GetComponent<DoorWindowPiece>() != null) HoverColor();
         //}
+        public void setColor(Color c)
+        {
+            saveColor = c;
+        }
 
         private void OnTriggerExit2D(Collider2D other)
         {

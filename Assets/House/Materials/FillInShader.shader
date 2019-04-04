@@ -57,7 +57,7 @@ Shader "Sprites/PlainColor"
 					v2f OUT;
 					OUT.vertex = UnityObjectToClipPos(IN.vertex);
 					OUT.texcoord = IN.texcoord;
-					OUT.color = IN.color * _Color;
+					OUT.color = IN.color;
 					#ifdef PIXELSNAP_ON
 					OUT.vertex = UnityPixelSnap(OUT.vertex);
 					#endif
@@ -80,16 +80,16 @@ Shader "Sprites/PlainColor"
 					if (_AlphaSplitEnabled)
 						color.a = tex2D(_AlphaTex, uv).r;
 #endif //UNITY_TEXTURE_ALPHASPLIT_ALLOWED
-
+					color.rgb = _Color.rgb;
 					return color;
 				}
 
 				fixed4 frag(v2f IN) : COLOR
 				{
-					half4 texcol = SampleSpriteTexture(IN.texcoord) * IN.color;
+					half4 texcol = SampleSpriteTexture(IN.texcoord);
+
 					float distFromCenter = distance(IN.texcoord, float2(0.5, 0.5));
 
-					float a;
 					if (distFromCenter < _Distance) {
 						texcol.r = _PickedColor.r;
 						texcol.g = _PickedColor.g;

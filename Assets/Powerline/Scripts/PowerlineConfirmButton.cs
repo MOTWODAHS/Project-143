@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Talking
+
+public class PowerlineConfirmButton : TapableObject3D
 {
-    class PowerlineConfirmButton : TapableObject3D
+    public IGameController game;
+
+    private void Start()
     {
-        public GameController game;
-
-        public override void OnTap()
-        {
-
-            game.Proceed();
-        }
+        game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
     }
-
+    public override void OnTap()
+    {
+        print("Tapped");
+        game.Proceed();
+    }
 }
+

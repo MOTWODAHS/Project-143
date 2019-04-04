@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace Talking
+public class TextInputField : MonoBehaviour
 {
-    class TextInputField : MonoBehaviour
+    public KeyBoardController controller;
+    void Update()
     {
-        public KeyBoardController controller;
-        void Update()
-        {
-            GetComponent<TextMeshPro>().text = controller.inputString;
-        }
+        GetComponent<TextMeshPro>().text = controller.inputString;
     }
 }
 

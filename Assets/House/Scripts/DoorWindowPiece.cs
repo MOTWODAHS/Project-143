@@ -81,6 +81,7 @@ namespace Loving {
             }
             else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
             {
+                placed = true;
                 pieces.Add(this);
                 OnPieceCountIncrement();
             }

@@ -27,7 +27,6 @@ namespace Loving
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 0);
             if (hit.collider != null && hit.collider.GetComponent<FillInColor>() != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
                 hit.collider.GetComponent<FillInColor>().FillColor(color);
             }
             else

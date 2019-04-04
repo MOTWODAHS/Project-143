@@ -19,6 +19,11 @@ namespace Loving
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
+
+        internal Color selectedColor;
+
+        internal bool colorSelected = false;
+
         [Header("Cover")]
         public Collider2D cover;
 
@@ -32,7 +37,7 @@ namespace Loving
         public GameObject enterName;
         public GameObject blueprint;
         public GameObject pencilButtonObj;
-        public AddNameTag addNameTag;
+        public TextInputField addNameTag;
 
         [Header("Stage4")]
         public GameObject altBlueprint;
@@ -68,7 +73,7 @@ namespace Loving
                 },
                 () =>
                 {
-                    enterName.GetComponent<RectTransform>().DOMoveY(110f, 2f);
+                    enterName.transform.DOMoveY(-4f, 2f);
                     foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
                     {
                         collider.enabled = false;
@@ -78,6 +83,8 @@ namespace Loving
                 },
                 () =>
                 {
+                    enterName.transform.DOMoveY(-13f,1f);
+                    enterName.SetActive(false);
                     SaveHouseTexture();
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));

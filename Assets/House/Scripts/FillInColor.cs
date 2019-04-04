@@ -14,9 +14,18 @@ namespace Loving
             myMaterial = GetComponent<SpriteRenderer>().material;
         }
         public void FillColor(Color myColor)
-        {
+        {         
             myMaterial.SetColor("_PickedColor", myColor);
-            myMaterial.DOFloat(1.0f, "_Distance", 1f);
+            myMaterial.DOFloat(1.0f, "_Distance", 1f).OnComplete(
+                () =>
+                {
+                    myMaterial.SetColor("_Color", myColor);
+                    myMaterial.SetFloat("_Distance", 0f);
+                });
+            if (GetComponent<BackgroundPuzzlePiece>() != null)
+            {
+                GetComponent<BackgroundPuzzlePiece>().setColor(myColor);
+            }
         }
     }
 }
