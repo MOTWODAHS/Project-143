@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using System;
 
 namespace Loving
 {
@@ -108,7 +109,7 @@ namespace Loving
             //Debug.Log("Image saved to: " + path);
             //System.IO.File.WriteAllBytes(path, bytes);
 
-            sendStr = bytes.ToString();
+            sendStr = Convert.ToBase64String(bytes);
             RenderTexture.active = null;
         }
 
