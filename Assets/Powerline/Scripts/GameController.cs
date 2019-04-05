@@ -63,6 +63,7 @@ namespace Talking
                     fillInLine = interactiveLine.GetComponentInChildren<FillInLine>();
                     fillInCollider = interactiveLine.GetComponentInChildren<FillInCollider>();
                     fillInCollider.GetComponent<BoxCollider>().enabled = true;
+                    interactiveLine.GetComponent<Collider2D>().enabled = false;
                     fillInLine.enabled = true;
                     ZoomToPoint();
                 },

@@ -8,11 +8,13 @@ namespace Singing
     class GameController : MonoBehaviour, IGameController
     {
         private const int GAME_CODE = 2;
-        private const float PLAYBACK_INTERVAL = 0.3f;
+        private const float PLAYBACK_INTERVAL = 0.25f;
 
         private int gameStage;
 
         private string songString;
+
+        private bool playingSong = false;
 
         private List<AudioSource> song = new List<AudioSource>();
 
@@ -33,6 +35,8 @@ namespace Singing
         [Header("Buttons")]
         public Transition newSong;
         public Transition done;
+        public Transition playSong;
+        public Transition closeButton;
 
         [Header("Camera")]
         public GameObject cam;
@@ -75,26 +79,18 @@ namespace Singing
                 PlayDefaultSong, //When choosed a bird
                 () =>
                 {
-                    newSong.TransitionOut();
-                    done.TransitionOut();
-                    PlaySong();
-                }, //When hits done;
-                () =>
-                {
                     foreach(Transform child in notePiano.GetComponentsInChildren<Transform>())
                     {
                         if (child.GetComponent<Transition>() != null){
                             child.GetComponent<Transition>().TransitionOut();
                         }
                     }
-                    cameraAnim.Play("CameraZoomBackward");
                     cButtons.SetActive(false);
-                    staff.enabled = true;
-                    hand.SetActive(true);
-                    background.GetComponent<Collider2D>().enabled = true;
+                    UnfoldBanner();
                 },
                 () =>
                 {
+                    cameraAnim.Play("CameraZoomBackward");
                     PlaySong();
                     hand.SetActive(false);
                     staff.enabled = false;
@@ -121,18 +117,14 @@ namespace Singing
                 },
                 () =>
                 {
-
-                },
-                () =>
-                {
                     cameraAnim.Play("CameraZoom");
                     notePiano.SetActive(false);
                     notePiano.SetActive(true);
                     newSong.TransitionIn();
                     done.TransitionIn();
+                    playSong.TransitionIn();
                     hand.SetActive(false);
                     background.GetComponent<Collider2D>().enabled = false;
-
                 }
             };
         }
@@ -170,6 +162,19 @@ namespace Singing
             //Looks redundant I know .. make sure the onEnable function calls
             notePiano.SetActive(false);
             notePiano.SetActive(true);
+        }
+
+        private void UnfoldBanner()
+        {
+            GameObject bird = new GameObject();
+            foreach (Transform child in birds.transform)
+            {
+                if (child.GetComponentInChildren<SpriteRenderer>().enabled)
+                {
+                    bird = child.gameObject;
+                }
+            }
+            bird.GetComponent<Animator>().Play("banner_unfold");
         }
 
         private void SendBird()
@@ -223,39 +228,47 @@ namespace Singing
 
         public IEnumerator PlaySongEnum()
         {
-            foreach (AudioSource note in song)
-            {
-                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
-                note.Play();
+            if (!playingSong) {
+            playingSong = true;
+                foreach (AudioSource note in song)
+                {
+                    yield return new WaitForSeconds(PLAYBACK_INTERVAL);
+                    note.Play();
+                }
             }
+            playingSong = false;
         }
 
         //Ending happens here.
         public IEnumerator ComposedNotesPlayEnum()
         {
-            foreach (GameObject note in birdNote.GetNotes())
+            if (!playingSong)
             {
-                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
-                note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
-            }
-            if (gameStage == 4)
-            {
-                birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(()=>{
-                    endUI.SetActive(true);
-                });
+                foreach (GameObject note in birdNote.GetNotes())
+                {
+                    yield return new WaitForSeconds(PLAYBACK_INTERVAL);
+                    note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
+                }
+                if (gameStage == 4)
+                {
+                    birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
+                        endUI.SetActive(true);
+                    });
 
-                Invoke("SendBird", 9f);
-                foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
-                {
-                    animator.Play("fly");
-                }
-                
-                staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                foreach(GameObject g in birdNote.GetNotes())
-                {
-                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    Invoke("SendBird", 9f);
+                    foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
+                    {
+                        animator.Play("fly");
+                    }
+
+                    staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    foreach (GameObject g in birdNote.GetNotes())
+                    {
+                        g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    }
                 }
             }
+            
         }
          
         public void ClearSong()
@@ -268,19 +281,22 @@ namespace Singing
 
         public void OnSongChanges()
         {
-            Debug.Log(song.Count);
             if (song.Count == 0)
             {
                 newSong.TransitionOut();
                 done.TransitionOut();
+                playSong.TransitionOut();
+                closeButton.TransitionIn();
             }
             else if (song.Count == 1)
             {
                 newSong.TransitionIn();
                 done.TransitionIn();
+                playSong.TransitionIn();
+                closeButton.gameObject.SetActive(false);
             } else if (song.Count == 10)
             {
-                ProceedTo(3);
+                ProceedTo(2);
             }
         }
 
@@ -314,16 +330,13 @@ namespace Singing
 
         public void ToggleRecording()
         {
-            if (gameStage == 2)
+            if (gameStage == 1)
             {
-                Proceed();
-           
-            } else if (gameStage == 3)
+                ProceedTo(0);
+                ClearSong();         
+            } else if (gameStage == 2)
             {
                 ProceedTo(1);
-            } else {
-                ProceedTo(0);
-                ClearSong();
             }
         }
 
