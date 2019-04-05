@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using System;
 
 namespace Loving
 {
@@ -121,8 +122,7 @@ namespace Loving
             //Sprite test = Sprite.Create(houseImage, new Rect(0, 0, texture.width, texture.height), new Vector2(0,0));
             //testObj.GetComponent<SpriteRenderer>().sprite = test;
 
-            sendStr = bytes.ToString();
-
+            sendStr = Convert.ToBase64String(bytes);
             RenderTexture.active = null;
         }
 

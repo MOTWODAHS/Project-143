@@ -3,40 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 using System.Threading;
 using System.Text;
+using System;
 
 public class NetworkingController : MonoBehaviour
 {
+    /* This part is for UDP
     Socket socket;
     EndPoint serverEnd;
     IPEndPoint ipEnd;
     string sendStr;
-    byte[] sendData = new byte[1024];
+    byte[] sendData;
+    */
+    IPAddress myIp;
+    TcpClient client = new TcpClient();
+    NetworkStream stream;
+    StreamWriter sw;
+    Thread connectServer;
 
     //string connectAddress = null;
 
     void InitSocket()
     {
-        
+        /* This part is for UDP
         ipEnd = new IPEndPoint(IPAddress.Parse(GetLocalIPv4()), 8001);
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
         serverEnd = (EndPoint)sender;
-        print("waiting for sending UDP dgram");   
+        print("waiting for sending UDP dgram");
+        */
+        myIp = IPAddress.Parse(GetLocalIPv4());
+        connectServer = new Thread(ConnectToServer);
+        connectServer.Start();
     }
 
+    void ConnectToServer()
+    {
+        try
+        {
+            client.Connect(myIp,8001);
+            stream = client.GetStream();
+            sw = new StreamWriter(stream);
+            print("Init TCP Client");
+        }
+        catch(Exception)
+        {
+            Thread.Sleep(5000);
+            print("Reconnect");
+            ConnectToServer();
+        }
+    }
+    /*
     void SocketSend(string sendStr)
     {
-        sendData = new byte[1024];   
+        sendData = new byte[1048576];   
         sendData = Encoding.ASCII.GetBytes(sendStr);
         socket.SendTo(sendData, sendData.Length, SocketFlags.None, ipEnd);
     }
+     */
 
     void SocketQuit()
     {
+        /* This part is for UDP
         if (socket != null)
             socket.Close();
+        */
 
         // This part is for reciving the host IP
         /* 
@@ -50,14 +83,26 @@ public class NetworkingController : MonoBehaviour
             sock.Close();
         }
         */
+        client.Close();
+        if(connectServer != null)
+        {
+            connectServer.Interrupt();
+            connectServer.Abort();
+        }
         print("disconnect");
     }
     public void SendAction(int interactionCode, int selectedObjectNumber, string message)
     {
+        /* This part is for UDP
         string sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
-        sendData = new byte[1024];   
+        sendData = new byte[1048576];   
         sendData = Encoding.ASCII.GetBytes(sendingMessage);
+        print(sendData.Length);
         socket.SendTo(sendData, sendData.Length, SocketFlags.None, ipEnd);
+        */
+        string sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
+        sw.WriteLine(sendingMessage);
+        sw.Flush();
     }
 
     void Start()
