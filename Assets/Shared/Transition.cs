@@ -25,6 +25,11 @@ public class Transition : MonoBehaviour
         {
             GetComponent<Collider2D>().enabled = false;
         }
+
+        if (GetComponent<Collider>() != null)
+        {
+            GetComponent<Collider>().enabled = false;
+        }
     }
 
     public void TransitionIn()
@@ -33,6 +38,11 @@ public class Transition : MonoBehaviour
         if (GetComponent<Collider2D>() != null)
         {
             GetComponent<Collider2D>().enabled = true;
+        }
+
+        if (GetComponent<Collider>() != null)
+        {
+            GetComponent<Collider>().enabled = true;
         }
     }
 

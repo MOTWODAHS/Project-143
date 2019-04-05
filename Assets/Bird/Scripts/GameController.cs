@@ -36,7 +36,7 @@ namespace Singing
         public Transition newSong;
         public Transition done;
         public Transition playSong;
-        public Transition closeButton;
+        //public Transition closeButton;
 
         [Header("Camera")]
         public GameObject cam;
@@ -69,6 +69,8 @@ namespace Singing
         [Header("Network")]
         public NetworkingController network;
 
+        [Header("Keyboard")]
+        public GameObject keyboard;
 
         private void Start()
         {
@@ -86,14 +88,22 @@ namespace Singing
                         }
                     }
                     cButtons.SetActive(false);
+                    keyboard.SetActive(true);
+                    keyboard.transform.DOMoveY(-2.3f, 2f);
+                    cameraAnim.Play("CameraMove");
                     UnfoldBanner();
                 },
                 () =>
                 {
-                    cameraAnim.Play("CameraZoomBackward");
+                    cameraAnim.Play("CameraMoveBack");
+                    keyboard.GetComponent<KeyBoardController>().inputString = "";
+                    FoldBanner();
+                    foreach(Transition t in keyboard.gameObject.GetComponentsInChildren<Transition>())
+                    {
+                        t.TransitionOut();
+                    }
+                    Invoke("DisableKeyboardAndBanner", 1f);
                     PlaySong();
-                    hand.SetActive(false);
-                    staff.enabled = false;
                 }
 
             };
@@ -128,7 +138,26 @@ namespace Singing
                 }
             };
         }
+        private void DisableKeyboardAndBanner()
+        {
+            GameObject bird = new GameObject();
+            foreach (Transform child in birds.transform)
+            {
+                if (child.gameObject.activeInHierarchy)
+                {
+                    bird = child.gameObject;
+                }
+            }
 
+            foreach (Transform child in bird.transform)
+            {
+                if (child.gameObject.name.Equals("Banner"))
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+            keyboard.SetActive(false);
+        }
         private void PlayDefaultSong()
         {
             mask.transform.DOMoveX(13.5f, 5f);
@@ -169,19 +198,41 @@ namespace Singing
             GameObject bird = new GameObject();
             foreach (Transform child in birds.transform)
             {
-                if (child.GetComponentInChildren<SpriteRenderer>().enabled)
+                if (child.gameObject.activeInHierarchy)
                 {
                     bird = child.gameObject;
                 }
             }
+
+            foreach(Transform child in bird.transform)
+            {
+                if (child.gameObject.name.Equals("Banner"))
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
             bird.GetComponent<Animator>().Play("banner_unfold");
+        }
+
+        private void FoldBanner()
+        {
+            GameObject bird = new GameObject();
+            foreach (Transform child in birds.transform)
+            {
+                if (child.gameObject.activeInHierarchy)
+                {
+                    bird = child.gameObject;
+                }
+            }
+
+            bird.GetComponent<Animator>().Play("banner_fold");
         }
 
         private void SendBird()
         {
             string bird = "B";
             foreach(Transform child in birds.transform) {
-                if (child.GetComponentInChildren<SpriteRenderer>().enabled){
+                if (child.gameObject.activeInHierarchy){
                     bird = child.gameObject.name;
                 }
             }
@@ -204,6 +255,7 @@ namespace Singing
                     break;
 
             }
+            Debug.Log(birdnumber);
             network.SendAction(GAME_CODE, birdnumber, songString);
         }
 
@@ -228,44 +280,37 @@ namespace Singing
 
         public IEnumerator PlaySongEnum()
         {
-            if (!playingSong) {
-            playingSong = true;
-                foreach (AudioSource note in song)
-                {
-                    yield return new WaitForSeconds(PLAYBACK_INTERVAL);
-                    note.Play();
-                }
+            foreach (AudioSource note in song)
+            {
+                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
+                note.Play();
             }
-            playingSong = false;
         }
 
         //Ending happens here.
         public IEnumerator ComposedNotesPlayEnum()
         {
-            if (!playingSong)
+            foreach (GameObject note in birdNote.GetNotes())
             {
-                foreach (GameObject note in birdNote.GetNotes())
+                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
+                note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
+            }
+            if (gameStage == 3)
+            {
+                birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
+                    endUI.SetActive(true);
+                });
+
+                Invoke("SendBird", 9f);
+                foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                 {
-                    yield return new WaitForSeconds(PLAYBACK_INTERVAL);
-                    note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
+                    animator.Play("fly");
                 }
-                if (gameStage == 4)
+
+                staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                foreach (GameObject g in birdNote.GetNotes())
                 {
-                    birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
-                        endUI.SetActive(true);
-                    });
-
-                    Invoke("SendBird", 9f);
-                    foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
-                    {
-                        animator.Play("fly");
-                    }
-
-                    staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                    foreach (GameObject g in birdNote.GetNotes())
-                    {
-                        g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                    }
+                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                 }
             }
             
@@ -286,14 +331,14 @@ namespace Singing
                 newSong.TransitionOut();
                 done.TransitionOut();
                 playSong.TransitionOut();
-                closeButton.TransitionIn();
+                //closeButton.TransitionIn();
             }
             else if (song.Count == 1)
             {
                 newSong.TransitionIn();
                 done.TransitionIn();
                 playSong.TransitionIn();
-                closeButton.gameObject.SetActive(false);
+                //closeButton.gameObject.SetActive(false);
             } else if (song.Count == 10)
             {
                 ProceedTo(2);
@@ -346,11 +391,11 @@ namespace Singing
             {
                 if (child.gameObject.name.Equals(name))
                 {
-                    child.GetComponent<SpriteRenderer>().enabled = true;
+                    child.gameObject.SetActive(true);
                 }
                 else
                 {
-                    child.GetComponent<SpriteRenderer>().enabled = false;
+                    child.gameObject.SetActive(false);
                 }
             }
         }
