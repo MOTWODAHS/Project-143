@@ -14,7 +14,7 @@ namespace Loving
         }
         public override void OnTap()
         {
-            if (game.selectedColor != null)
+            if (game.colorSelected && game.selectedColor != null)
             {
                 if ((GetComponent<BackgroundPuzzlePiece>() != null) ||
                     (GetComponent<DoorWindowPiece>() != null && GetComponent<DoorWindowPiece>().isPlaced()))

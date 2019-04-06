@@ -49,7 +49,7 @@ namespace Loving {
         protected override void transformCompletedHandler(object sender, EventArgs e)
         {
             transformer.enabled = false;
-            base.ToggleScale();
+            ToggleScale();
             thisBound = GetComponent<BoxCollider2D>().bounds;
 
             int placementType = PlacementType();

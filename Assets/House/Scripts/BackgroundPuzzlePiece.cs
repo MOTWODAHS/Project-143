@@ -20,10 +20,6 @@ namespace Loving
             GetComponent<SpriteRenderer>().material.SetColor("_Color", saveColor);
         }
 
-        //private void OnTriggerEnter2D(Collider2D other)
-        //{
-        //    if (other.GetComponent<DoorWindowPiece>() != null) HoverColor();
-        //}
         public void setColor(Color c)
         {
             saveColor = c;

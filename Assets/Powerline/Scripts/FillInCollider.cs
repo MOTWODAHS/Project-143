@@ -35,14 +35,14 @@ namespace Talking
 
         private void transformStartedHandler(object sender, EventArgs e)
         {
-            transformer.enabled = true;
+            //transformer.enabled = true;
             transformEnabled = true;
         }
 
 
         private void transformCompletedHandler(object sender, EventArgs e)
         {
-            transformer.enabled = false;
+            //transformer.enabled = false;
             transformEnabled = false;
         }
 
@@ -56,8 +56,8 @@ namespace Talking
                 if (Physics.Raycast(ray, out hitinfo) && hitinfo.transform == transform)
                 {
                     fillInLine.setTouchLocation(hitinfo.point);
-                }                
-            }
+                }
+            }              
         }
 
     }

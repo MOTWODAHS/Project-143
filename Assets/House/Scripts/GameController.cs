@@ -115,12 +115,6 @@ namespace Loving
             houseImage.Apply();
             byte[] bytes;
             bytes = houseImage.EncodeToPNG();
-         
-            //string path = Application.persistentDataPath + "/p.png";
-            //Debug.Log("Image saved to: " + path);
-            //System.IO.File.WriteAllBytes(path, bytes);
-            //Sprite test = Sprite.Create(houseImage, new Rect(0, 0, texture.width, texture.height), new Vector2(0,0));
-            //testObj.GetComponent<SpriteRenderer>().sprite = test;
 
             sendStr = Convert.ToBase64String(bytes);
             RenderTexture.active = null;
@@ -139,7 +133,6 @@ namespace Loving
 
         void IGameController.Proceed()
         {
-            Debug.Log("Game Stage is " + gameStage);
             transitions[gameStage]();
             gameStage++;
         }

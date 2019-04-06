@@ -9,6 +9,8 @@ namespace Loving
     {
         #region Private Variables
         private bool enlarged = false;
+
+        private bool piecePlaced = false;
         #endregion
 
         #region Protected Variables
