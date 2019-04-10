@@ -16,6 +16,7 @@ public class Launch : TapableObject3D
             gameController.startCamPosition = Camera.main.transform.position;
             gameController.startBalloonPosition = gameController.balloons[gameController.selectedBalloonNumber].transform.position;
             instruction.DestroyHandInstruction(4);
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

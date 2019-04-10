@@ -3155,7 +3155,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -3212,7 +3212,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 3.463646, y: 0, z: 4.2353916, w: 0}
+  m_margin: {x: 3.463646, y: 0, z: 3.945748, w: 0.25746045}
   m_textInfo:
     textComponent: {fileID: 637144124}
     characterCount: 0
@@ -3363,7 +3363,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -3420,7 +3420,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 3.089197, y: 0, z: 3.7578268, w: 0}
+  m_margin: {x: 3.089197, y: -0.32182533, z: 3.7578268, w: 0.06436415}
   m_textInfo:
     textComponent: {fileID: 639023804}
     characterCount: 0
@@ -5099,7 +5099,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -5156,7 +5156,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 3.0748713, y: 0, z: 4.027666, w: 0}
+  m_margin: {x: 3.0748713, y: -0.19309449, z: 4.027666, w: 0.38619044}
   m_textInfo:
     textComponent: {fileID: 1324656258}
     characterCount: 0
@@ -6911,7 +6911,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -6968,7 +6968,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 3.2764235, y: 0, z: 4.2694955, w: 0}
+  m_margin: {x: 3.2764235, y: 0.13800204, z: 4.2694955, w: 0.13800137}
   m_textInfo:
     textComponent: {fileID: 1569308115}
     characterCount: 0

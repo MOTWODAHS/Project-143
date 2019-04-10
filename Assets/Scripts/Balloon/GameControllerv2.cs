@@ -120,7 +120,7 @@ public class GameControllerv2 : MonoBehaviour
                 isCamStop = true;
                 StartCoroutine(FadeAndMove(panel[selectedBalloonNumber],time, Vector2.zero, count, false));
                 StartCoroutine(FadeAndMove(weight[selectedBalloonNumber],time, Vector2.zero, count, false));
-                StartCoroutine(FadeAndMove(pencilButton[selectedBalloonNumber],time, Vector2.zero, count, false));
+                //StartCoroutine(FadeAndMove(pencilButton[selectedBalloonNumber],time, Vector2.zero, count, false));
                 StartCoroutine(OpenPencilButtonCollider());
             }
         }
@@ -149,9 +149,9 @@ public class GameControllerv2 : MonoBehaviour
             }
             if(scale > 2f)
             {
-                network.SendAction(interactionCode, selectedBalloonNumber, resultString);
+                EndingUI.SetActive(true);
                 isStep5Finished = true;
-                StartCoroutine(RestartWaitDelay());
+                network.SendAction(interactionCode, selectedBalloonNumber, resultString);
             }
         }
         /* 
@@ -224,11 +224,5 @@ public class GameControllerv2 : MonoBehaviour
             yield return new WaitForSeconds(oneTime);
             obj.GetComponent<TMP_Text>().color -= new Color(0,0,0,1f/count);
         }
-    }
-
-    IEnumerator RestartWaitDelay()
-    {
-        yield return new WaitForSeconds(0.3f);
-        EndingUI.SetActive(true);
     }
 }

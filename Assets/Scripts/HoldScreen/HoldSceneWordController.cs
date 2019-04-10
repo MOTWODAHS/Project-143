@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class HoldSceneWordController : TapableObject
 {
@@ -29,5 +29,6 @@ public class HoldSceneWordController : TapableObject
     public override void OnTap()
     {
         print("changeToStartScreen");
+        SceneManager.LoadScene("StartScene");
     }
 }
