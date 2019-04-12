@@ -244,7 +244,7 @@ namespace Singing
 
         public void AddNote(string note)
         {
-            if (gameStage == 1)
+            if (gameStage == 1 && !playingSong)
             {
                 songString = songString + note;
                 int index = int.Parse(note);
@@ -263,7 +263,9 @@ namespace Singing
 
         public IEnumerator PlaySongEnum()
         {
-            foreach (AudioSource note in song)
+            AudioSource[] copySong = new AudioSource[song.Count];
+            System.Array.Copy(song.ToArray(), copySong, song.Count);
+            foreach (AudioSource note in copySong)
             {
                 yield return new WaitForSeconds(PLAYBACK_INTERVAL);
                 note.Play();
@@ -300,8 +302,23 @@ namespace Singing
 
                 foreach(GameObject g in birdNote.GetNotes())
                 {
-                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
+                        endUI.SetActive(true);
+                    });
+
+                    Invoke("SendBird", 9f);
+                    foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
+                    {
+                        animator.Play("fly");
+                    }
+
+                    staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    foreach (GameObject g in birdNote.GetNotes())
+                    {
+                        g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    }
                 }
+                playingSong = false;
             }
             
         }

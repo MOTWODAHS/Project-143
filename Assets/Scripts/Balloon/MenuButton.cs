@@ -7,6 +7,6 @@ public class MenuButton : TapableObject3D
 {
     public override void OnTap()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("EndScene");
     }
 }

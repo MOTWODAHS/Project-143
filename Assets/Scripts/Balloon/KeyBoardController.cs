@@ -7,16 +7,29 @@ public class KeyBoardController : MonoBehaviour
     public string inputString;
     public void AddInput(string rev_string)
     {
-        if(string.Equals(rev_string,"Backspace"))
+        if(inputString.Length < 20)
         {
-            if(inputString.Length > 0)
+            if(string.Equals(rev_string,"Backspace"))
             {
-                inputString = inputString.Substring(0,inputString.Length - 1);
+                if(inputString.Length > 0)
+                {
+                    inputString = inputString.Substring(0,inputString.Length - 1);
+                }
+            }
+            else
+            {
+                inputString += rev_string;
             }
         }
         else
         {
-            inputString += rev_string;
+            if(string.Equals(rev_string,"Backspace"))
+            {
+                if(inputString.Length > 0)
+                {
+                    inputString = inputString.Substring(0,inputString.Length - 1);
+                }
+            }
         }
     }
 }

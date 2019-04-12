@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class EndScreenWordConrtrol : TapableObject
 {
@@ -13,12 +13,13 @@ public class EndScreenWordConrtrol : TapableObject
     }
     IEnumerator OpenCollider()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public override void OnTap()
     {
         print("changeToHold");
+        SceneManager.LoadScene("HoldScene");
     }
 }

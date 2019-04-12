@@ -64,7 +64,6 @@ namespace Talking
                     fillInCollider = interactiveLine.GetComponentInChildren<FillInCollider>();
                     fillInCollider.GetComponent<BoxCollider>().enabled = true;
                     interactiveLine.GetComponent<Collider2D>().enabled = false;
-                    destinationPoleCollider.enabled =false;
                     fillInLine.enabled = true;
                     ZoomToPoint();
                 },
@@ -111,6 +110,7 @@ namespace Talking
             Camera.main.transform.localScale *= zoomFactor * 1.2f;
             float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
 
+            destinationPoleCollider.enabled =false;
             s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
             s.Join(Camera.main.DOOrthoSize(newOrthoSize, 2f));
             s.Play();

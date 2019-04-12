@@ -6,55 +6,36 @@ using DG.Tweening;
 public class InstructionController : MonoBehaviour
 {
     public GameObject[] handUI;
-    public GameObject[] endPoint;
-
-    private SpriteRenderer[] handRender = new SpriteRenderer[5];
-
-    private Tweener[] handMotion = new Tweener[5];
-
-    private Tweener[] handColor = new Tweener[5];
-
-    private Vector3 hand2StartPosition;
-    void Start()
-    {
-        for(int i = 0; i < handRender.Length; i++)
-        {
-            handRender[i] = handUI[i].GetComponent<SpriteRenderer>();
-        }
-        hand2StartPosition = handUI[2].transform.position;
-    }
 
     public void SetHandInstruction(int number)
     {
-        if(number != 2)
+        switch(number)
         {
-            handMotion[number] = handUI[number].transform.DOMove(endPoint[number].transform.position,2).SetLoops(-1);
-            handColor[number] = handRender[number].DOColor(handRender[number].color + new Color (0,0,0,1f),2).SetLoops(-1);
-        }
-        else
-        {
-            hand2Up();
+            case 0:
+                handUI[0].SetActive(true);
+                break;
+            case 1:
+                handUI[1].SetActive(true);
+                break;
+            case 2:
+                handUI[2].SetActive(true);
+                handUI[2].transform.DOMoveY(7.87f,1.8f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear);
+                break;
+            case 4:
+                handUI[3].SetActive(true);
+                break;
+            default:
+                break;
         }
         
     }
 
     public void DestroyHandInstruction(int number)
     {
-        handMotion[number].Kill();
-        handColor[number].Kill();
-        handUI[number].SetActive(false);
-    }
-
-    private void hand2Up()
-    {
-        handColor[2] = handRender[2].DOColor(handRender[2].color + new Color (0,0,0,1f),2);
-        handMotion[2] = handUI[2].transform.DOMove(endPoint[2].transform.position,2).OnComplete(hand2Down);
-    }
-
-    private void hand2Down()
-    {  
-        handColor[2] = handRender[2].DOColor(handRender[2].color + new Color (0,0,0,-1f),2);
-        handMotion[2] = handUI[2].transform.DOMove(hand2StartPosition,2).OnComplete(hand2Up);       
+        if(number < 3)
+            handUI[number].SetActive(false);
+        if(number == 4)
+            handUI[3].SetActive(false);
     }
 
     public void FirstInstruction()

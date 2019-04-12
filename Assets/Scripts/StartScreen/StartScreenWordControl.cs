@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class StartScreenWordControl : TapableObject
 {
@@ -14,12 +14,13 @@ public class StartScreenWordControl : TapableObject
 
     IEnumerator OpenCollider()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public override void OnTap()
     {
         print("changeToMenu");
+        SceneManager.LoadScene("Menu");
     }
 }
