@@ -20,7 +20,7 @@ public class NetworkingController : MonoBehaviour
     IPAddress myIp;
     TcpClient client = new TcpClient();
     NetworkStream stream;
-    StreamWriter sw;
+    StreamWriter sw = null;
     Thread connectServer;
 
     //string connectAddress = null;
@@ -84,11 +84,8 @@ public class NetworkingController : MonoBehaviour
         }
         */
         client.Close();
-        if(connectServer != null)
-        {
-            connectServer.Interrupt();
-            connectServer.Abort();
-        }
+        connectServer.Interrupt();
+        connectServer.Abort();
         print("disconnect");
     }
     public void SendAction(int interactionCode, int selectedObjectNumber, string message)
@@ -101,8 +98,11 @@ public class NetworkingController : MonoBehaviour
         socket.SendTo(sendData, sendData.Length, SocketFlags.None, ipEnd);
         */
         string sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
-        sw.WriteLine(sendingMessage);
-        sw.Flush();
+        if(sw != null)
+        {
+            sw.WriteLine(sendingMessage);
+            sw.Flush();
+        }
     }
 
     void Start()
@@ -110,7 +110,7 @@ public class NetworkingController : MonoBehaviour
         InitSocket();
     }
 
-    void OnApplicationQuit()
+    public void InternetQuit()
     {
         SocketQuit();
     }

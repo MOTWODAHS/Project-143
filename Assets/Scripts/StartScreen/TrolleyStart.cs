@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
+
+public class TrolleyStart : TapableObject
+{
+    public TrolleyController Trolley;
+    public GameObject EndScreenWord;
+    public GameObject ClickHand;
+    public bool flag = true;
+
+    public override void OnTap()
+    {
+        Trolley.flag = true;
+        ClickHand.SetActive(false);
+        Destroy(this.gameObject.GetComponent<BoxCollider2D>());
+        StartCoroutine(JumpNextScene());
+    }
+
+    IEnumerator JumpNextScene()
+    {
+        EndScreenWord.GetComponent<SpriteRenderer>().DOColor(new Color (0,0,0,1f),5f).SetEase(Ease.Linear);
+        if(flag)
+        {
+            yield return new WaitForSeconds(16);
+            SceneManager.LoadScene("HoldScene");
+        }
+        else
+        {
+            yield return new WaitForSeconds(13);
+            SceneManager.LoadScene("Menu");
+        }
+    }
+}

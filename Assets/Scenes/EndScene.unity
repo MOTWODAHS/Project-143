@@ -310,9 +310,6 @@ GameObject:
   m_Component:
   - component: {fileID: 207667825}
   - component: {fileID: 207667824}
-  - component: {fileID: 207667822}
-  - component: {fileID: 207667821}
-  - component: {fileID: 207667823}
   m_Layer: 0
   m_Name: EndScreenWord
   m_TagString: Untagged
@@ -320,84 +317,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &207667821
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207667820}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.031469345, y: -0.4090767}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20, y: 15}
-    newSize: {x: 20, y: 15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 26.85992, y: 15.818153}
-  m_EdgeRadius: 0
---- !u!114 &207667822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207667820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStateChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  basicEditor: 1
-  generalProps: 0
-  limitsProps: 0
-  advancedProps: 0
-  minPointers: 0
-  maxPointers: 0
-  useSendMessage: 0
-  sendStateChangeMessages: 0
-  sendMessageTarget: {fileID: 0}
-  useUnityEvents: 0
-  sendStateChangeEvents: 0
-  requireGestureToFail: {fileID: 0}
-  friendlyGestures: []
-  OnTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  numberOfTapsRequired: 1
-  timeLimit: Infinity
-  distanceLimit: Infinity
-  combinePointers: 0
-  combinePointersInterval: 0.3
---- !u!114 &207667823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207667820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65f43934824d8a4795ddd8a03fba0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &207667824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -554,6 +473,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &472992464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4647199415261951647, guid: c9aa84017df191443bb3351ead8cc516,
+    type: 3}
+  m_PrefabInstance: {fileID: 1264409117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543790532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToMove: {fileID: 2070761977}
+  flag: 0
 --- !u!114 &1055488167
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1742,6 +1668,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1264409117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4647199415261951647, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_Name
+      value: ClickHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2578125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.25645462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9665563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -29.720001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9aa84017df191443bb3351ead8cc516, type: 3}
 --- !u!1 &1419574030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2070761977}
   - component: {fileID: 2070761978}
+  - component: {fileID: 2070761979}
+  - component: {fileID: 2070761980}
+  - component: {fileID: 2070761981}
   m_Layer: 0
   m_Name: Trolley
   m_TagString: Untagged
@@ -2242,6 +2240,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2070761979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070761976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88001d8c32a6554d9fd24b15799089d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Trolley: {fileID: 1055488166}
+  EndScreenWord: {fileID: 207667820}
+  ClickHand: {fileID: 472992464}
+--- !u!114 &2070761980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070761976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  numberOfTapsRequired: 1
+  timeLimit: Infinity
+  distanceLimit: Infinity
+  combinePointers: 0
+  combinePointersInterval: 0.3
+--- !u!61 &2070761981
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070761976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4415331, y: -0.41091812}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15, y: 15}
+    newSize: {x: 15, y: 15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.499565, y: 5.4022045}
+  m_EdgeRadius: 0
 --- !u!1 &2078908887
 GameObject:
   m_ObjectHideFlags: 0

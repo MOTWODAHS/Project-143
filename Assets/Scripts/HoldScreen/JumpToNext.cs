@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuButton : TapableObject3D
+public class JumpToNext : TapableObject
 {
     public override void OnTap()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("StartScene");
     }
 }

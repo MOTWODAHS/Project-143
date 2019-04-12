@@ -406,42 +406,28 @@ MonoBehaviour:
   closed: 0
   points:
   - controlType: 0
-    positionLocal: {x: -4.4868307, y: -2.438871, z: -5.9140625}
+    positionLocal: {x: -0.5679755, y: -2.456, z: -5.9140625}
     controlFirstLocal: {x: 1, y: 0, z: 0}
     controlSecondLocal: {x: -1, y: -0, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 300584022}
     fieldsValues: []
   - controlType: 0
-    positionLocal: {x: -2.005972, y: -2.831523, z: -5.9140625}
-    controlFirstLocal: {x: -0.31289372, y: -0.060774855, z: 1.2998048}
-    controlSecondLocal: {x: 0.31289372, y: 0.060774855, z: -1.2998048}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 300584022}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -1.1028571, y: -2.678309, z: -5.9140625}
-    controlFirstLocal: {x: -0.092446044, y: -0.018792462, z: 0}
-    controlSecondLocal: {x: 0.092446044, y: 0.018792462, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 300584022}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -0.15705109, y: -2.4556737, z: -5.9140625}
+    positionLocal: {x: -0.03191042, y: -2.319174, z: -5.9140625}
     controlFirstLocal: {x: -0.2566617, y: -0.060391434, z: 0}
     controlSecondLocal: {x: 0.2566617, y: 0.060391434, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 300584022}
     fieldsValues: []
   - controlType: 0
-    positionLocal: {x: 0.6733546, y: -2.205173, z: -5.9140625}
+    positionLocal: {x: 0.6733546, y: -2.1596913, z: -5.9140625}
     controlFirstLocal: {x: -0.19144046, y: -0.045045145, z: 0}
     controlSecondLocal: {x: 0.19144046, y: 0.045045145, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 300584022}
     fieldsValues: []
   - controlType: 0
-    positionLocal: {x: 1.5320158, y: -2.019977, z: -5.9140625}
+    positionLocal: {x: 1.5320158, y: -1.9972363, z: -5.9140625}
     controlFirstLocal: {x: -0.16886838, y: -0.03462565, z: 0}
     controlSecondLocal: {x: 0.16886838, y: 0.03462565, z: 0}
     pointTransform: {fileID: 0}
@@ -610,6 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToMove: {fileID: 935363180}
+  flag: 0
 --- !u!1 &462783737
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +795,9 @@ GameObject:
   m_Component:
   - component: {fileID: 935363180}
   - component: {fileID: 935363179}
+  - component: {fileID: 935363182}
+  - component: {fileID: 935363181}
+  - component: {fileID: 935363183}
   m_Layer: 0
   m_Name: Trolley
   m_TagString: Untagged
@@ -870,13 +860,95 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935363178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.84, y: -2.91, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.11315275, w: 0.9935776}
+  m_LocalPosition: {x: -7.02, y: -2.696, z: 0}
   m_LocalScale: {x: 0.35607934, y: 0.35607934, z: 0.35607934}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.994}
+--- !u!61 &935363181
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935363178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.47507, y: -0.49620068}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15, y: 15}
+    newSize: {x: 15, y: 15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.010534, y: 5.466282}
+  m_EdgeRadius: 0
+--- !u!114 &935363182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935363178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  basicEditor: 1
+  generalProps: 0
+  limitsProps: 0
+  advancedProps: 0
+  minPointers: 0
+  maxPointers: 0
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  useUnityEvents: 0
+  sendStateChangeEvents: 0
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  OnTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  numberOfTapsRequired: 1
+  timeLimit: Infinity
+  distanceLimit: Infinity
+  combinePointers: 0
+  combinePointersInterval: 0.3
+--- !u!114 &935363183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935363178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88001d8c32a6554d9fd24b15799089d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Trolley: {fileID: 300584026}
+  EndScreenWord: {fileID: 1541083740}
+  ClickHand: {fileID: 1489110765}
+  flag: 0
 --- !u!1 &1116663943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1325,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1489110764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4647199415261951647, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_Name
+      value: ClickHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2578125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.25645462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9665563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -29.720001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9aa84017df191443bb3351ead8cc516, type: 3}
+--- !u!1 &1489110765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4647199415261951647, guid: c9aa84017df191443bb3351ead8cc516,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489110764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1497811795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1360,9 +1507,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1541083742}
   - component: {fileID: 1541083741}
-  - component: {fileID: 1541083743}
-  - component: {fileID: 1541083744}
-  - component: {fileID: 1541083745}
   m_Layer: 0
   m_Name: StartScreenWord
   m_TagString: Untagged
@@ -1432,84 +1576,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1541083743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541083740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6962134a1817e74abe457a23718b593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1541083744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541083740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a878a6ff128243dfb1d89ca0273f059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStateChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  basicEditor: 1
-  generalProps: 0
-  limitsProps: 0
-  advancedProps: 0
-  minPointers: 0
-  maxPointers: 0
-  useSendMessage: 0
-  sendStateChangeMessages: 0
-  sendMessageTarget: {fileID: 0}
-  useUnityEvents: 0
-  sendStateChangeEvents: 0
-  requireGestureToFail: {fileID: 0}
-  friendlyGestures: []
-  OnTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: TouchScript.Gestures.Gesture+GestureEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  numberOfTapsRequired: 1
-  timeLimit: Infinity
-  distanceLimit: Infinity
-  combinePointers: 0
-  combinePointersInterval: 0.3
---- !u!61 &1541083745
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541083740}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.031469345, y: -0.4090767}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20, y: 15}
-    newSize: {x: 20, y: 15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 26.85992, y: 15.818153}
-  m_EdgeRadius: 0
 --- !u!1 &1549734764
 GameObject:
   m_ObjectHideFlags: 0

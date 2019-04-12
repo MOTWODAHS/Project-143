@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameControllerv2 : MonoBehaviour
 {
@@ -84,7 +85,7 @@ public class GameControllerv2 : MonoBehaviour
 
     public NetworkingController network;
 
-    public GameObject EndingUI;
+    //public GameObject EndingUI;
 
     private int interactionCode = 1;
 
@@ -138,7 +139,7 @@ public class GameControllerv2 : MonoBehaviour
                 pencilButton[selectedBalloonNumber].SetActive(false);
             }
             float coverDistance = (Time.time - startTime) * speed;
-            float scale = coverDistance/4f;
+            float scale = coverDistance/3f;
             cam.transform.position = Vector3.Lerp(new Vector3(0,8.5f,-10f), new Vector3(0,10.2f,-10f), scale);
             balloons[selectedBalloonNumber].transform.position = Vector3.Lerp(startBalloonPosition, startBalloonPosition + new Vector3(0,6f,0), scale/2);
             if(scale > 0.7f)
@@ -149,9 +150,11 @@ public class GameControllerv2 : MonoBehaviour
             }
             if(scale > 2f)
             {
-                EndingUI.SetActive(true);
+                //EndingUI.SetActive(true);
                 isStep5Finished = true;
                 network.SendAction(interactionCode, selectedBalloonNumber, resultString);
+                network.InternetQuit();
+                SceneManager.LoadScene("EndScene");
             }
         }
         /* 
