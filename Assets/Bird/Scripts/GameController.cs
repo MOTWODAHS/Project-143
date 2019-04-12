@@ -241,8 +241,13 @@ namespace Singing
                     break;
 
             }
-            string messageAndSong = text.Length + text + songString;
-            network.SendAction(GAME_CODE, birdnumber, messageAndSong);
+            Debug.Log(text + songString);
+
+            int numbercode = birdnumber * 100 + text.Length;
+            Debug.Log(numbercode);
+            Debug.Log(text + songString);
+
+            network.SendAction(GAME_CODE, numbercode, text + songString);
         }
 
         public void AddNote(string note)
