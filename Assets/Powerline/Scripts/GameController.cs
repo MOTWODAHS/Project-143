@@ -72,11 +72,11 @@ namespace Talking
                     fillInLine.enabled =false;
                     fillInCollider.GetComponent<BoxCollider>().enabled = false;
                     fillInCollider.enabled = false;
-                    keyboard.SetActive(true);
+                    keyboard.transform.DOLocalMoveY(-0.83f, 2f);
                 },
                 () =>
                 {
-                    keyboard.SetActive(false);
+                    keyboard.transform.DOLocalMoveY(-2f, 2f);
                     interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage();
                     Invoke("SendMessageToNetwork", delay_to_send);
                 }
@@ -107,12 +107,13 @@ namespace Talking
 
             Sequence s = DOTween.Sequence();
 
-            Camera.main.transform.localScale *= zoomFactor * 1.2f;
+            Vector3 newCameraScale = Camera.main.transform.localScale * zoomFactor * 1.2f;
             float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
 
             destinationPoleCollider.enabled =false;
             s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
             s.Join(Camera.main.DOOrthoSize(newOrthoSize, 2f));
+            s.Join(Camera.main.transform.DOScale(newCameraScale, 2f));
             s.Play();
         }
 

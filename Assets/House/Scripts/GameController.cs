@@ -99,6 +99,7 @@ namespace Loving
                     nameTag.transform.localScale = nameTagScale;
                     SaveHouseTexture();
                     Camera.main.DOOrthoSize(11f, 5f);
+                    Camera.main.transform.DOScale(1.57f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
                     altBlueprint.SetActive(true);

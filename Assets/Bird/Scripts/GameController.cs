@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 namespace Singing
 {
@@ -11,7 +12,7 @@ namespace Singing
 
         private const float PLAYBACK_INTERVAL = 0.25f;
 
-        private const float SEND_DELAY = 9f;
+        private const float SEND_DELAY = 2f;
 
         private int gameStage;
 
@@ -214,9 +215,11 @@ namespace Singing
         private void SendBird()
         {
             string bird = "B";
+            string text = "";
             foreach(Transform child in birds.transform) {
                 if (child.gameObject.activeInHierarchy){
                     bird = child.gameObject.name;
+                    text = child.GetComponentInChildren<TextMeshPro>().text;
                 }
             }
             int birdnumber = -1;
@@ -238,8 +241,8 @@ namespace Singing
                     break;
 
             }
-            Debug.Log(birdnumber);
-            network.SendAction(GAME_CODE, birdnumber, songString);
+            string messageAndSong = text.Length + text + songString;
+            network.SendAction(GAME_CODE, birdnumber, messageAndSong);
         }
 
         public void AddNote(string note)
@@ -283,13 +286,10 @@ namespace Singing
             if (gameStage == 3)
             {
                 Sequence sequence = DOTween.Sequence();
-                sequence.Append(birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() =>
+                sequence.PrependInterval(4f).OnComplete(() =>
                 {
                     endUI.SetActive(true);
-                }));
-
-                //sequence.PrependInterval(1.8f);
-                
+                });
 
                 Invoke("SendBird", SEND_DELAY);
                 foreach (Animator animator in birds.GetComponentsInChildren<Animator>())

@@ -35,7 +35,7 @@ namespace Talking
 
         public GameObject interactableLineLeft;
 
-        public Transition hand;
+        public GameObject hand;
 
         public GameObject firstHand;
 
@@ -62,7 +62,7 @@ namespace Talking
                 coroutines.Add(StartCoroutine(powerline.GetComponent<Transition>().lineRendererFadeIn()));
             }
 
-            hand.TransitionIn();
+            hand.SetActive(true);
             hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, HAND_Z_OFFSET);
         }
 
@@ -90,11 +90,8 @@ namespace Talking
                     powerline.GetComponent<Transition>().hide();
                 }
             }
-            
-            if (hand != null)
-            {
-                hand.hide();
-            }
+
+            hand.SetActive(false);
 
         }
 
