@@ -300,24 +300,11 @@ namespace Singing
 
                 staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
 
-                foreach(GameObject g in birdNote.GetNotes())
+                foreach (GameObject g in birdNote.GetNotes())
                 {
-                    birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
-                        endUI.SetActive(true);
-                    });
-
-                    Invoke("SendBird", 9f);
-                    foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
-                    {
-                        animator.Play("fly");
-                    }
-
-                    staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                    foreach (GameObject g in birdNote.GetNotes())
-                    {
-                        g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                    }
+                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                 }
+
                 playingSong = false;
             }
             
