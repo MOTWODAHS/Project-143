@@ -17,6 +17,10 @@ namespace Loving
 
         private const float DELAY_TO_SEND = 8f;
 
+        private Vector3 nameTagPos;
+
+        private Vector3 nameTagScale;
+
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
@@ -39,6 +43,7 @@ namespace Loving
         public GameObject blueprint;
         public GameObject pencilButtonObj;
         public TextInputField addNameTag;
+        public GameObject nameTag;
 
         [Header("Stage4")]
         public GameObject altBlueprint;
@@ -75,6 +80,10 @@ namespace Loving
                 () =>
                 {
                     enterName.transform.DOMoveY(-4f, 2f);
+                    nameTagPos = nameTag.transform.position;
+                    nameTagScale = nameTag.transform.localScale;
+                    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
+                    nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
                     foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
                     {
                         collider.enabled = false;
@@ -86,12 +95,14 @@ namespace Loving
                 {
                     enterName.transform.DOMoveY(-13f,1f);
                     enterName.SetActive(false);
+                    nameTag.transform.position = nameTagPos;
+                    nameTag.transform.localScale = nameTagScale;
                     SaveHouseTexture();
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
                     altBlueprint.SetActive(true);
-                    pivot.DORotate(new Vector3(0, 180, 0), 5f).OnComplete(() =>
+                    pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
                     {
                         altBlueprintAnim.Play("ending");
                         envelopeAnim.Play("ending");
