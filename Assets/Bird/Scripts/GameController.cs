@@ -8,7 +8,10 @@ namespace Singing
     class GameController : MonoBehaviour, IGameController
     {
         private const int GAME_CODE = 2;
+
         private const float PLAYBACK_INTERVAL = 0.25f;
+
+        private const float SEND_DELAY = 9f;
 
         private int gameStage;
 
@@ -47,6 +50,7 @@ namespace Singing
         [Header("Birds")]
         public GameObject birds;
         public Collider2D staff;
+        public Animator grayBird;
 
         [Header("ColorButtons")]
         public GameObject cButtons;
@@ -76,6 +80,8 @@ namespace Singing
         {
             gameStage = 0;
             cameraAnim = cam.GetComponent<Animator>();
+            grayBird.GetComponent<Animator>().Play("landing");
+            birds.transform.DOMove(new Vector3(-3.918748f, -5.094825f, -0.03943332f), 4.4f);
             transitions = new StageTransition[]
             {
                 PlayDefaultSong, //When choosed a bird
@@ -96,8 +102,6 @@ namespace Singing
                 () =>
                 {
                     cameraAnim.Play("CameraMoveBack");
-                    keyboard.GetComponent<KeyBoardController>().inputString = "";
-                    FoldBanner();
                     foreach(Transition t in keyboard.gameObject.GetComponentsInChildren<Transition>())
                     {
                         t.TransitionOut();
@@ -138,6 +142,7 @@ namespace Singing
                 }
             };
         }
+
         private void DisableKeyboardAndBanner()
         {
             GameObject bird = new GameObject();
@@ -149,14 +154,6 @@ namespace Singing
                 }
             }
 
-            foreach (Transform child in bird.transform)
-            {
-                if (child.gameObject.name.Equals("Banner"))
-                {
-                    child.gameObject.SetActive(false);
-                }
-            }
-            keyboard.SetActive(false);
         }
         private void PlayDefaultSong()
         {
@@ -212,20 +209,6 @@ namespace Singing
                 }
             }
             bird.GetComponent<Animator>().Play("banner_unfold");
-        }
-
-        private void FoldBanner()
-        {
-            GameObject bird = new GameObject();
-            foreach (Transform child in birds.transform)
-            {
-                if (child.gameObject.activeInHierarchy)
-                {
-                    bird = child.gameObject;
-                }
-            }
-
-            bird.GetComponent<Animator>().Play("banner_fold");
         }
 
         private void SendBird()
@@ -297,18 +280,25 @@ namespace Singing
             }
             if (gameStage == 3)
             {
-                birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() => {
+                Sequence sequence = DOTween.Sequence();
+                sequence.Append(birds.transform.DOMove(new Vector3(12, 12, 0), 10f).OnComplete(() =>
+                {
                     endUI.SetActive(true);
-                });
+                }));
 
-                Invoke("SendBird", 9f);
+                //sequence.PrependInterval(1.8f);
+                
+
+                Invoke("SendBird", SEND_DELAY);
                 foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                 {
-                    animator.Play("fly");
+                    animator.Play("full_departure");
                 }
+                sequence.Play();
 
                 staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                foreach (GameObject g in birdNote.GetNotes())
+
+                foreach(GameObject g in birdNote.GetNotes())
                 {
                     g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                 }
