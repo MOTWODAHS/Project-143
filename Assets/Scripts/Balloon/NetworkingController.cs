@@ -97,7 +97,15 @@ public class NetworkingController : MonoBehaviour
         print(sendData.Length);
         socket.SendTo(sendData, sendData.Length, SocketFlags.None, ipEnd);
         */
-        string sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
+        string sendingMessage;
+        if(interactionCode == 2)
+        {
+            sendingMessage = interactionCode.ToString() + (selectedObjectNumber/100).ToString() + ((selectedObjectNumber/10)%10).ToString() + (selectedObjectNumber%10).ToString() + message;
+        }
+        else
+        {
+            sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
+        }
         if(sw != null)
         {
             sw.WriteLine(sendingMessage);
