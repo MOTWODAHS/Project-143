@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using System;
+using System.IO;
 
 namespace Loving
 {
@@ -15,7 +16,7 @@ namespace Loving
 
         private string sendStr = "";
 
-        private const float DELAY_TO_SEND = 8f;
+        private const float DELAY_TO_SEND = 4.5f;
 
         private Vector3 nameTagPos;
 
@@ -37,13 +38,15 @@ namespace Loving
 
         [Header("Stage2")]
         public GameObject mask2;
+        public GameObject palette;
+        public GameObject nameTag;
 
         [Header("Stage3")]
         public GameObject enterName;
         public GameObject blueprint;
         public GameObject pencilButtonObj;
         public TextInputField addNameTag;
-        public GameObject nameTag;
+        //public GameObject nameTag;
 
         [Header("Stage4")]
         public GameObject altBlueprint;
@@ -75,6 +78,14 @@ namespace Loving
                     if (mask2 != null)
                     {
                         mask2.SetActive(false);
+                        foreach(Collider2D c in palette.GetComponentsInChildren<Collider2D>())
+                        {
+                            c.enabled = true;
+                        }
+                        nameTag.GetComponent<Collider2D>().enabled = true;
+                        
+                          
+                       
                     }
                 },
                 () =>
@@ -93,11 +104,11 @@ namespace Loving
                 },
                 () =>
                 {
+                    nameTag.transform.localScale = nameTagScale;
                     enterName.transform.DOMoveY(-13f,1f);
                     enterName.SetActive(false);
                     nameTag.transform.position = nameTagPos;
-                    nameTag.transform.localScale = nameTagScale;
-                    SaveHouseTexture();
+                    StartCoroutine(SaveHouseTexture());
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.transform.DOScale(1.57f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
@@ -119,14 +130,23 @@ namespace Loving
         }
 
         [ContextMenu("Send House")]
-        private void SaveHouseTexture()
+        private IEnumerator SaveHouseTexture()
         {
+            yield return new WaitForEndOfFrame();
             Texture2D houseImage = new Texture2D(1024, 1024, TextureFormat.ARGB32, false);
             RenderTexture.active = texture;
             houseImage.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
             houseImage.Apply();
             byte[] bytes;
             bytes = houseImage.EncodeToPNG();
+
+            var dirPath = Application.dataPath + "/SaveImages/";
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+            Debug.Log(dirPath);
+            File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
 
             sendStr = Convert.ToBase64String(bytes);
             RenderTexture.active = null;
