@@ -52,6 +52,8 @@ namespace Singing
         public GameObject birds;
         public Collider2D staff;
         public Animator grayBird;
+        public AudioSource scrollOpen;
+        public AudioSource scrollClose;
 
         [Header("ColorButtons")]
         public GameObject cButtons;
@@ -209,7 +211,9 @@ namespace Singing
                     child.gameObject.SetActive(true);
                 }
             }
+            //Debug.Log("Name of Bird is: " + bird.name);
             bird.GetComponent<Animator>().Play("banner_unfold");
+            scrollOpen.Play();
         }
 
         private void SendBird()
@@ -241,13 +245,10 @@ namespace Singing
                     break;
 
             }
-            Debug.Log(text + songString);
 
             int numbercode = birdnumber * 100 + text.Length;
-            Debug.Log(numbercode);
-            Debug.Log(text + songString);
-
             network.SendAction(GAME_CODE, numbercode, text + songString);
+            network.InternetQuit();
         }
 
         public void AddNote(string note)
@@ -283,34 +284,39 @@ namespace Singing
         //Ending happens here.
         public IEnumerator ComposedNotesPlayEnum()
         {
-            foreach (GameObject note in birdNote.GetNotes())
+            if (!playingSong)
             {
-                yield return new WaitForSeconds(PLAYBACK_INTERVAL);
-                note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
-            }
-            if (gameStage == 3)
-            {
-                Sequence sequence = DOTween.Sequence();
-                sequence.PrependInterval(4f).OnComplete(() =>
+                playingSong = true;
+                foreach (GameObject note in birdNote.GetNotes())
                 {
-                    endUI.SetActive(true);
-                });
-
-                Invoke("SendBird", SEND_DELAY);
-                foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
-                {
-                    animator.Play("full_departure");
+                    yield return new WaitForSeconds(PLAYBACK_INTERVAL);
+                    note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
                 }
-                sequence.Play();
-
-                staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-
-                foreach (GameObject g in birdNote.GetNotes())
-                {
-                    g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
-                }
-
                 playingSong = false;
+
+                if (gameStage == 3)
+                {
+                    Sequence sequence = DOTween.Sequence();
+                    sequence.PrependInterval(4f).OnComplete(() =>
+                    {
+                        endUI.SetActive(true);
+                    });
+
+                    Invoke("SendBird", SEND_DELAY);
+                    foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
+                    {
+                        animator.Play("full_departure");
+                    }
+                    sequence.Play();
+
+                    staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+
+                    foreach (GameObject g in birdNote.GetNotes())
+                    {
+                        g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
+                    }
+                    playingSong = false;
+                }
             }
             
         }
