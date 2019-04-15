@@ -87,6 +87,7 @@ namespace Talking
         {
             network.SendAction(3, -1, message);
             endingUI.SetActive(true);
+            network.InternetQuit();
         }
 
         private void ZoomToPoint()

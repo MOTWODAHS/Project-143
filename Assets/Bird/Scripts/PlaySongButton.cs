@@ -17,8 +17,7 @@ namespace Singing
 
         public override void OnTap()
         {
-            StartCoroutine(game.ComposedNotesPlayEnum());
-            StartCoroutine(game.PlaySongEnum());
+            game.PlaySong();
         }
     }
 }
