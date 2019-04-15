@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using TouchScript.Behaviors;
-using TouchScript.Gestures.TransformGestures;
-using TouchScript.Gestures;
+using UnityEngine.SceneManagement;
 
 namespace Talking
 {
@@ -78,16 +76,16 @@ namespace Talking
                 {
                     keyboard.transform.DOLocalMoveY(-2f, 2f);
                     interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage();
-                    Invoke("SendMessageToNetwork", delay_to_send);
                 }
             };
         }
 
-        private void SendMessageToNetwork()
+        public void SendMessageToNetwork()
         {
+            Debug.Log("Message Sended To Network!");
             network.SendAction(3, -1, message);
-            endingUI.SetActive(true);
             network.InternetQuit();
+            SceneManager.LoadScene("EndScene");
         }
 
         private void ZoomToPoint()

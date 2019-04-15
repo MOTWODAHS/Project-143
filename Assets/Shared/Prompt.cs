@@ -15,12 +15,13 @@ public class Prompt : MonoBehaviour
     void Start()
     {
         displayedText = "";
-        StartCoroutine(DisplayPrompt());
-        game = (IGameController) GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+        game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+        StartCoroutine(DisplayPrompt());      
     }
 
     private IEnumerator DisplayPrompt()
     {
+        game.StartGame();
         TextMeshProUGUI textmeshPro = GetComponent<TextMeshProUGUI>();
         textmeshPro.text = prompt;
         float startTime = Time.time;
@@ -32,7 +33,6 @@ public class Prompt : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
-        game.StartGame();
     }
 
 

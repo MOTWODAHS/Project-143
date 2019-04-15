@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 2752811130091070140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.76528, y: 0.76528, z: 0.76528}
   m_Children:
   - {fileID: 7484356418347352540}
   m_Father: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!114 &2752811130091070137
 MonoBehaviour:
