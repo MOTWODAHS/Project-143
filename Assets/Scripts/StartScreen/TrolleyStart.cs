@@ -21,7 +21,7 @@ public class TrolleyStart : TapableObject
 
     IEnumerator JumpNextScene()
     {
-        EndScreenWord.GetComponent<SpriteRenderer>().DOColor(new Color (0,0,0,1f),5f).SetEase(Ease.Linear);
+        EndScreenWord.GetComponent<SpriteRenderer>().DOColor(new Color (0,0,0,1f),4f).SetEase(Ease.Linear);
         if(flag)
         {
             yield return new WaitForSeconds(16);
