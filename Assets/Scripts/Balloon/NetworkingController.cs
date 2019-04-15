@@ -123,6 +123,11 @@ public class NetworkingController : MonoBehaviour
         SocketQuit();
     }
 
+    void OnApplicationQuit()
+    {
+        SocketQuit();
+    }
+
     public static string GetLocalIPv4()
     {
         string hostName = Dns.GetHostName(); 

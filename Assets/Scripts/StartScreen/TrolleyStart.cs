@@ -10,6 +10,7 @@ public class TrolleyStart : TapableObject
     public GameObject EndScreenWord;
     public GameObject ClickHand;
     public bool flag = true;
+    public GameObject jumpButton;
 
     public override void OnTap()
     {
@@ -24,13 +25,13 @@ public class TrolleyStart : TapableObject
         EndScreenWord.GetComponent<SpriteRenderer>().DOColor(new Color (0,0,0,1f),4f).SetEase(Ease.Linear);
         if(flag)
         {
-            yield return new WaitForSeconds(16);
-            SceneManager.LoadScene("HoldScene");
+            yield return new WaitForSeconds(15);
+            jumpButton.SetActive(true);
         }
         else
         {
-            yield return new WaitForSeconds(13);
-            SceneManager.LoadScene("Menu");
+            yield return new WaitForSeconds(12);
+            jumpButton.SetActive(true);
         }
     }
 }
