@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 namespace Loving
 {
@@ -157,6 +158,7 @@ namespace Loving
             network.SendAction(4, -1, sendStr);
             endUI.SetActive(true);
             network.InternetQuit();
+            SceneManager.LoadScene("EndScene");
         }
 
         void IGameController.StartGame()

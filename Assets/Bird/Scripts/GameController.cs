@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace Singing
 {
@@ -12,7 +13,7 @@ namespace Singing
 
         private const float PLAYBACK_INTERVAL = 0.25f;
 
-        private const float SEND_DELAY = 2f;
+        private const float SEND_DELAY = 5f;
 
         private int gameStage;
 
@@ -249,6 +250,7 @@ namespace Singing
             int numbercode = birdnumber * 100 + text.Length;
             network.SendAction(GAME_CODE, numbercode, text + songString);
             network.InternetQuit();
+            SceneManager.LoadScene("EndScene");
         }
 
         public void AddNote(string note)
@@ -296,18 +298,11 @@ namespace Singing
 
                 if (gameStage == 3)
                 {
-                    Sequence sequence = DOTween.Sequence();
-                    sequence.PrependInterval(4f).OnComplete(() =>
-                    {
-                        endUI.SetActive(true);
-                    });
-
                     Invoke("SendBird", SEND_DELAY);
                     foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                     {
                         animator.Play("full_departure");
                     }
-                    sequence.Play();
 
                     staff.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
 
