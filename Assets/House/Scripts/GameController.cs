@@ -23,6 +23,8 @@ namespace Loving
 
         private Vector3 nameTagScale;
 
+        private Quaternion nameTagRotation;
+
         private delegate void StageTransition();
 
         private StageTransition[] transitions;
@@ -94,8 +96,10 @@ namespace Loving
                     enterName.transform.DOMoveY(-4f, 2f);
                     nameTagPos = nameTag.transform.position;
                     nameTagScale = nameTag.transform.localScale;
+                    nameTagRotation = nameTag.transform.rotation;
                     nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
                     nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
+                    nameTag.transform.DORotate(new Vector3(0, 0, 0), 2f);
                     foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
                     {
                         collider.enabled = false;
@@ -109,6 +113,7 @@ namespace Loving
                     enterName.transform.DOMoveY(-13f,1f);
                     enterName.SetActive(false);
                     nameTag.transform.position = nameTagPos;
+                    nameTag.transform.rotation = nameTagRotation;
                     StartCoroutine(SaveHouseTexture());
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.transform.DOScale(1.57f, 5f);
