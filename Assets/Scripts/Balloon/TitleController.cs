@@ -15,7 +15,8 @@ public class TitleController : MonoBehaviour
     void Start()
     {
         text = this.gameObject.GetComponent<TMP_Text>();
-        text.DOColor(new Color (0,0,0,1f),5f).SetEase(Ease.Linear).OnComplete(StartGame);
+        text.DOColor(new Color (0,0,0,1f),5f).SetEase(Ease.Linear);
+        StartGame();
     }
 
     void StartGame()

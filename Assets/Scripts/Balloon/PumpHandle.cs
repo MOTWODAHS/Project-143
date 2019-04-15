@@ -41,6 +41,15 @@ public class PumpHandle : MonoBehaviour
 
     public GameObject[] EndPipe;
 
+    private AudioSource source;
+
+    public AudioClip balloonInflat;
+    public AudioClip handlePump;
+
+    void Start()
+    {
+        source = this.gameObject.GetComponent<AudioSource>();
+    }
     
     void Update()
     {
@@ -70,6 +79,8 @@ public class PumpHandle : MonoBehaviour
             if(this.transform.localPosition.y - lastPoint < 0)
             {
                 volume += lastPoint - this.transform.localPosition.y;
+                source.PlayOneShot(handlePump);
+                source.PlayOneShot(balloonInflat);
             }
             lastPoint = this.transform.localPosition.y;
             if(volume - current_volume >= max_volume/12)

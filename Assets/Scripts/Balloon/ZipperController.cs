@@ -37,6 +37,8 @@ public class ZipperController : TapableObject3D
     bool isDragOver = false;
 
     private Transform jointTransform;
+
+    public AudioClip packTear;
     void Start()
     {
         jointTransform = joint.GetComponent<Transform>();
@@ -98,6 +100,7 @@ public class ZipperController : TapableObject3D
         instruction.DestroyHandInstruction(0);
         isDragOver = true;
         Destroy(this.gameObject.GetComponent<BoxCollider>());
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(packTear);
         gameController.Step1Event();
     }
 
@@ -106,6 +109,7 @@ public class ZipperController : TapableObject3D
         instruction.DestroyHandInstruction(0);
         isDragOver = true;
         Destroy(this.gameObject.GetComponent<BoxCollider>());
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(packTear);
         gameController.Step1Event();
     }
 }
