@@ -4574,7 +4574,7 @@ Transform:
   m_GameObject: {fileID: 1280360689}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.76, y: 6.6, z: -0.31640625}
-  m_LocalScale: {x: 0.2612483, y: 0.2612483, z: 0.2612483}
+  m_LocalScale: {x: 0.1138771, y: 0.1138771, z: 0.1138771}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
@@ -4616,7 +4616,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ab040be87046da4192d50397e200d14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9e9306b6d3c33b45998af1bb2295c92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8272,8 +8272,7 @@ MonoBehaviour:
   - {fileID: 70078057}
   - {fileID: 892025219}
   - {fileID: 1897326805}
-  balloonInflat: {fileID: 8300000, guid: 3c5a387673476774d8934f4dde493d36, type: 3}
-  handlePump: {fileID: 8300000, guid: 665430d136475d84a9d2b9ff0f5aa14f, type: 3}
+  handlePump: {fileID: 8300000, guid: 3c5a387673476774d8934f4dde493d36, type: 3}
 --- !u!114 &1989027671
 MonoBehaviour:
   m_ObjectHideFlags: 0
