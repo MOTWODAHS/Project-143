@@ -402,7 +402,14 @@ namespace Singing
 
         void IGameController.StartGame()
         {
-            foreach(Transform child in cButtons.transform)
+            StartCoroutine(buttonsFadeIn());
+        }
+
+        private IEnumerator buttonsFadeIn()
+        {
+            yield return new WaitForSeconds(4.4f);
+
+            foreach (Transform child in cButtons.transform)
             {
                 child.GetComponent<SpriteRenderer>().DOFade(1f, 1f);
                 child.GetComponent<Collider2D>().enabled = true;

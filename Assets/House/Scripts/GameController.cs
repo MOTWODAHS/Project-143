@@ -156,7 +156,7 @@ namespace Loving
         private void SendInfoToNetwork()
         {
             network.SendAction(4, -1, sendStr);
-            endUI.SetActive(true);
+            //endUI.SetActive(true);
             network.InternetQuit();
             SceneManager.LoadScene("EndScene");
         }
