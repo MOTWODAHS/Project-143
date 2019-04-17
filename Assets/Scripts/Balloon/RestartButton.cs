@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class RestartButton : TapableObject3D
 {
+    public GameObject replaybutton;
     public override void OnTap()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        replaybutton.SetActive(true);
     }
 }
