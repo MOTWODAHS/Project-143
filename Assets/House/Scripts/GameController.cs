@@ -19,6 +19,10 @@ namespace Loving
 
         private const float DELAY_TO_SEND = 4.5f;
 
+        private const float TIMER_LIMIT = 200f;
+
+        private float timer = 0f;
+
         private Vector3 nameTagPos;
 
         private Vector3 nameTagScale;
@@ -197,6 +201,15 @@ namespace Loving
             sounds[2].Play();
         }
 
+        private void Update()
+        {
+            timer += Time.deltaTime;
+            if (timer > TIMER_LIMIT)
+            {
+                SceneManager.LoadScene("HoldScene");
+            } 
+        }
+
         private void SendInfoToNetwork()
         {
             network.SendAction(4, -1, sendStr);
@@ -214,6 +227,7 @@ namespace Loving
         {
             transitions[gameStage]();
             gameStage++;
+            ResetTimer();
         }
 
         public int GetGameStage()
@@ -229,6 +243,11 @@ namespace Loving
         public void PlayDropDownSound()
         {
             dropDownSound.Play();
+        }
+
+        public void ResetTimer()
+        {
+            timer = 0f;
         }
     }
 }

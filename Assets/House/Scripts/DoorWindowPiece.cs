@@ -53,6 +53,7 @@ namespace Loving {
             transformer.enabled = false;
             ToggleScale();
             thisBound = GetComponent<BoxCollider2D>().bounds;
+            game.ResetTimer();
 
             int placementType = PlacementType();
             bool overlap = Overlap();
@@ -89,9 +90,6 @@ namespace Loving {
                 game.PlayDropDownSound();
             }
         }
-
-
-  
 
         protected override void OnTriggerStay2D(Collider2D other)
         {

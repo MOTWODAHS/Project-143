@@ -11,6 +11,10 @@ namespace Talking
 
         private int gameStage = 0;
 
+        private const float TIME_LIMIT = 300f;
+
+        private float timer = 0f;
+
         private bool gameIsOver = false;
 
         private IGameController game;
@@ -80,6 +84,14 @@ namespace Talking
             };
         }
 
+        private void Update()
+        {
+            timer += Time.deltaTime;
+            if (timer > TIME_LIMIT)
+            {
+                SceneManager.LoadScene("HoldScene");
+            }
+        }
         public void SendMessageToNetwork()
         {
             Debug.Log("Message Sended To Network!");
@@ -130,6 +142,7 @@ namespace Talking
         {
             transitions[gameStage]();
             gameStage++;
+            timer = 0f;
         }
 
         public void StartGame()
