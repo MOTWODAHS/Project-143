@@ -30,7 +30,7 @@ namespace Loving
 
         protected Vector3 localScale;
 
-        protected IGameController game;
+        protected GameController game;
 
         protected Vector3 enlargedScale { get; set; }
 
@@ -49,7 +49,7 @@ namespace Loving
             position = transform.position;
             rotation = transform.rotation;
             localScale = transform.localScale;
-            game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
+            game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
         }
 
         protected void ResetTransform()
@@ -117,6 +117,7 @@ namespace Loving
         {
             transformer.enabled = true;
             ToggleScale();
+            game.PlayPickUpSound();
         }
 
         protected virtual void transformCompletedHandler(object sender, EventArgs e)
@@ -132,7 +133,9 @@ namespace Loving
             } else
             {
                 placed = true;
+                game.PlayDropDownSound();
             }
+           
         }
 
         protected virtual void OnTriggerStay2D(Collider2D other)

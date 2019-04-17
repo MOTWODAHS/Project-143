@@ -7,9 +7,11 @@ using TMPro;
 namespace Loving {
     class DoorWindowPiece : PuzzlePiece
     {
-        private static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
+        public static List<PuzzlePiece> pieces = new List<PuzzlePiece>();
 
-        private const int MAX_CAP = 5;
+        public static List<GameObject> windowLight = new List<GameObject>();
+
+        private const int MAX_CAP = 20;
 
         protected void OnPieceCountIncrement()
         {
@@ -84,10 +86,12 @@ namespace Loving {
                 placed = true;
                 pieces.Add(this);
                 OnPieceCountIncrement();
+                game.PlayDropDownSound();
             }
-
-
         }
+
+
+  
 
         protected override void OnTriggerStay2D(Collider2D other)
         {

@@ -108,7 +108,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8858121801433994808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -141,9 +141,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!114 &8858121801433994807
 MonoBehaviour:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8731908513710303824}
   - component: {fileID: 8731908513710303825}
   m_Layer: 0
-  m_Name: window3_grey
+  m_Name: grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.99591696, y: 0.99591696, z: 0.99591696}
   m_Children: []
   m_Father: {fileID: 8731908515399800620}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8731908513710303825
 SpriteRenderer:
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 08bd6b604365c9c48a13eea1cb29d309, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.84313726, g: 0.84313726, b: 0.84313726, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,7 +108,7 @@ Transform:
   m_LocalScale: {x: 0.99591696, y: 0.99591696, z: 0.99591696}
   m_Children: []
   m_Father: {fileID: 8731908515399800620}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8731908513769681138
 SpriteRenderer:
@@ -194,8 +194,8 @@ Transform:
   m_LocalPosition: {x: 8.33, y: -0.548, z: 0}
   m_LocalScale: {x: 0.6539, y: 0.6539, z: 0.6539}
   m_Children:
-  - {fileID: 8731908513769681133}
   - {fileID: 8731908513710303824}
+  - {fileID: 8731908513769681133}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,7 +267,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8731908515399800622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -300,9 +300,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSmoothing: 0
   smoothingFactor: 0.00001
-  positionThreshold: 0.01
+  positionThreshold: 0.010000001
   rotationThreshold: 0.1
-  scaleThreshold: 0.01
+  scaleThreshold: 0.010000001
   allowChangingFromOutside: 0
 --- !u!114 &8731908515399800627
 MonoBehaviour:

@@ -38,6 +38,8 @@ namespace Loving
 
         [Header("Stage1")]
         public GameObject mask1;
+        public GameObject doorComponent;
+        public GameObject windowComponent;
 
         [Header("Stage2")]
         public GameObject mask2;
@@ -60,6 +62,9 @@ namespace Loving
         public NetworkingController network;
         public GameObject endUI;
 
+        [Header("Sounds")]
+        public AudioSource pickedUpSound;
+        public AudioSource dropDownSound;
 
         void Start()
         {
@@ -74,6 +79,14 @@ namespace Loving
                 {
                     if (mask1 != null){
                         mask1.SetActive(false);
+                        foreach(Collider2D c in doorComponent.GetComponentsInChildren<Collider2D>())
+                        {
+                            c.enabled = true;
+                        }
+                        foreach(Collider2D c in windowComponent.GetComponentsInChildren<Collider2D>())
+                        {
+                            c.enabled = true;
+                        }
                     }
                 },
                 () =>
@@ -85,10 +98,7 @@ namespace Loving
                         {
                             c.enabled = true;
                         }
-                        nameTag.GetComponent<Collider2D>().enabled = true;
-                        
-                          
-                       
+                        nameTag.GetComponent<Collider2D>().enabled = true;                                                                      
                     }
                 },
                 () =>
@@ -109,19 +119,33 @@ namespace Loving
                 },
                 () =>
                 {
+                    //ResetNameTag
                     nameTag.transform.localScale = nameTagScale;
                     enterName.transform.DOMoveY(-13f,1f);
                     enterName.SetActive(false);
                     nameTag.transform.position = nameTagPos;
                     nameTag.transform.rotation = nameTagRotation;
+                    
+                    //Lighten Up Window
+                    foreach(PuzzlePiece o in DoorWindowPiece.pieces)
+                    {
+                        GameObject firstChild = o.GetComponentsInChildren<Transform>()[1].gameObject;
+                        if (firstChild.name.Equals("grey"))
+                        {
+                            firstChild.GetComponent<SpriteRenderer>().color = new Color(0.97f, 0.84f, 0.05f);
+                        }
+                    }
+
                     StartCoroutine(SaveHouseTexture());
                     Camera.main.DOOrthoSize(11f, 5f);
                     Camera.main.transform.DOScale(1.57f, 5f);
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
                     Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
                     altBlueprint.SetActive(true);
+                    altBlueprint.GetComponent<AudioSource>().Play();
                     pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
                     {
+                        StartCoroutine(PlayEndingSound());
                         altBlueprintAnim.Play("ending");
                         envelopeAnim.Play("ending");
                         Invoke("SendInfoToNetwork", DELAY_TO_SEND);
@@ -158,6 +182,21 @@ namespace Loving
             RenderTexture.active = null;
         }
 
+        private IEnumerator PlayEndingSound()
+        {
+
+            AudioSource[] sounds = envelopeAnim.GetComponents<AudioSource>();
+            sounds[0].Play();
+            yield return new WaitForSeconds(1.5f);
+
+            sounds[0].Stop();
+            sounds[1].Play();
+            yield return new WaitForSeconds(1f);
+
+            sounds[1].Stop();
+            sounds[2].Play();
+        }
+
         private void SendInfoToNetwork()
         {
             network.SendAction(4, -1, sendStr);
@@ -166,12 +205,12 @@ namespace Loving
             SceneManager.LoadScene("EndScene");
         }
 
-        void IGameController.StartGame()
+        public void StartGame()
         {
             cover.gameObject.SetActive(false);
         }
 
-        void IGameController.Proceed()
+        public void Proceed()
         {
             transitions[gameStage]();
             gameStage++;
@@ -180,6 +219,16 @@ namespace Loving
         public int GetGameStage()
         {
             return gameStage;
+        }
+
+        public void PlayPickUpSound()
+        {
+            pickedUpSound.Play();
+        }
+
+        public void PlayDropDownSound()
+        {
+            dropDownSound.Play();
         }
     }
 }

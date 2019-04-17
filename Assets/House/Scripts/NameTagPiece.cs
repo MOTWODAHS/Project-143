@@ -43,22 +43,19 @@ namespace Loving
             int placementType = PlacementType();
             bool overlap = Overlap();
 
-            if (overlap)
+            if (placementType == 0)
             {
                 ResetTransform();
             }
-            else if (placementType == 0)
+            if (placementType == -1)
             {
                 ResetTransform();
             }
-            if (placementType == -1 && !overlap)
-            {
-                ResetTransform();
-            }
-            else if (placementType == 1 && !overlap)
+            else if (placementType == 1)
             {
                 placed = true;
                 TogglePencilButton();
+                game.PlayDropDownSound();
             }
 
         }
