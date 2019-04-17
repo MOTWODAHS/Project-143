@@ -7,10 +7,18 @@ using DG.Tweening;
 public class TrolleyStart : TapableObject
 {
     public TrolleyController Trolley;
-    public GameObject EndScreenWord;
+    public GameObject[] ScreenWord;
     public GameObject ClickHand;
     public bool flag = true;
     public GameObject jumpButton;
+
+    void Start()
+    {
+        if(flag)
+        {
+            OnTap();
+        }
+    }
 
     public override void OnTap()
     {
@@ -18,11 +26,27 @@ public class TrolleyStart : TapableObject
         ClickHand.SetActive(false);
         Destroy(this.gameObject.GetComponent<BoxCollider2D>());
         StartCoroutine(JumpNextScene());
+
+        Sequence seq = DOTween.Sequence();
+
+        if(flag)
+        {
+            foreach(GameObject word in ScreenWord)
+            {
+                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,5f));
+            }
+        }
+        else
+        {
+            foreach(GameObject word in ScreenWord)
+            {
+                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,3f));
+            }
+        }
     }
 
     IEnumerator JumpNextScene()
     {
-        EndScreenWord.GetComponent<SpriteRenderer>().DOColor(new Color (0,0,0,1f),4f).SetEase(Ease.Linear);
         if(flag)
         {
             yield return new WaitForSeconds(15);

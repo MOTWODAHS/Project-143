@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : TapableObject3D
 {
+    public GameObject menuButton;
     public override void OnTap()
     {
-        SceneManager.LoadScene("Menu");
+        menuButton.SetActive(true);
     }
 }
