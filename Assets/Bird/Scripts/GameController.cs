@@ -9,11 +9,16 @@ namespace Singing
 {
     class GameController : MonoBehaviour, IGameController
     {
+        #region Variables
         private const int GAME_CODE = 2;
 
         private const float PLAYBACK_INTERVAL = 0.25f;
 
         private const float SEND_DELAY = 5f;
+
+        private const float MAX_LIMIT = 200f;
+
+        private float timer = 0f;
 
         private int gameStage;
 
@@ -79,6 +84,7 @@ namespace Singing
 
         [Header("Keyboard")]
         public GameObject keyboard;
+        #endregion
 
         private void Start()
         {
@@ -147,6 +153,14 @@ namespace Singing
             };
         }
 
+        private void Update()
+        {
+            timer += Time.deltaTime;
+            if (timer > MAX_LIMIT)
+            {
+                SceneManager.LoadScene("HoldScene");
+            }
+        }
         private void DisableKeyboardAndBanner()
         {
             GameObject bird = new GameObject();
@@ -159,6 +173,7 @@ namespace Singing
             }
 
         }
+
         private void PlayDefaultSong()
         {
             mask.transform.DOMoveX(13.5f, 5f);
@@ -351,6 +366,7 @@ namespace Singing
             Debug.Log("GameState" + gameStage);
             transitions[gameStage]();
             gameStage++;
+            timer = 0f;
         }
 
         public void ProceedTo(int target)

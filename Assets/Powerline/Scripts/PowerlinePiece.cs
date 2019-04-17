@@ -21,6 +21,8 @@ namespace Talking
 
         private List<Coroutine> coroutines;
 
+        private AudioSource[] audios;
+
         private const float HAND_Z_OFFSET = -2f;
 
         [Header("Before player picks up a powerline")]
@@ -47,7 +49,7 @@ namespace Talking
             transformer = GetComponent<Transformer>();
             gesture.TransformStarted += transformStartedHandler;
             gesture.TransformCompleted += transformCompletedHandler;
-
+            audios = GetComponents<AudioSource>();
         }
 
         private void InitializePowerline(GameObject interactableLine)
@@ -63,7 +65,14 @@ namespace Talking
             }
 
             hand.SetActive(true);
-            hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, HAND_Z_OFFSET);
+            if (interactableLine.Equals(interactableLineLeft))
+            {
+                hand.transform.position = new Vector3(game.getBound().center.x + game.getBound().extents.x * 0.2f, game.getBound().center.y, HAND_Z_OFFSET);
+            }
+            else
+            {
+                hand.transform.position = new Vector3(game.getBound().center.x, game.getBound().center.y, HAND_Z_OFFSET);
+            }
         }
 
         private void PickUp()
@@ -92,7 +101,7 @@ namespace Talking
             }
 
             hand.SetActive(false);
-
+            audios[0].Play();
         }
 
         private void Drop()
@@ -118,6 +127,7 @@ namespace Talking
             game.setBound(bounds);
 
             InitializePowerline(interactableLine);
+            audios[1].Play();
         }
 
         private void transformStartedHandler(object sender, EventArgs e)

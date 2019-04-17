@@ -115,6 +115,7 @@ namespace Loving
 
         protected virtual void transformStartedHandler(object sender, EventArgs e)
         {
+            game.ResetTimer();
             transformer.enabled = true;
             ToggleScale();
             game.PlayPickUpSound();
