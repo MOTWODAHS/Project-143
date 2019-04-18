@@ -89,6 +89,9 @@ public class GameControllerv2 : MonoBehaviour
 
     private int interactionCode = 1;
 
+    public AudioSource audioSource;
+    public AudioClip balloonSent;
+
     void Start()
     {
         cam = Camera.main;
@@ -137,6 +140,7 @@ public class GameControllerv2 : MonoBehaviour
                 StartCoroutine(FadeAndMove(line[selectedBalloonNumber], 4f, Vector2.zero, 8, false));
                 //StartCoroutine(FadeVertex(panelVertex[selectedBalloonNumber], 6f, 8));
                 pencilButton[selectedBalloonNumber].SetActive(false);
+                StartCoroutine(MagicalSound());
             }
             float coverDistance = (Time.time - startTime) * speed;
             float scale = coverDistance/3f;
@@ -227,5 +231,11 @@ public class GameControllerv2 : MonoBehaviour
             yield return new WaitForSeconds(oneTime);
             obj.GetComponent<TMP_Text>().color -= new Color(0,0,0,1f/count);
         }
+    }
+
+    IEnumerator MagicalSound()
+    {
+        yield return new WaitForSeconds(1f);
+        audioSource.PlayOneShot(balloonSent);
     }
 }

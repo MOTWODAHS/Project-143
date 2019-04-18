@@ -300,6 +300,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &401032338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401032339}
+  - component: {fileID: 401032340}
+  m_Layer: 0
+  m_Name: EndTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401032339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401032338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0091612, y: 1.205554, z: -1.1258979}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &401032340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401032338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccd1f94b2c634b4ca584aa569d71f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumptime: 120
 --- !u!1 &431935434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,129 +1209,52 @@ MonoBehaviour:
   mode2D: 0
   closed: 0
   points:
-  - controlType: 0
+  - controlType: 1
     positionLocal: {x: -3.8899999, y: -2.3, z: -5.9140625}
-    controlFirstLocal: {x: 1, y: 0, z: 0}
-    controlSecondLocal: {x: -1, y: -0, z: -0}
+    controlFirstLocal: {x: -0.67376757, y: -0.11313105, z: -0}
+    controlSecondLocal: {x: 0.67376757, y: 0.11313105, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -2.954393, y: -2.118288, z: -5.9140625}
-    controlFirstLocal: {x: -0.31289372, y: -0.060774855, z: 1.2998048}
-    controlSecondLocal: {x: 0.31289372, y: 0.060774855, z: -1.2998048}
+  - controlType: 1
+    positionLocal: {x: -2.1290107, y: -2.0294046, z: -5.9140625}
+    controlFirstLocal: {x: -0.38217258, y: -0.0136835575, z: 0}
+    controlSecondLocal: {x: 0.38217258, y: 0.0136835575, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -2.1290107, y: -2.014781, z: -5.9140625}
-    controlFirstLocal: {x: -0.092446044, y: -0.018792462, z: 0}
-    controlSecondLocal: {x: 0.092446044, y: 0.018792462, z: 0}
+  - controlType: 1
+    positionLocal: {x: -0.7925881, y: -2.0963502, z: -5.9140625}
+    controlFirstLocal: {x: -0.3305057, y: 0.049556494, z: -0}
+    controlSecondLocal: {x: 0.3305057, y: -0.049556494, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -1.4995378, y: -2.023609, z: -5.9140625}
-    controlFirstLocal: {x: -0.2566617, y: -0.060391434, z: 0}
-    controlSecondLocal: {x: 0.2566617, y: 0.060391434, z: 0}
+  - controlType: 1
+    positionLocal: {x: 2.658766, y: -2.6421485, z: -5.9140625}
+    controlFirstLocal: {x: -0.8502543, y: 0.1253519, z: 0}
+    controlSecondLocal: {x: 0.8502543, y: -0.1253519, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: -0.86973363, y: -2.081726, z: -5.9140625}
-    controlFirstLocal: {x: -0.19144046, y: -0.045045145, z: 0}
-    controlSecondLocal: {x: 0.19144046, y: 0.045045145, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 0.189529, y: -2.2514405, z: -5.9140625}
-    controlFirstLocal: {x: -0.16886838, y: -0.03462565, z: 0}
-    controlSecondLocal: {x: 0.16886838, y: 0.03462565, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 1.002143, y: -2.3970296, z: -5.9140625}
-    controlFirstLocal: {x: -0.12593532, y: -0.024373317, z: 0}
-    controlSecondLocal: {x: 0.12593532, y: 0.024373317, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 2.2407248, y: -2.6375482, z: -5.9140625}
-    controlFirstLocal: {x: -0.08225064, y: -0.017341673, z: 0}
-    controlSecondLocal: {x: 0.08225064, y: 0.017341673, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 2.658766, y: -2.7309356, z: -5.9140625}
-    controlFirstLocal: {x: -1.026647, y: -0.24156573, z: -0}
-    controlSecondLocal: {x: 1.026647, y: 0.24156573, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 3.393109, y: -2.71327, z: -5.9140625}
-    controlFirstLocal: {x: -0.19113684, y: -0.0014536621, z: 0.13085938}
-    controlSecondLocal: {x: 0.19113684, y: 0.0014536621, z: -0.13085938}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 4.0117707, y: -2.674981, z: -5.9140625}
-    controlFirstLocal: {x: -0.209048, y: 0.019721512, z: -0}
-    controlSecondLocal: {x: 0.209048, y: -0.019721512, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
+  - controlType: 1
     positionLocal: {x: 4.6686416, y: -2.5853245, z: -5.9140625}
-    controlFirstLocal: {x: -0.08727968, y: 0.014900125, z: 0}
-    controlSecondLocal: {x: 0.08727968, y: -0.014900125, z: 0}
+    controlFirstLocal: {x: -0.7831178, y: -0.15905905, z: 0}
+    controlSecondLocal: {x: 0.7831178, y: 0.15905905, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 6.259556, y: -2.2026477, z: -5.9140625}
-    controlFirstLocal: {x: -0.14002235, y: 0.034512617, z: 0}
-    controlSecondLocal: {x: 0.14002235, y: -0.034512617, z: 0}
+  - controlType: 1
+    positionLocal: {x: 6.6210027, y: -2.1329603, z: -5.9140625}
+    controlFirstLocal: {x: -0.7031312, y: -0.051394463, z: -0}
+    controlSecondLocal: {x: 0.7031312, y: 0.051394463, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 7.1246967, y: -2.0264614, z: -5.9140625}
-    controlFirstLocal: {x: -0.5600894, y: 0.13805047, z: -0}
-    controlSecondLocal: {x: 0.5600894, y: -0.13805047, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 7.7324557, y: -2.0195289, z: -5.9140625}
-    controlFirstLocal: {x: -0.07410446, y: 0.009799719, z: 0}
-    controlSecondLocal: {x: 0.07410446, y: -0.009799719, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 8.228309, y: -2.0610266, z: -5.9140625}
-    controlFirstLocal: {x: -0.026955748, y: -0.001548481, z: 0}
-    controlSecondLocal: {x: 0.026955748, y: 0.001548481, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 8.861317, y: -2.14574, z: -5.9140625}
-    controlFirstLocal: {x: -0.03045144, y: -0.008814216, z: 0}
-    controlSecondLocal: {x: 0.03045144, y: 0.008814216, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1055488169}
-    fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 11.914362, y: -2.5286918, z: -5.9140625}
-    controlFirstLocal: {x: -0.016551448, y: -0.0085043665, z: 0}
-    controlSecondLocal: {x: 0.016551448, y: 0.0085043665, z: 0}
+  - controlType: 1
+    positionLocal: {x: 11.169329, y: -2.4197166, z: -5.9140625}
+    controlFirstLocal: {x: -0.4222355, y: 0.056889296, z: 0}
+    controlSecondLocal: {x: 0.4222355, y: -0.056889296, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
@@ -2569,8 +2536,9 @@ GameObject:
   - component: {fileID: 2070761977}
   - component: {fileID: 2070761978}
   - component: {fileID: 2070761979}
-  - component: {fileID: 2070761980}
   - component: {fileID: 2070761981}
+  - component: {fileID: 2070761980}
+  - component: {fileID: 2070761982}
   m_Layer: 0
   m_Name: Trolley
   m_TagString: Untagged
@@ -2659,7 +2627,131 @@ MonoBehaviour:
   ClickHand: {fileID: 472992464}
   flag: 1
   jumpButton: {fileID: 528221075}
---- !u!114 &2070761980
+  audioSource: {fileID: 2070761980}
+  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
+--- !u!82 &2070761980
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070761976}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!61 &2070761981
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070761976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4415331, y: -0.41091812}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15, y: 15}
+    newSize: {x: 15, y: 15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.499565, y: 5.4022045}
+  m_EdgeRadius: 0
+--- !u!114 &2070761982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2699,32 +2791,6 @@ MonoBehaviour:
   distanceLimit: Infinity
   combinePointers: 0
   combinePointersInterval: 0.3
---- !u!61 &2070761981
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070761976}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.4415331, y: -0.41091812}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 15}
-    newSize: {x: 15, y: 15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.499565, y: 5.4022045}
-  m_EdgeRadius: 0
 --- !u!1 &2078908887
 GameObject:
   m_ObjectHideFlags: 0
