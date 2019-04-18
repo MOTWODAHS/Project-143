@@ -42,6 +42,8 @@ namespace Singing
         [Space]
         public BirdNote birdNote;
 
+        public GameObject UI;
+
         [Header("Buttons")]
         public Transition newSong;
         public Transition done;
@@ -314,6 +316,7 @@ namespace Singing
                 if (gameStage == 3)
                 {
                     Invoke("SendBird", SEND_DELAY);
+                    UI.SetActive(false);
                     foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
                     {
                         animator.Play("full_departure");

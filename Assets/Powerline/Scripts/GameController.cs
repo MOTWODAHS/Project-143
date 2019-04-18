@@ -50,8 +50,9 @@ namespace Talking
         [Header("NetworkingManager")]
         public NetworkingController network;
 
-        [Header("Ending UI")]
+        [Header("UI")]
         public GameObject endingUI;
+        public GameObject UI;
 
 
         private void Start()
@@ -80,6 +81,7 @@ namespace Talking
                 {
                     keyboard.transform.DOLocalMoveY(-2f, 2f);
                     interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage();
+                    UI.SetActive(false);
                 }
             };
         }

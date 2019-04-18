@@ -39,6 +39,7 @@ namespace Loving
 
         [Header("Cover")]
         public Collider2D cover;
+        public GameObject UI;
 
         [Header("Stage1")]
         public GameObject mask1;
@@ -123,6 +124,7 @@ namespace Loving
                 },
                 () =>
                 {
+                    UI.SetActive(false);
                     //ResetNameTag
                     nameTag.transform.localScale = nameTagScale;
                     enterName.transform.DOMoveY(-13f,1f);
