@@ -60,6 +60,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: Z
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364907861412073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: Backspace
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364907959141076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: F
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364907998252800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: ' '
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908169244005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: J
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908234813368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +575,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: V
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908268641774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +678,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: P
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908322501256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,6 +781,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: G
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908325364772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,6 +884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: S
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908444115271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +987,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: E
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908525011152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1090,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: D
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908582267393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,6 +1193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: T
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364908687502477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,6 +1296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: A
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909081133072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,6 +1399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: N
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909126702289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,6 +1502,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: C
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909151178021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,6 +1605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: B
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909176616484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,6 +1708,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: Y
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909229946190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,6 +1811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: R
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909291430801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,6 +1914,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: .
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909306567236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,6 +2017,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: '-'
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909339510563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,6 +2120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: M
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909473149166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2417,6 +2480,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: O
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909609141878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: U
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909658370948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,6 +2686,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: K
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909691726711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: X
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909706786578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2817,6 +2892,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: H
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909728066874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,6 +2995,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: W
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909747072973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2967,6 +3048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4826364909755597776}
   - component: {fileID: 4826364909755597775}
+  - component: {fileID: 4835414372261381875}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -3003,6 +3085,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputString: 
+--- !u!82 &4835414372261381875
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826364909755597777}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4826364909766047798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: Q
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909766047795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,6 +3344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: L
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909865834355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3263,6 +3447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4826364909755597775}
   inputString: I
+  keyboardAudio: {fileID: 4835414372261381875}
+  tapSound1: {fileID: 0}
+  tapSound2: {fileID: 0}
 --- !u!114 &4826364909900385911
 MonoBehaviour:
   m_ObjectHideFlags: 0

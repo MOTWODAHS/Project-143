@@ -12,6 +12,10 @@ public class TrolleyStart : TapableObject
     public bool flag = true;
     public GameObject jumpButton;
 
+    public AudioSource audioSource;
+
+    public AudioClip trolleyChime;
+
     void Start()
     {
         if(flag)
@@ -22,9 +26,35 @@ public class TrolleyStart : TapableObject
 
     public override void OnTap()
     {
-        Trolley.flag = true;
+        StartCoroutine(TrolleyGo());
+    }
+
+    IEnumerator JumpNextScene()
+    {
+        if(flag)
+        {
+            yield return new WaitForSeconds(15);
+            jumpButton.SetActive(true);
+        }
+        else
+        {
+            yield return new WaitForSeconds(12);
+            jumpButton.SetActive(true);
+        }
+    }
+
+    public void OnDragEnd()
+    {
+        StartCoroutine(TrolleyGo());
+    }
+
+    IEnumerator TrolleyGo()
+    {
         ClickHand.SetActive(false);
         Destroy(this.gameObject.GetComponent<BoxCollider2D>());
+        audioSource.PlayOneShot(trolleyChime);
+        yield return new WaitForSeconds(1.5f);
+        Trolley.flag = true;
         StartCoroutine(JumpNextScene());
 
         Sequence seq = DOTween.Sequence();
@@ -42,20 +72,6 @@ public class TrolleyStart : TapableObject
             {
                 seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,3f));
             }
-        }
-    }
-
-    IEnumerator JumpNextScene()
-    {
-        if(flag)
-        {
-            yield return new WaitForSeconds(15);
-            jumpButton.SetActive(true);
-        }
-        else
-        {
-            yield return new WaitForSeconds(12);
-            jumpButton.SetActive(true);
         }
     }
 }
