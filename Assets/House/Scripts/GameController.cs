@@ -79,6 +79,7 @@ namespace Loving
         [Header("Sounds")]
         public AudioSource pickedUpSound;
         public AudioSource dropDownSound;
+        public AudioSource sendObjectToScreen;
 
         void Start()
         {
@@ -218,7 +219,7 @@ namespace Loving
 
         private IEnumerator PlayEndingSound()
         {
-
+            sendObjectToScreen.Play();
             AudioSource[] sounds = envelopeAnim.GetComponents<AudioSource>();
             sounds[0].Play();
             yield return new WaitForSeconds(1.5f);

@@ -11,6 +11,7 @@ namespace Talking
        
         private void OnBecameInvisible()
         {
+            Debug.Log("Become invisible");
             game.SendMessageToNetwork();
         }
     }

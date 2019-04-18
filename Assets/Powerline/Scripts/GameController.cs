@@ -82,6 +82,7 @@ namespace Talking
                     keyboard.transform.DOLocalMoveY(-2f, 2f);
                     interactiveLine.GetComponent<PowerlineSpline>().SendLineMessage();
                     UI.SetActive(false);
+                    GetComponent<AudioSource>().Play();
                 }
             };
         }
@@ -96,10 +97,10 @@ namespace Talking
         }
         public void SendMessageToNetwork()
         {
+            SceneManager.LoadScene("EndScene");
             Debug.Log("Message Sended To Network!");
             network.SendAction(3, -1, message);
-            network.InternetQuit();
-            SceneManager.LoadScene("EndScene");
+            network.InternetQuit();   
         }
 
         private void ZoomToPoint()

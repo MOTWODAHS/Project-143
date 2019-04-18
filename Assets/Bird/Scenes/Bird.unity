@@ -342,6 +342,7 @@ MonoBehaviour:
   grayBird: {fileID: 542702414}
   scrollOpen: {fileID: 880975443}
   scrollClose: {fileID: 258991181}
+  sendObjectToScreen: {fileID: 1524726156}
   cButtons: {fileID: 990662367}
   mask: {fileID: 170405147}
   defualtNotes: {fileID: 1498414383}
@@ -1251,6 +1252,7 @@ Transform:
   m_Children:
   - {fileID: 880975442}
   - {fileID: 258991180}
+  - {fileID: 1524726155}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3862,6 +3864,133 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1524726154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524726155}
+  - component: {fileID: 1524726156}
+  m_Layer: 0
+  m_Name: SendObjectToScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524726155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524726154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 437168111}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1524726156
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524726154}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 05790e7cefc49d449ba2c2b2ad1de716, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1558161389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4826364909755597777, guid: f01eae70e211d16478cdeb5c9e42ec26,
@@ -5200,6 +5329,306 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6962289
       objectReference: {fileID: 0}
+    - target: {fileID: 4826364907861412072, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364907861412072, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364907959141075, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364907959141075, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364907998252863, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364907998252863, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908169244004, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908169244004, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908234813367, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908234813367, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908268641773, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908268641773, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908322501255, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908322501255, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908325364771, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908325364771, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908444115270, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908444115270, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908525011151, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908525011151, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908582267392, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908582267392, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364908687502476, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364908687502476, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909081133071, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909081133071, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909126702288, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909126702288, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909151178020, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909151178020, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909176616483, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909176616483, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909229946189, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909229946189, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909291430800, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909291430800, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909306567235, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909306567235, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909339510562, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909339510562, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909473149165, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909473149165, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909609141877, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909609141877, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909658370947, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909658370947, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909691726710, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909691726710, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909706786577, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909706786577, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909728066873, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909728066873, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909747072972, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909747072972, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909766047794, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909766047794, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909865834354, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909865834354, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
+    - target: {fileID: 4826364909900385910, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 969d5cd87207f9841a68813cf490cff4, type: 3}
+    - target: {fileID: 4826364909900385910, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: tapSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 20ec1fec6686c5a469c84d22da487486, type: 3}
     m_RemovedComponents:
     - {fileID: 4826364909552085654, guid: f01eae70e211d16478cdeb5c9e42ec26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f01eae70e211d16478cdeb5c9e42ec26, type: 3}

@@ -62,6 +62,7 @@ namespace Singing
         public Animator grayBird;
         public AudioSource scrollOpen;
         public AudioSource scrollClose;
+        public AudioSource sendObjectToScreen;
 
         [Header("ColorButtons")]
         public GameObject cButtons;
@@ -86,6 +87,8 @@ namespace Singing
 
         [Header("Keyboard")]
         public GameObject keyboard;
+ 
+    
         #endregion
 
         private void Start()
@@ -329,6 +332,7 @@ namespace Singing
                         g.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
                     }
                     playingSong = false;
+                    sendObjectToScreen.Play();
                 }
             }
             
