@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TouchScript.Behaviors;
 using TouchScript.Gestures.TransformGestures;
+using DG.Tweening;
 
 namespace Talking
 {
@@ -24,6 +25,10 @@ namespace Talking
         private AudioSource[] audios;
 
         private const float HAND_Z_OFFSET = -2f;
+
+        private Vector3 originPos;
+
+        private Quaternion originRotation;
 
         [Header("Before player picks up a powerline")]
         public GameObject fakeShadow;
@@ -50,6 +55,8 @@ namespace Talking
             gesture.TransformStarted += transformStartedHandler;
             gesture.TransformCompleted += transformCompletedHandler;
             audios = GetComponents<AudioSource>();
+            originPos = this.transform.position;
+            originRotation = this.transform.rotation;
         }
 
         private void InitializePowerline(GameObject interactableLine)
@@ -106,6 +113,12 @@ namespace Talking
 
         private void Drop()
         {
+            if (Math.Abs(destinationPole.position.x - originPole.position.x) < 3)
+            {
+                ResetTransform();
+                firstHand.SetActive(true);
+                return;
+            }
             if (destinationPole.position.x - originPole.position.x > 0)
             {
                 interactableLine = interactableLineRight;
@@ -130,6 +143,12 @@ namespace Talking
             audios[1].Play();
         }
 
+        private void ResetTransform()
+        {
+            transform.position = originPos;
+            transform.rotation = originRotation;
+        }
+
         private void transformStartedHandler(object sender, EventArgs e)
         {
             transformer.enabled = true;
@@ -142,4 +161,6 @@ namespace Talking
             Drop();
         }
     }
+
+    
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 namespace Loving
 {
@@ -49,16 +50,22 @@ namespace Loving
         [Header("Stage2")]
         public GameObject mask2;
         public GameObject palette;
-        public GameObject nameTag;
+        public GameObject doneButton;
 
         [Header("Stage3")]
+        public GameObject nameTagComposite;
+        public GameObject nameTag;
+        public GameObject background;
+        public GameObject mask3;
+
+        [Header("Stage4")]
         public GameObject enterName;
         public GameObject blueprint;
         public GameObject pencilButtonObj;
         public TextInputField addNameTag;
         //public GameObject nameTag;
 
-        [Header("Stage4")]
+        [Header("Stage5")]
         public GameObject altBlueprint;
         public Transform pivot;
         public Animator altBlueprintAnim;
@@ -66,6 +73,8 @@ namespace Loving
         public RenderTexture texture;
         public NetworkingController network;
         public GameObject endUI;
+        public Censor censor;
+        public TextMeshPro textMeshPro;
 
         [Header("Sounds")]
         public AudioSource pickedUpSound;
@@ -103,11 +112,23 @@ namespace Loving
                         {
                             c.enabled = true;
                         }
-                        nameTag.GetComponent<Collider2D>().enabled = true;                                                                      
+                        doneButton.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+                        doneButton.GetComponent<Collider2D>().enabled = true;
                     }
                 },
                 () =>
                 {
+                    nameTagComposite.SetActive(true);
+                    PlayDropDownSound();
+                    mask1.SetActive(true);
+                    mask2.SetActive(true);
+                    mask3.SetActive(true);
+                    background.SetActive(false);
+                    doneButton.SetActive(false);
+                },
+                () =>
+                {
+                    doneButton.SetActive(false);
                     enterName.transform.DOMoveY(-4f, 2f);
                     nameTagPos = nameTag.transform.position;
                     nameTagScale = nameTag.transform.localScale;
@@ -119,7 +140,6 @@ namespace Loving
                     {
                         collider.enabled = false;
                     }
-                    pencilButtonObj.SetActive(false);
                     addNameTag.enabled = true;
                 },
                 () =>
@@ -131,6 +151,14 @@ namespace Loving
                     enterName.SetActive(false);
                     nameTag.transform.position = nameTagPos;
                     nameTag.transform.rotation = nameTagRotation;
+
+                    string text = censor.CensorText( textMeshPro.text);
+                    print("text is " + text);
+                    text = text.Replace("*", "");
+                    print("text is " + text);
+                    textMeshPro.GetComponent<TextInputField>().enabled =false;
+                    textMeshPro.text = text;
+                    
                     
                     //Lighten Up Window
                     foreach(PuzzlePiece o in DoorWindowPiece.pieces)
