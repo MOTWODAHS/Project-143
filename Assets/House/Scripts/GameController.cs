@@ -28,6 +28,8 @@ namespace Loving
 
         private Vector3 nameTagScale;
 
+        private List<DoorWindowPiece> pieces = new List<DoorWindowPiece>();
+
         private Quaternion nameTagRotation;
 
         private delegate void StageTransition();
@@ -64,6 +66,7 @@ namespace Loving
         public GameObject pencilButtonObj;
         public TextInputField addNameTag;
         //public GameObject nameTag;
+        public Collider doNotTouch;
 
         [Header("Stage5")]
         public GameObject altBlueprint;
@@ -134,7 +137,9 @@ namespace Loving
                     nameTagPos = nameTag.transform.position;
                     nameTagScale = nameTag.transform.localScale;
                     nameTagRotation = nameTag.transform.rotation;
-                    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
+                    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f).OnComplete(()=>{
+                        doNotTouch.enabled = true;
+                    });
                     nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
                     nameTag.transform.DORotate(new Vector3(0, 0, 0), 2f);
                     foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
@@ -162,8 +167,9 @@ namespace Loving
                     
                     
                     //Lighten Up Window
-                    foreach(PuzzlePiece o in DoorWindowPiece.pieces)
+                    foreach(DoorWindowPiece o in pieces)
                     {
+                        print("Counting");
                         GameObject firstChild = o.GetComponentsInChildren<Transform>()[1].gameObject;
                         if (firstChild.name.Equals("grey"))
                         {
@@ -192,6 +198,16 @@ namespace Loving
 
                 }
             };
+        }
+
+        public void AddPiece(DoorWindowPiece piece)
+        {
+            pieces.Add(piece);
+        }
+
+        public void RemovePiece(DoorWindowPiece piece)
+        {
+            pieces.Remove(piece);
         }
 
         [ContextMenu("Send House")]

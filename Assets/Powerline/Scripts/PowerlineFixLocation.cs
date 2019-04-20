@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PowerlineFixLocation : MonoBehaviour
 {
-    private const int x_limit = 10;
-    private const float y_limit = 2.5f;
+    private const int x_limit = 15;
+    private const float y_limit = 4f;
     void FixedUpdate()
     {
         if(transform.position.x < -x_limit )
@@ -23,9 +23,9 @@ public class PowerlineFixLocation : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -y_limit, transform.position.z);
         }
 
-        if (transform.position.y > y_limit)
+        if (transform.position.y > (y_limit - 1.5f))
         {
-            transform.position = new Vector3(transform.position.x, y_limit, transform.position.z);
+            transform.position = new Vector3(transform.position.x, y_limit - 1.5f, transform.position.z);
         }
 
     }

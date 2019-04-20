@@ -140,7 +140,7 @@ namespace Talking
             if (!finished && touchPosition != null)
             {
                 Vector3 point = touchPosition;
-                point.z = 0;
+                point.z = 4.9f;
 
                 float newDistance;
                 Vector3 pointOnCurve = curve.GetComponent<BGCcMath>().CalcPositionByClosestPoint(point, out newDistance);
