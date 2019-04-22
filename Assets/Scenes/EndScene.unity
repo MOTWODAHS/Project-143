@@ -2628,7 +2628,7 @@ MonoBehaviour:
   flag: 1
   jumpButton: {fileID: 528221075}
   audioSource: {fileID: 2070761980}
-  trolleyChime: {fileID: 8300000, guid: d864803e746fdd14d801c3dcc66ea82b, type: 3}
+  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
 --- !u!82 &2070761980
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2641,7 +2641,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

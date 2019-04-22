@@ -31,7 +31,7 @@ namespace Talking
 
         private string message;
 
-        private const float delay_to_send = 7f;
+        private const float delay_to_send = 4f;
 
         private Vector3 anchor = new Vector3(-2.9165f, 6.3208f, 3.75161f);
 
@@ -108,9 +108,10 @@ namespace Talking
         }
         public void SendMessageToNetwork()
         {
-            SceneManager.LoadScene("EndScene");
             network.SendAction(3, -1, message);
-            network.InternetQuit();   
+            network.InternetQuit();
+            //SceneManager.LoadScene("EndScene");   
+            StartCoroutine(JumpToEndScene());
         }
 
         private void ZoomToPoint()
@@ -178,6 +179,12 @@ namespace Talking
         public void setMessage(string str)
         {
             message = str;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }

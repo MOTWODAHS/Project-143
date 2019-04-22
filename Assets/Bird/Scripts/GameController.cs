@@ -14,7 +14,7 @@ namespace Singing
 
         private const float PLAYBACK_INTERVAL = 0.25f;
 
-        private const float SEND_DELAY = 8f;
+        private const float SEND_DELAY = 5f;
 
         private const float MAX_LIMIT = 200f;
 
@@ -270,7 +270,8 @@ namespace Singing
             int numbercode = birdnumber * 100 + text.Length;
             network.SendAction(GAME_CODE, numbercode, text + songString);
             network.InternetQuit();
-            SceneManager.LoadScene("EndScene");
+            //SceneManager.LoadScene("EndScene");
+            StartCoroutine(JumpToEndScene());
         }
 
         public void AddNote(string note)
@@ -442,6 +443,12 @@ namespace Singing
         public int GetGameStage()
         {
             return gameStage;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }
