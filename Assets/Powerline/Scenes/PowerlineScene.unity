@@ -14489,7 +14489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1934865b169135428016629854b9e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prompt: Who do you wich you could talk to?
+  prompt: Who do you wish you could talk to?
 --- !u!114 &1736175420
 MonoBehaviour:
   m_ObjectHideFlags: 0
