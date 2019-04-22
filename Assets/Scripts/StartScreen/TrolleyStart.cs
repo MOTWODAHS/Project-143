@@ -11,6 +11,7 @@ public class TrolleyStart : TapableObject
     public GameObject ClickHand;
     public bool flag = true;
     public GameObject jumpButton;
+    public GameObject menuButton;
 
     public AudioSource audioSource;
 
@@ -35,6 +36,7 @@ public class TrolleyStart : TapableObject
         {
             yield return new WaitForSeconds(15);
             jumpButton.SetActive(true);
+            menuButton.SetActive(true);
         }
         else
         {
