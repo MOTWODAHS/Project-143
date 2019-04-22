@@ -14,7 +14,7 @@ namespace Singing
 
         private const float PLAYBACK_INTERVAL = 0.25f;
 
-        private const float SEND_DELAY = 5f;
+        private const float SEND_DELAY = 8f;
 
         private const float MAX_LIMIT = 200f;
 
