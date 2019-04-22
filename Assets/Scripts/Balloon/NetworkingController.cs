@@ -102,6 +102,10 @@ public class NetworkingController : MonoBehaviour
         {
             sendingMessage = interactionCode.ToString() + (selectedObjectNumber/100).ToString() + ((selectedObjectNumber/10)%10).ToString() + (selectedObjectNumber%10).ToString() + message;
         }
+        else if(interactionCode == 4)
+        {
+            sendingMessage = interactionCode.ToString() + (selectedObjectNumber/10).ToString() + (selectedObjectNumber%10).ToString() + message;
+        }
         else
         {
             sendingMessage = interactionCode.ToString() + selectedObjectNumber.ToString() + message;
