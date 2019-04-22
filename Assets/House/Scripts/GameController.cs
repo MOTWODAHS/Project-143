@@ -18,7 +18,7 @@ namespace Loving
 
         private string sendStr = "";
 
-        private const float DELAY_TO_SEND = 7.5f;
+        private const float DELAY_TO_SEND = 4.5f;
 
         private const float TIMER_LIMIT = 200f;
 
@@ -299,7 +299,7 @@ namespace Loving
 
         IEnumerator JumpToEndScene()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(4f);
             SceneManager.LoadScene("EndScene");
         }
     }

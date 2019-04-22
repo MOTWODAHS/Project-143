@@ -31,7 +31,7 @@ namespace Talking
 
         private string message;
 
-        private const float delay_to_send = 7f;
+        private const float delay_to_send = 4f;
 
         private Vector3 anchor = new Vector3(-2.9165f, 6.3208f, 3.75161f);
 
