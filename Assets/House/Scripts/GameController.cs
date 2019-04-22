@@ -28,6 +28,8 @@ namespace Loving
 
         private Vector3 nameTagScale;
 
+        private List<DoorWindowPiece> pieces = new List<DoorWindowPiece>();
+
         private Quaternion nameTagRotation;
 
         private delegate void StageTransition();
@@ -64,6 +66,7 @@ namespace Loving
         public GameObject pencilButtonObj;
         public TextInputField addNameTag;
         //public GameObject nameTag;
+        public Collider doNotTouch;
 
         [Header("Stage5")]
         public GameObject altBlueprint;
@@ -376,7 +379,8 @@ namespace Loving
             print("sendStr is: " + text + sendStr);
             network.SendAction(4, text.Length, text + sendStr);
             network.InternetQuit();
-            SceneManager.LoadScene("EndScene");
+            //SceneManager.LoadScene("EndScene");
+            StartCoroutine(JumpToEndScene());
         }
 
         public void StartGame()
@@ -409,6 +413,12 @@ namespace Loving
         public void ResetTimer()
         {
             timer = 0f;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(4f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }

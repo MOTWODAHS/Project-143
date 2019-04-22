@@ -31,7 +31,13 @@ namespace Talking
 
         private string message;
 
-        private const float delay_to_send = 7f;
+        private const float delay_to_send = 4f;
+
+        private Vector3 anchor = new Vector3(-2.9165f, 6.3208f, 3.75161f);
+
+        private Vector3 anchorToCenter;
+
+     
 
 
         Bounds bound;
@@ -39,6 +45,7 @@ namespace Talking
         [Header("Before Picking Up An Pole")]
         public Collider2D destinationPoleCollider;
         public PowerlinePiece powerlinePiece;
+        public GameObject anchorObj;
 
         [Header("Hand")]
         public GameObject hand;
@@ -53,10 +60,12 @@ namespace Talking
         [Header("UI")]
         public GameObject endingUI;
         public GameObject UI;
+        public Collider doNotTouch;
 
 
         private void Start()
         {
+            anchorToCenter = Camera.main.transform.position - anchor;
             game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
             transitions = new StageTransition[]
             {
@@ -75,7 +84,9 @@ namespace Talking
                     fillInLine.enabled =false;
                     fillInCollider.GetComponent<BoxCollider>().enabled = false;
                     fillInCollider.enabled = false;
-                    keyboard.transform.DOLocalMoveY(-0.83f, 2f);
+                    keyboard.transform.DOLocalMoveY(-0.83f, 2f).OnComplete(()=>{
+                        doNotTouch.enabled = true;
+                    });
                 },
                 () =>
                 {
@@ -97,16 +108,16 @@ namespace Talking
         }
         public void SendMessageToNetwork()
         {
-            SceneManager.LoadScene("EndScene");
-            Debug.Log("Message Sended To Network!");
             network.SendAction(3, -1, message);
-            network.InternetQuit();   
+            network.InternetQuit();
+            //SceneManager.LoadScene("EndScene");   
+            StartCoroutine(JumpToEndScene());
         }
 
         private void ZoomToPoint()
         {
             //Get bounds of the two poles
-            Bounds bounds = powerlinePiece.originPole.GetComponent<Collider2D>().bounds;
+            Bounds bounds = anchorObj.GetComponent<Collider2D>().bounds;
             bounds.Encapsulate(powerlinePiece.destinationPole.GetComponent<Collider2D>().bounds);
             //Calculate middle point
             Vector3 middlePoint = bounds.center;
@@ -116,8 +127,9 @@ namespace Talking
             float verticalExtent = 2f * Camera.main.orthographicSize;
             float horizontalExtent = verticalExtent * Camera.main.aspect;
             float zoomFactor = Mathf.Max(2f * distanceX / horizontalExtent, 2f * distanceY / verticalExtent);
+            zoomFactor = Mathf.Min(zoomFactor, 1 / 1.2f);
             //Move to the point
-            Vector3 newPosition = new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z);
+            Vector3 newPosition = anchor + anchorToCenter * zoomFactor * 1.2f;
 
             Sequence s = DOTween.Sequence();
 
@@ -125,7 +137,7 @@ namespace Talking
             float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
 
             destinationPoleCollider.enabled =false;
-            s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
+            s.Append(Camera.main.transform.DOMove(newPosition, 2f));
             s.Join(Camera.main.DOOrthoSize(newOrthoSize, 2f));
             s.Join(Camera.main.transform.DOScale(newCameraScale, 2f));
             s.Play();
@@ -167,6 +179,17 @@ namespace Talking
         public void setMessage(string str)
         {
             message = str;
+        }
+
+        public string GetMessage()
+        {
+            return message;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }

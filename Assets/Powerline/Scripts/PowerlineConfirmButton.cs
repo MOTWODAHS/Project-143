@@ -13,8 +13,12 @@ public class PowerlineConfirmButton : TapableObject3D
     }
     public override void OnTap()
     {
-        print("Tapped");
-        game.Proceed();
+        string message = GetComponentInParent<KeyBoardController>().inputString;
+
+        if (message.Replace(" ", "").Length > 0){
+            game.Proceed();
+        }
+       
     }
 }
 

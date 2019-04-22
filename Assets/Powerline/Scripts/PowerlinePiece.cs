@@ -113,7 +113,7 @@ namespace Talking
 
         private void Drop()
         {
-            if (Math.Abs(destinationPole.position.x - originPole.position.x) < 3)
+            if (Math.Abs(destinationPole.position.x - originPole.position.x) < 2)
             {
                 ResetTransform();
                 firstHand.SetActive(true);
