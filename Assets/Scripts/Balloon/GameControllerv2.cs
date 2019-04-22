@@ -92,6 +92,9 @@ public class GameControllerv2 : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip balloonSent;
 
+    public GameObject replayButton;
+    public GameObject menuButton;
+
     void Start()
     {
         cam = Camera.main;
@@ -140,6 +143,8 @@ public class GameControllerv2 : MonoBehaviour
                 StartCoroutine(FadeAndMove(line[selectedBalloonNumber], 4f, Vector2.zero, 8, false));
                 //StartCoroutine(FadeVertex(panelVertex[selectedBalloonNumber], 6f, 8));
                 pencilButton[selectedBalloonNumber].SetActive(false);
+                replayButton.SetActive(false);
+                menuButton.SetActive(false);
                 StartCoroutine(MagicalSound());
             }
             float coverDistance = (Time.time - startTime) * speed;
@@ -158,7 +163,7 @@ public class GameControllerv2 : MonoBehaviour
                 isStep5Finished = true;
                 network.SendAction(interactionCode, selectedBalloonNumber, resultString);
                 network.InternetQuit();
-                SceneManager.LoadScene("EndScene");
+                StartCoroutine(JumpToEndScene());
             }
         }
         /* 
@@ -237,5 +242,11 @@ public class GameControllerv2 : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         audioSource.PlayOneShot(balloonSent);
+    }
+
+    IEnumerator JumpToEndScene()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("EndScene");
     }
 }
