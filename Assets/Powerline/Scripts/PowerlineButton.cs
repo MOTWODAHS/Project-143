@@ -16,7 +16,8 @@ namespace Talking
         public override void OnTap()
         {
             game.Proceed();
-            GetComponent<Collider2D>().enabled = true;
+            GetComponent<Collider2D>().enabled = false;
+            enabled = false;
         }
     }
 }

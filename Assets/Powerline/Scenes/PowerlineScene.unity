@@ -6218,9 +6218,8 @@ PrefabInstance:
     - target: {fileID: 8363650874957459460, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
         type: 3}
       propertyPath: m_text
-      value: 'The phoneline is not functioned yet.
-
-        Do you want to back to menu?'
+      value: "You haven\u2019t sent a message to the neighborhood yet.\nGo back to
+        the main menu?"
       objectReference: {fileID: 0}
     - target: {fileID: 8363650874974691678, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
         type: 3}
@@ -12598,9 +12597,8 @@ PrefabInstance:
     - target: {fileID: 7984201845685524585, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
       propertyPath: m_text
-      value: 'The phoneline is not functioned yet.
-
-        Do you want to replay this interaction?'
+      value: "You haven\u2019t sent a message to the neighborhood yet.\nWould you
+        like to reset your telephone line?"
       objectReference: {fileID: 0}
     - target: {fileID: 7984201845707180722, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}

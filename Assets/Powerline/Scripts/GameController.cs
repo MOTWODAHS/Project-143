@@ -181,6 +181,11 @@ namespace Talking
             message = str;
         }
 
+        public string GetMessage()
+        {
+            return message;
+        }
+
         IEnumerator JumpToEndScene()
         {
             yield return new WaitForSeconds(3f);
