@@ -108,9 +108,10 @@ namespace Talking
         }
         public void SendMessageToNetwork()
         {
-            SceneManager.LoadScene("EndScene");
             network.SendAction(3, -1, message);
-            network.InternetQuit();   
+            network.InternetQuit();
+            //SceneManager.LoadScene("EndScene");   
+            StartCoroutine(JumpToEndScene());
         }
 
         private void ZoomToPoint()
@@ -177,6 +178,12 @@ namespace Talking
         public void setMessage(string str)
         {
             message = str;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }

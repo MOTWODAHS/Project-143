@@ -261,7 +261,8 @@ namespace Loving
         {
             network.SendAction(4, -1, sendStr);
             network.InternetQuit();
-            SceneManager.LoadScene("EndScene");
+            //SceneManager.LoadScene("EndScene");
+            StartCoroutine(JumpToEndScene());
         }
 
         public void StartGame()
@@ -294,6 +295,12 @@ namespace Loving
         public void ResetTimer()
         {
             timer = 0f;
+        }
+
+        IEnumerator JumpToEndScene()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("EndScene");
         }
     }
 }
