@@ -71,6 +71,7 @@ namespace Loving {
                 if (pieces.Contains(this))
                 {
                     pieces.Remove(this);
+                    game.RemovePiece(this);
                 }
                 ResetTransform();
             }
@@ -79,6 +80,7 @@ namespace Loving {
                 if (pieces.Contains(this))
                 {
                     pieces.Remove(this);
+                    game.RemovePiece(this);
                 }
                 ResetTransform();
             }
@@ -86,6 +88,7 @@ namespace Loving {
             {
                 placed = true;
                 pieces.Add(this);
+                game.AddPiece(this);
                 OnPieceCountIncrement();
                 game.PlayDropDownSound();
             }

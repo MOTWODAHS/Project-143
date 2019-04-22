@@ -33,6 +33,10 @@ namespace Talking
 
         private const float delay_to_send = 7f;
 
+        private Vector3 anchor = new Vector3(-2.9165f, 6.3208f, 3.75161f);
+
+        private Vector3 anchorToCenter;
+
 
         Bounds bound;
 
@@ -53,10 +57,12 @@ namespace Talking
         [Header("UI")]
         public GameObject endingUI;
         public GameObject UI;
+        public Collider doNotTouch;
 
 
         private void Start()
         {
+            anchorToCenter = Camera.main.transform.position - anchor;
             game = (IGameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
             transitions = new StageTransition[]
             {
@@ -75,7 +81,9 @@ namespace Talking
                     fillInLine.enabled =false;
                     fillInCollider.GetComponent<BoxCollider>().enabled = false;
                     fillInCollider.enabled = false;
-                    keyboard.transform.DOLocalMoveY(-0.83f, 2f);
+                    keyboard.transform.DOLocalMoveY(-0.83f, 2f).OnComplete(()=>{
+                        doNotTouch.enabled = true;
+                    });
                 },
                 () =>
                 {
@@ -117,7 +125,7 @@ namespace Talking
             float horizontalExtent = verticalExtent * Camera.main.aspect;
             float zoomFactor = Mathf.Max(2f * distanceX / horizontalExtent, 2f * distanceY / verticalExtent);
             //Move to the point
-            Vector3 newPosition = new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z);
+            Vector3 newPosition = anchor + anchorToCenter * zoomFactor * 1.2f;
 
             Sequence s = DOTween.Sequence();
 
@@ -125,7 +133,7 @@ namespace Talking
             float newOrthoSize = Camera.main.orthographicSize * zoomFactor * 1.2f;
 
             destinationPoleCollider.enabled =false;
-            s.Append(Camera.main.transform.DOMove(new Vector3(middlePoint.x, middlePoint.y, Camera.main.transform.position.z), 2f));
+            s.Append(Camera.main.transform.DOMove(newPosition, 2f));
             s.Join(Camera.main.DOOrthoSize(newOrthoSize, 2f));
             s.Join(Camera.main.transform.DOScale(newCameraScale, 2f));
             s.Play();
