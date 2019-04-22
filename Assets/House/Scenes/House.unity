@@ -5810,7 +5810,7 @@ MonoBehaviour:
   blueprint: {fileID: 1582132584}
   pencilButtonObj: {fileID: 1421403829}
   addNameTag: {fileID: 769309908}
-  doNotTouch: {fileID: 1118948751}
+  doNotTouch: {fileID: 0}
   altBlueprint: {fileID: 537337894}
   pivot: {fileID: 1092473469}
   altBlueprintAnim: {fileID: 537337896}
@@ -5820,6 +5820,7 @@ MonoBehaviour:
   endUI: {fileID: 1443618609}
   censor: {fileID: 730242794}
   textMeshPro: {fileID: 769309902}
+  confirmButton: {fileID: 1118948747}
   pickedUpSound: {fileID: 420794698}
   dropDownSound: {fileID: 941851535}
   sendObjectToScreen: {fileID: 60492318}
@@ -8962,12 +8963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5609343548dc32a439afef2bc2f40c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1118948751 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 4826364909552085656, guid: f01eae70e211d16478cdeb5c9e42ec26,
-    type: 3}
-  m_PrefabInstance: {fileID: 5657480}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1121039730
 GameObject:
   m_ObjectHideFlags: 0
@@ -11591,15 +11586,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421403829}
-<<<<<<< HEAD
   m_LocalRotation: {x: -0, y: -0, z: 0.007231293, w: 0.99997383}
   m_LocalPosition: {x: -12.94, y: -4.66, z: -0.9}
   m_LocalScale: {x: 1.6308336, y: 1.6308336, z: 1.6308336}
-=======
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.19, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
->>>>>>> master
   m_Children:
   - {fileID: 1237126313}
   - {fileID: 527915622}
