@@ -1003,7 +1003,7 @@ MonoBehaviour:
   flag: 0
   jumpButton: {fileID: 2147287231}
   audioSource: {fileID: 1883627614}
-  trolleyChime: {fileID: 8300000, guid: d864803e746fdd14d801c3dcc66ea82b, type: 3}
+  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
 --- !u!114 &935363184
 MonoBehaviour:
   m_ObjectHideFlags: 0
