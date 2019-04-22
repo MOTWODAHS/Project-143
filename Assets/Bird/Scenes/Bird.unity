@@ -2585,6 +2585,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.3298757
       objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 41.378727
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.80357903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.24990351
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.00926491
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 26.619522
+      objectReference: {fileID: 0}
     - target: {fileID: 8363650874957459466, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
         type: 3}
       propertyPath: m_Mesh
@@ -2616,31 +2641,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 41.378727
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.80357903
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0.24990351
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.00926491
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 26.619522
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e01cf8cd506f7d4d80d5122a6b984e0, type: 3}
@@ -4820,7 +4820,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'The bird isn''t sent to the neighborhood yet.
 
-        Do you want to replay this game?'
+        Do you want to replay this interaction?'
       objectReference: {fileID: 0}
     - target: {fileID: 7984201845685524585, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
@@ -5376,17 +5376,17 @@ PrefabInstance:
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6962289
+      value: 1.437313
       objectReference: {fileID: 0}
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6962289
+      value: 1.437313
       objectReference: {fileID: 0}
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6962289
+      value: 1.437313
       objectReference: {fileID: 0}
     - target: {fileID: 4826364907861412072, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}

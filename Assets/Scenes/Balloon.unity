@@ -10038,7 +10038,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'The Balloon isn''t sent to the neighborhood yet.
 
-        Do you want to replay this game?'
+        Do you want to replay this interaction?'
       objectReference: {fileID: 0}
     - target: {fileID: 7984201845685524585, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}

@@ -2744,17 +2744,17 @@ PrefabInstance:
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.21424071
+      value: 0.2356648
       objectReference: {fileID: 0}
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2887209
+      value: 0.317593
       objectReference: {fileID: 0}
     - target: {fileID: 4826364909755597776, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.321202
+      value: 0.3533222
       objectReference: {fileID: 0}
     - target: {fileID: 4826364909543849729, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
@@ -2775,6 +2775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826364909552085656, guid: f01eae70e211d16478cdeb5c9e42ec26,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826364907861412072, guid: f01eae70e211d16478cdeb5c9e42ec26,
         type: 3}
@@ -3076,11 +3081,6 @@ PrefabInstance:
       propertyPath: tapSound2
       value: 
       objectReference: {fileID: 8300000, guid: ee1be5d13097d4d41a2c8a668246edff, type: 3}
-    - target: {fileID: 4826364909552085656, guid: f01eae70e211d16478cdeb5c9e42ec26,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4826364909552085654, guid: f01eae70e211d16478cdeb5c9e42ec26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f01eae70e211d16478cdeb5c9e42ec26, type: 3}
@@ -6047,6 +6047,36 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 34.2082
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 20.645514
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.8035792
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.545216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.44631985
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.5075056
+      objectReference: {fileID: 0}
     - target: {fileID: 8363650874957459465, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -6080,7 +6110,7 @@ PrefabInstance:
     - target: {fileID: 8363650874957459460, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
         type: 3}
       propertyPath: m_text
-      value: 'The phoneline is not functioning yet.
+      value: 'The phoneline is not functioned yet.
 
         Do you want to back to menu?'
       objectReference: {fileID: 0}
@@ -6173,36 +6203,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 34.2082
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.645514
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.8035792
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0.545216
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.44631985
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363650874930857454, guid: 0e01cf8cd506f7d4d80d5122a6b984e0,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.5075056
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e01cf8cd506f7d4d80d5122a6b984e0, type: 3}
@@ -12437,6 +12437,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.39249343
       objectReference: {fileID: 0}
+    - target: {fileID: 7984201845707180725, guid: c88bc99621c89b44ab23fafda089b6ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7984201844491821516, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -12485,9 +12490,9 @@ PrefabInstance:
     - target: {fileID: 7984201845685524585, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
       propertyPath: m_text
-      value: 'The phoneline is not functioning yet.
+      value: 'The phoneline is not functioned yet.
 
-        Do you want to replay this game?'
+        Do you want to replay this interaction?'
       objectReference: {fileID: 0}
     - target: {fileID: 7984201845707180722, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
@@ -12577,11 +12582,6 @@ PrefabInstance:
     - target: {fileID: 7984201845913305826, guid: c88bc99621c89b44ab23fafda089b6ab,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7984201845707180725, guid: c88bc99621c89b44ab23fafda089b6ab,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
