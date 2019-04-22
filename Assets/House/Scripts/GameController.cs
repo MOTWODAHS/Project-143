@@ -18,7 +18,7 @@ namespace Loving
 
         private string sendStr = "";
 
-        private const float DELAY_TO_SEND = 4.5f;
+        private const float DELAY_TO_SEND = 7.5f;
 
         private const float TIMER_LIMIT = 200f;
 
@@ -260,7 +260,6 @@ namespace Loving
         private void SendInfoToNetwork()
         {
             network.SendAction(4, -1, sendStr);
-            //endUI.SetActive(true);
             network.InternetQuit();
             SceneManager.LoadScene("EndScene");
         }

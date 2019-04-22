@@ -11,7 +11,11 @@ namespace Talking
        
         private void OnBecameInvisible()
         {
-            Debug.Log("Become invisible");
+            Invoke("SendInfoToNetwork", 3f);
+        }
+
+        private void SendInfoToNetwork()
+        {
             game.SendMessageToNetwork();
         }
     }

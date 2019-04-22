@@ -37,12 +37,15 @@ namespace Talking
 
         private Vector3 anchorToCenter;
 
+     
+
 
         Bounds bound;
 
         [Header("Before Picking Up An Pole")]
         public Collider2D destinationPoleCollider;
         public PowerlinePiece powerlinePiece;
+        public GameObject anchorObj;
 
         [Header("Hand")]
         public GameObject hand;
@@ -106,7 +109,6 @@ namespace Talking
         public void SendMessageToNetwork()
         {
             SceneManager.LoadScene("EndScene");
-            Debug.Log("Message Sended To Network!");
             network.SendAction(3, -1, message);
             network.InternetQuit();   
         }
@@ -114,7 +116,7 @@ namespace Talking
         private void ZoomToPoint()
         {
             //Get bounds of the two poles
-            Bounds bounds = powerlinePiece.originPole.GetComponent<Collider2D>().bounds;
+            Bounds bounds = anchorObj.GetComponent<Collider2D>().bounds;
             bounds.Encapsulate(powerlinePiece.destinationPole.GetComponent<Collider2D>().bounds);
             //Calculate middle point
             Vector3 middlePoint = bounds.center;
