@@ -119,79 +119,205 @@ namespace Loving
                 },
                 () =>
                 {
-                    nameTagComposite.SetActive(true);
-                    PlayDropDownSound();
-                    mask1.SetActive(true);
-                    mask2.SetActive(true);
-                    mask3.SetActive(true);
-                    background.SetActive(false);
-                    doneButton.SetActive(false);
-                },
-                () =>
-                {
-                    doneButton.SetActive(false);
-                    enterName.transform.DOMoveY(-4f, 2f);
-                    nameTagPos = nameTag.transform.position;
-                    nameTagScale = nameTag.transform.localScale;
-                    nameTagRotation = nameTag.transform.rotation;
-                    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
-                    nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
-                    nameTag.transform.DORotate(new Vector3(0, 0, 0), 2f);
-                    foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
-                    {
-                        collider.enabled = false;
-                    }
-                    addNameTag.enabled = true;
-                },
-                () =>
-                {
-                    UI.SetActive(false);
-                    //ResetNameTag
-                    nameTag.transform.localScale = nameTagScale;
-                    enterName.transform.DOMoveY(-13f,1f);
-                    enterName.SetActive(false);
-                    nameTag.transform.position = nameTagPos;
-                    nameTag.transform.rotation = nameTagRotation;
-
-                    string text = censor.CensorText( textMeshPro.text);
-                    print("text is " + text);
-                    text = text.Replace("*", "");
-                    print("text is " + text);
-                    textMeshPro.GetComponent<TextInputField>().enabled =false;
-                    textMeshPro.text = text;
-                    
-                    
-                    //Lighten Up Window
-                    foreach(PuzzlePiece o in DoorWindowPiece.pieces)
-                    {
+                   doneButton.SetActive(false);
+                   foreach(PuzzlePiece o in DoorWindowPiece.pieces)
+                   {
                         GameObject firstChild = o.GetComponentsInChildren<Transform>()[1].gameObject;
                         if (firstChild.name.Equals("grey"))
                         {
                             firstChild.GetComponent<SpriteRenderer>().color = new Color(0.97f, 0.84f, 0.05f);
                         }
-                    }
+                   }
+                   foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
+                   {
+                        collider.enabled = false;
+                   }
 
-                    StartCoroutine(SaveHouseTexture());
-                    Camera.main.DOOrthoSize(11f, 5f);
-                    Camera.main.transform.DOScale(1.57f, 5f);
-                    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
-                    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
-                    altBlueprint.SetActive(true);
-                    altBlueprint.GetComponent<AudioSource>().Play();
-                    pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
-                    {
-                        StartCoroutine(PlayEndingSound());
-                        altBlueprintAnim.Play("ending");
-                        envelopeAnim.Play("ending");
-                        Invoke("SendInfoToNetwork", DELAY_TO_SEND);
+                   StartCoroutine(SaveHouseTexture());
+                   Camera.main.DOOrthoSize(11f, 5f);
+                   Camera.main.transform.DOScale(1.57f, 5f);
+                   Camera.main.transform.DOMoveY(-6.5f, 5f);
+                   Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
+                   Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
+                   altBlueprint.SetActive(true);
+                   altBlueprint.GetComponent<AudioSource>().Play();
+                   pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
+                   {
+                       StartCoroutine(PlayEndingSound());
+                       altBlueprintAnim.Play("ending");
+                       envelopeAnim.Play("ending");
+                   });
+                   Invoke("ShowNameTag", 4f);
+                },
+                () =>
+                {
+                    enterName.transform.DOMoveY(-30f, 1.5f).OnComplete(() => {
+                        SendInfoToNetwork();
                     });
-                   
+                    envelopeAnim.Play("ending_part2");
                 },
                 () =>
                 {
 
                 }
+
+
+                //() =>
+                //{
+                //    nameTagComposite.SetActive(true);
+                //    PlayDropDownSound();
+                //    mask1.SetActive(true);
+                //    mask2.SetActive(true);
+                //    mask3.SetActive(true);
+                //    background.SetActive(false);
+                //    doneButton.SetActive(false);
+                //},
+                //() =>
+                //{
+                //    doneButton.SetActive(false);
+                //    enterName.transform.DOMoveY(-4f, 2f);
+                //    nameTagPos = nameTag.transform.position;
+                //    nameTagScale = nameTag.transform.localScale;
+                //    nameTagRotation = nameTag.transform.rotation;
+                //    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
+                //    nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
+                //    nameTag.transform.DORotate(new Vector3(0, 0, 0), 2f);
+                //    foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
+                //    {
+                //        collider.enabled = false;
+                //    }
+                //    addNameTag.enabled = true;
+                //},
+                //() =>
+                //{
+                //    UI.SetActive(false);
+                //    //ResetNameTag
+                //    nameTag.transform.localScale = nameTagScale;
+                //    enterName.transform.DOMoveY(-13f,1f);
+                //    enterName.SetActive(false);
+                //    nameTag.transform.position = nameTagPos;
+                //    nameTag.transform.rotation = nameTagRotation;
+
+                //    string text = censor.CensorText( textMeshPro.text);
+                //    print("text is " + text);
+                //    text = text.Replace("*", "");
+                //    print("text is " + text);
+                //    textMeshPro.GetComponent<TextInputField>().enabled =false;
+                //    textMeshPro.text = text;
+                    
+                    
+                //    //Lighten Up Window
+                //    foreach(PuzzlePiece o in DoorWindowPiece.pieces)
+                //    {
+                //        GameObject firstChild = o.GetComponentsInChildren<Transform>()[1].gameObject;
+                //        if (firstChild.name.Equals("grey"))
+                //        {
+                //            firstChild.GetComponent<SpriteRenderer>().color = new Color(0.97f, 0.84f, 0.05f);
+                //        }
+                //    }
+
+                //    StartCoroutine(SaveHouseTexture());
+                //    Camera.main.DOOrthoSize(11f, 5f);
+                //    Camera.main.transform.DOScale(1.57f, 5f);
+                //    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
+                //    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
+                //    altBlueprint.SetActive(true);
+                //    altBlueprint.GetComponent<AudioSource>().Play();
+                //    pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
+                //    {
+                //        StartCoroutine(PlayEndingSound());
+                //        altBlueprintAnim.Play("ending");
+                //        envelopeAnim.Play("ending");
+                //        Invoke("SendInfoToNetwork", DELAY_TO_SEND);
+                //    });
+                   
+                //},
+                //() =>
+                //{
+
+                //}                //() =>
+                //{
+                //    nameTagComposite.SetActive(true);
+                //    PlayDropDownSound();
+                //    mask1.SetActive(true);
+                //    mask2.SetActive(true);
+                //    mask3.SetActive(true);
+                //    background.SetActive(false);
+                //    doneButton.SetActive(false);
+                //},
+                //() =>
+                //{
+                //    doneButton.SetActive(false);
+                //    enterName.transform.DOMoveY(-4f, 2f);
+                //    nameTagPos = nameTag.transform.position;
+                //    nameTagScale = nameTag.transform.localScale;
+                //    nameTagRotation = nameTag.transform.rotation;
+                //    nameTag.transform.DOMove(new Vector3(-0.2807f, -1.7288f, 0f), 2f);
+                //    nameTag.transform.DOScale(new Vector3(2.2f, 2.2f, 2.2f), 2f);
+                //    nameTag.transform.DORotate(new Vector3(0, 0, 0), 2f);
+                //    foreach(Collider2D collider in blueprint.GetComponentsInChildren<Collider2D>())
+                //    {
+                //        collider.enabled = false;
+                //    }
+                //    addNameTag.enabled = true;
+                //},
+                //() =>
+                //{
+                //    UI.SetActive(false);
+                //    //ResetNameTag
+                //    nameTag.transform.localScale = nameTagScale;
+                //    enterName.transform.DOMoveY(-13f,1f);
+                //    enterName.SetActive(false);
+                //    nameTag.transform.position = nameTagPos;
+                //    nameTag.transform.rotation = nameTagRotation;
+
+                //    string text = censor.CensorText( textMeshPro.text);
+                //    print("text is " + text);
+                //    text = text.Replace("*", "");
+                //    print("text is " + text);
+                //    textMeshPro.GetComponent<TextInputField>().enabled =false;
+                //    textMeshPro.text = text;
+                    
+                    
+                //    //Lighten Up Window
+                //    foreach(PuzzlePiece o in DoorWindowPiece.pieces)
+                //    {
+                //        GameObject firstChild = o.GetComponentsInChildren<Transform>()[1].gameObject;
+                //        if (firstChild.name.Equals("grey"))
+                //        {
+                //            firstChild.GetComponent<SpriteRenderer>().color = new Color(0.97f, 0.84f, 0.05f);
+                //        }
+                //    }
+
+                //    StartCoroutine(SaveHouseTexture());
+                //    Camera.main.DOOrthoSize(11f, 5f);
+                //    Camera.main.transform.DOScale(1.57f, 5f);
+                //    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("Default"));
+                //    Camera.main.cullingMask &=  ~(1 << LayerMask.NameToLayer("InImageRender"));
+                //    altBlueprint.SetActive(true);
+                //    altBlueprint.GetComponent<AudioSource>().Play();
+                //    pivot.DORotate(new Vector3(0, 180, 0), 2f).OnComplete(() =>
+                //    {
+                //        StartCoroutine(PlayEndingSound());
+                //        altBlueprintAnim.Play("ending");
+                //        envelopeAnim.Play("ending");
+                //        Invoke("SendInfoToNetwork", DELAY_TO_SEND);
+                //    });
+                   
+                //},
+                //() =>
+                //{
+
+                //}
             };
+        }
+
+        private void ShowNameTag()
+        {
+            nameTagComposite.SetActive(true);
+            addNameTag.enabled = true;
+            PlayDropDownSound();
+            enterName.transform.DOMoveY(-12.5f, 2f);
         }
 
         [ContextMenu("Send House")]
@@ -229,7 +355,6 @@ namespace Loving
             yield return new WaitForSeconds(1f);
 
             sounds[1].Stop();
-            sounds[2].Play();
         }
 
         private void Update()
@@ -243,8 +368,13 @@ namespace Loving
 
         private void SendInfoToNetwork()
         {
-            network.SendAction(4, -1, sendStr);
-            //endUI.SetActive(true);
+            string text = censor.CensorText(textMeshPro.text);
+            text = text.Replace("*", "");
+            textMeshPro.GetComponent<TextInputField>().enabled = false;
+            textMeshPro.text = text;
+            print("text length is: " + text.Length);
+            print("sendStr is: " + text + sendStr);
+            network.SendAction(4, text.Length, text + sendStr);
             network.InternetQuit();
             SceneManager.LoadScene("EndScene");
         }
