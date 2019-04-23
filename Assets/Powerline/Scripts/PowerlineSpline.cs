@@ -58,7 +58,7 @@ namespace Talking
                 this.message.transform.position = GetComponent<BGCcMath>().CalcPositionAndTangentByDistance(distance, out tangent);
                 this.message.transform.position = new Vector3(this.message.transform.position.x, this.message.transform.position.y, this.message.transform.position.z - 7);
                 //this is a version for 2D. For 3D, comment this line and uncomment the next one
-                distance += 3 * Time.deltaTime;
+                distance += 4 * Time.deltaTime;
                 yield return null;
             }
             StartCoroutine(SendTextToNextLine());
@@ -78,7 +78,7 @@ namespace Talking
                 this.message.transform.position = math.CalcPositionAndTangentByDistance(distance, out tangent);
                 this.message.transform.position = new Vector3(this.message.transform.position.x, this.message.transform.position.y, this.message.transform.position.z - 7);
                 //this is a version for 2D. For 3D, comment this line and uncomment the next one
-                distance += 3 * Time.deltaTime;
+                distance += 4 * Time.deltaTime;
                 yield return null;
             }
         }

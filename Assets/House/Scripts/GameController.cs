@@ -160,6 +160,8 @@ namespace Loving
                         SendInfoToNetwork();
                     });
                     envelopeAnim.Play("ending_part2");
+                    sendObjectToScreen.Play();
+                    envelopeAnim.GetComponents<AudioSource>()[2].Play();
                 },
                 () =>
                 {
@@ -212,18 +214,15 @@ namespace Loving
             RenderTexture.active = null;
         }
 
+
         private IEnumerator PlayEndingSound()
         {
-            sendObjectToScreen.Play();
             AudioSource[] sounds = envelopeAnim.GetComponents<AudioSource>();
             sounds[0].Play();
             yield return new WaitForSeconds(1.5f);
 
             sounds[0].Stop();
             sounds[1].Play();
-            yield return new WaitForSeconds(1f);
-
-            sounds[1].Stop();
         }
 
         private void Update()
