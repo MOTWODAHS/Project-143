@@ -11,11 +11,6 @@ namespace Talking
        
         private void OnBecameInvisible()
         {
-            Invoke("SendInfoToNetwork", 3f);
-        }
-
-        private void SendInfoToNetwork()
-        {
             game.SendMessageToNetwork();
         }
     }
