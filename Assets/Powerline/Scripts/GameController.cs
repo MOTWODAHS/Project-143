@@ -127,6 +127,7 @@ namespace Talking
             float verticalExtent = 2f * Camera.main.orthographicSize;
             float horizontalExtent = verticalExtent * Camera.main.aspect;
             float zoomFactor = Mathf.Max(2f * distanceX / horizontalExtent, 2f * distanceY / verticalExtent);
+            zoomFactor = Mathf.Min(zoomFactor, 1 / 1.2f);
             //Move to the point
             Vector3 newPosition = anchor + anchorToCenter * zoomFactor * 1.2f;
 
@@ -178,6 +179,11 @@ namespace Talking
         public void setMessage(string str)
         {
             message = str;
+        }
+
+        public string GetMessage()
+        {
+            return message;
         }
 
         IEnumerator JumpToEndScene()
