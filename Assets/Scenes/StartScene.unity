@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300584020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4520245, y: -0.24, z: 5.9140625}
+  m_LocalPosition: {x: -6.4520245, y: -1.09, z: 5.9140625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -477,16 +477,23 @@ MonoBehaviour:
     curve: {fileID: 300584022}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 9.207052, y: -2.2372336, z: -5.9140625}
+    positionLocal: {x: 9.207052, y: -2.199357, z: -5.9140625}
     controlFirstLocal: {x: -0.39324188, y: 0.040438414, z: 0}
     controlSecondLocal: {x: 0.39324188, y: -0.040438414, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 300584022}
     fieldsValues: []
+  - controlType: 0
+    positionLocal: {x: 10.66297, y: -2.1189456, z: -5.9140625}
+    controlFirstLocal: {x: -0.06349055, y: -0.00452049, z: 0}
+    controlSecondLocal: {x: 0.06349055, y: 0.00452049, z: 0}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 300584022}
+    fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 10.476924, y: -2.1801414, z: -5.9140625}
-    controlFirstLocal: {x: -0.2800932, y: -0.024717808, z: 0}
-    controlSecondLocal: {x: 0.2800932, y: 0.024717808, z: -0}
+    positionLocal: {x: 12.222025, y: -1.8378766, z: -5.9140625}
+    controlFirstLocal: {x: -0.57216644, y: -0.06403613, z: -0}
+    controlSecondLocal: {x: 0.57216644, y: 0.06403613, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 300584022}
     fieldsValues: []
@@ -1002,8 +1009,9 @@ MonoBehaviour:
   ClickHand: {fileID: 1489110765}
   flag: 0
   jumpButton: {fileID: 2147287231}
+  menuButton: {fileID: 0}
   audioSource: {fileID: 1883627614}
-  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
+  trolleyChime: {fileID: 8300000, guid: d864803e746fdd14d801c3dcc66ea82b, type: 3}
 --- !u!114 &935363184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4647199415261951646, guid: c9aa84017df191443bb3351ead8cc516,
         type: 3}
@@ -2390,7 +2398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883627613}
   m_LocalRotation: {x: -0, y: -0, z: 0.11315275, w: 0.9935776}
-  m_LocalPosition: {x: -7.02, y: -2.696, z: 0}
+  m_LocalPosition: {x: -7.02, y: -3.546, z: 0}
   m_LocalScale: {x: 0.35607934, y: 0.35607934, z: 0.35607934}
   m_Children:
   - {fileID: 935363180}
@@ -3107,7 +3115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147287231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.18, y: -2.71, z: 0}
+  m_LocalPosition: {x: 5.08, y: -1.01, z: 0}
   m_LocalScale: {x: 0.2823335, y: 0.2823335, z: 0.2823335}
   m_Children:
   - {fileID: 1330490310}
