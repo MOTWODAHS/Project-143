@@ -55,8 +55,8 @@ namespace Talking
             gesture.TransformStarted += transformStartedHandler;
             gesture.TransformCompleted += transformCompletedHandler;
             audios = GetComponents<AudioSource>();
-            originPos = this.transform.position;
-            originRotation = this.transform.rotation;
+            originPos = transform.position;
+            originRotation = transform.rotation;
         }
 
         private void InitializePowerline(GameObject interactableLine)
@@ -113,13 +113,13 @@ namespace Talking
 
         private void Drop()
         {
-            if (Math.Abs(destinationPole.position.x - originPole.position.x) < 2)
+            if (Math.Abs(destinationPole.position.x - originPole.position.x) < 2.5f)
             {
                 ResetTransform();
                 firstHand.SetActive(true);
                 return;
             }
-            if (destinationPole.position.x - originPole.position.x > 0)
+            if (destinationPole.position.x - originPole.position.x > 0f)
             {
                 interactableLine = interactableLineRight;
                 powerlines = GameObject.FindGameObjectsWithTag("PowerlineRight");

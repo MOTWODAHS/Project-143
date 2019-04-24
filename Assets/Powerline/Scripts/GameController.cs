@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
@@ -35,10 +34,7 @@ namespace Talking
 
         private Vector3 anchor = new Vector3(-2.9165f, 6.3208f, 3.75161f);
 
-        private Vector3 anchorToCenter;
-
-     
-
+        private Vector3 anchorToCenter;  
 
         Bounds bound;
 
@@ -130,6 +126,7 @@ namespace Talking
             zoomFactor = Mathf.Min(zoomFactor, 1 / 1.2f);
             //Move to the point
             Vector3 newPosition = anchor + anchorToCenter * zoomFactor * 1.2f;
+            newPosition = new Vector3(newPosition.x, newPosition.y, Camera.main.transform.position.z);
 
             Sequence s = DOTween.Sequence();
 

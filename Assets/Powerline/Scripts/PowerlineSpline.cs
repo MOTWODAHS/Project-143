@@ -44,6 +44,7 @@ namespace Talking
                 message.transform.position = originPole.transform.position;
                 message.transform.localScale *= zoomFactor;
                 StartCoroutine(SendText());
+                StartCoroutine(StartTimer());
             }
         }
 
@@ -83,6 +84,12 @@ namespace Talking
             }
         }
 
+        private IEnumerator StartTimer()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("EndScene");
+        }
+
         public void EnableFilling()
         {
             //StartCoroutine(GetComponent<Transition>().FadeIn(0.5f, 1f));
@@ -92,9 +99,9 @@ namespace Talking
         // Start is called before the first frame update
         void OnEnable()
         {
-            Debug.Log("On enabling Poweling spline");
+            Debug.Log("Enabling Powerline");
             game = (GameController)GameObject.FindGameObjectWithTag("gameController").GetComponent(typeof(IGameController));
-            transform.position = game.getBound().center;
+            transform.position = game.getBound().center + new Vector3(0f, 1f, 0f);
 
             //Scale
             float boundX = game.getBound().extents.x;
@@ -102,7 +109,7 @@ namespace Talking
 
             GetComponent<Collider2D>().enabled = true;
             Bounds thisBound = GetComponent<Collider2D>().bounds;
-            zoomFactor = Mathf.Max(0.5f * boundX / thisBound.extents.x, (0.5f * boundY / thisBound.extents.y));
+            zoomFactor = Mathf.Max(0.4f * boundX / thisBound.extents.x, (0.4f * boundY / thisBound.extents.y));
 
             //Set the scale
             transform.localScale *= zoomFactor;
