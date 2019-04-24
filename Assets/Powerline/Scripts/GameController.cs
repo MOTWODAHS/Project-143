@@ -106,7 +106,7 @@ namespace Talking
         {
             network.SendAction(3, -1, message);
             network.InternetQuit();
-            //SceneManager.LoadScene("EndScene");   
+            print(message);   
             StartCoroutine(JumpToEndScene());
         }
 

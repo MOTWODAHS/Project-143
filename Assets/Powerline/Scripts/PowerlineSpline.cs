@@ -88,6 +88,7 @@ namespace Talking
         {
             yield return new WaitForSeconds(5f);
             SceneManager.LoadScene("EndScene");
+            game.SendMessageToNetwork();
         }
 
         public void EnableFilling()
