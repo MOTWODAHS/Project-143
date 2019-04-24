@@ -1289,49 +1289,49 @@ MonoBehaviour:
   closed: 0
   points:
   - controlType: 1
-    positionLocal: {x: -3.8899999, y: -2.3, z: -5.9140625}
-    controlFirstLocal: {x: -0.67376757, y: -0.11313105, z: -0}
-    controlSecondLocal: {x: 0.67376757, y: 0.11313105, z: 0}
+    positionLocal: {x: -6, y: -2.0500002, z: -5.9140625}
+    controlFirstLocal: {x: -0.840106, y: -0.20269763, z: -0}
+    controlSecondLocal: {x: 0.840106, y: 0.20269763, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: -2.1290107, y: -2.0294046, z: -5.9140625}
-    controlFirstLocal: {x: -0.38217258, y: -0.0136835575, z: 0}
-    controlSecondLocal: {x: 0.38217258, y: 0.0136835575, z: -0}
+    positionLocal: {x: -2.1290107, y: -1.3580331, z: -5.9140625}
+    controlFirstLocal: {x: -0.51012516, y: -0.039274454, z: -0}
+    controlSecondLocal: {x: 0.51012516, y: 0.039274454, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: -0.7925881, y: -2.0963502, z: -5.9140625}
-    controlFirstLocal: {x: -0.3305057, y: 0.049556494, z: -0}
-    controlSecondLocal: {x: 0.3305057, y: -0.049556494, z: 0}
+    positionLocal: {x: -0.7925881, y: -1.4249767, z: -5.9140625}
+    controlFirstLocal: {x: -0.4200722, y: 0.08794236, z: -0}
+    controlSecondLocal: {x: 0.4200722, y: -0.08794236, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 2.658766, y: -2.6421485, z: -5.9140625}
-    controlFirstLocal: {x: -0.8502543, y: 0.1253519, z: 0}
-    controlSecondLocal: {x: 0.8502543, y: -0.1253519, z: -0}
+    positionLocal: {x: 2.658766, y: -2.3339534, z: -5.9140625}
+    controlFirstLocal: {x: -0.8630495, y: 0.07417059, z: -0}
+    controlSecondLocal: {x: 0.8630495, y: -0.07417059, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 4.6686416, y: -2.5853245, z: -5.9140625}
-    controlFirstLocal: {x: -0.7831178, y: -0.15905905, z: 0}
-    controlSecondLocal: {x: 0.7831178, y: 0.15905905, z: -0}
+    positionLocal: {x: 4.6686416, y: -2.2976747, z: -5.9140625}
+    controlFirstLocal: {x: -0.77032256, y: -0.1462636, z: 0}
+    controlSecondLocal: {x: 0.77032256, y: 0.1462636, z: -0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 6.6210027, y: -2.1329603, z: -5.9140625}
-    controlFirstLocal: {x: -0.7031312, y: -0.051394463, z: -0}
-    controlSecondLocal: {x: 0.7031312, y: 0.051394463, z: 0}
+    positionLocal: {x: 7.355041, y: -1.7226607, z: -5.9140625}
+    controlFirstLocal: {x: -0.90230703, y: -0.024837732, z: -0}
+    controlSecondLocal: {x: 0.90230703, y: 0.024837732, z: 0}
     pointTransform: {fileID: 0}
     curve: {fileID: 1055488169}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: 11.169329, y: -2.4197166, z: -5.9140625}
+    positionLocal: {x: 11.16001, y: -2.191749, z: -5.9140625}
     controlFirstLocal: {x: -0.4222355, y: 0.056889296, z: 0}
     controlSecondLocal: {x: 0.4222355, y: -0.056889296, z: -0}
     pointTransform: {fileID: 0}
@@ -1360,7 +1360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055488165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.3, z: 5.9140625}
+  m_LocalPosition: {x: 0.03, y: -0.89, z: 5.9140625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2784,7 +2784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070761976}
   m_LocalRotation: {x: -0, y: -0, z: 0.10646558, w: 0.9943164}
-  m_LocalPosition: {x: -3.86, y: -2, z: 0}
+  m_LocalPosition: {x: -5.97, y: -2.94, z: 0}
   m_LocalScale: {x: 0.35607934, y: 0.35607934, z: 0.35607934}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2859,7 +2859,7 @@ MonoBehaviour:
   jumpButton: {fileID: 528221075}
   menuButton: {fileID: 2050454315}
   audioSource: {fileID: 2070761980}
-  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
+  trolleyChime: {fileID: 8300000, guid: d864803e746fdd14d801c3dcc66ea82b, type: 3}
 --- !u!82 &2070761980
 AudioSource:
   m_ObjectHideFlags: 0

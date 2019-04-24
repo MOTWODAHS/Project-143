@@ -34,13 +34,13 @@ public class TrolleyStart : TapableObject
     {
         if(flag)
         {
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(18);
             jumpButton.SetActive(true);
             menuButton.SetActive(true);
         }
         else
         {
-            yield return new WaitForSeconds(12);
+            yield return new WaitForSeconds(16);
             jumpButton.SetActive(true);
         }
     }
@@ -65,14 +65,14 @@ public class TrolleyStart : TapableObject
         {
             foreach(GameObject word in ScreenWord)
             {
-                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,5f));
+                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,7f));
             }
         }
         else
         {
             foreach(GameObject word in ScreenWord)
             {
-                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,3f));
+                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,4f));
             }
         }
     }
