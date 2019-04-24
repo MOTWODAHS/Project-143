@@ -87,6 +87,10 @@ namespace Singing
 
         [Header("Keyboard")]
         public GameObject keyboard;
+
+        [Header("Ending")]
+        public GameObject gradient;
+        public TextMeshProUGUI prompt;
  
     
         #endregion
@@ -316,9 +320,11 @@ namespace Singing
                     note.GetComponent<SpriteRenderer>().DOFade(0f, 0.15f).SetLoops(2, LoopType.Yoyo);
                 }
                 playingSong = false;
-
+               
                 if (gameStage == 3)
                 {
+                    gradient.transform.DOMoveY(15f, 5f);
+                    StartCoroutine(FadeOutPrompt());
                     Invoke("SendBird", SEND_DELAY);
                     UI.SetActive(false);
                     foreach (Animator animator in birds.GetComponentsInChildren<Animator>())
@@ -438,6 +444,17 @@ namespace Singing
                 child.GetComponent<SpriteRenderer>().DOFade(1f, 1f);
                 child.GetComponent<Collider2D>().enabled = true;
             }
+        }
+
+        private IEnumerator FadeOutPrompt()
+        {
+            float startTime = Time.time;
+            while (Time.time - startTime < 1f)
+            {
+                prompt.alpha = 1 - (Time.time - startTime);
+                yield return null;
+            }
+            prompt.alpha = 0;
         }
 
         public int GetGameStage()
