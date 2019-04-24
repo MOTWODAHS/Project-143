@@ -16,6 +16,14 @@ namespace Loving
             thisBound = GetComponent<CircleCollider2D>().bounds;
         }
 
+        protected override void transformStartedHandler(object sender, EventArgs e)
+        {
+            print("Transform has started");
+            base.transformStartedHandler(sender, e);
+            game.selectedColor = color;
+            game.colorSelected = true;
+        }
+
         protected override void transformCompletedHandler(object sender, EventArgs e)
         {
             transformer.enabled = false;
