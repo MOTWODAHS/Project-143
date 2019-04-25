@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using TouchScript.Behaviors;
+using TouchScript.Gestures.TransformGestures;
 
 namespace Loving {
     class DoorWindowPiece : PuzzlePiece
@@ -12,6 +12,8 @@ namespace Loving {
         public static List<GameObject> windowLight = new List<GameObject>();
 
         private const int MAX_CAP = 20;
+
+        private Vector3 startLocation;
 
         protected void OnPieceCountIncrement()
         {
@@ -46,6 +48,12 @@ namespace Loving {
             pieces = new List<PuzzlePiece>();
             bound = GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().bounds;
             bound.Encapsulate(GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().bounds);
+        }
+
+        protected override void transformStartedHandler(object sender, EventArgs e)
+        {
+            base.transformStartedHandler(sender, e);
+            startLocation = transform.position;
         }
 
         protected override void transformCompletedHandler(object sender, EventArgs e)
@@ -91,6 +99,11 @@ namespace Loving {
                 game.AddPiece(this);
                 OnPieceCountIncrement();
                 game.PlayDropDownSound();
+            }
+
+            if (placed && Vector3.Distance(transform.position, startLocation) < 0.1f)
+            {
+                GetComponent<FillInColor>().FillColor(game.selectedColor);
             }
         }
 

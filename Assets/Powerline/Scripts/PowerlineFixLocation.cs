@@ -23,9 +23,9 @@ public class PowerlineFixLocation : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -y_limit, transform.position.z);
         }
 
-        if (transform.position.y > (y_limit - 1.5f))
+        if (transform.position.y > (y_limit - 2.5f))
         {
-            transform.position = new Vector3(transform.position.x, y_limit - 1.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, y_limit - 2.5f, transform.position.z);
         }
 
     }

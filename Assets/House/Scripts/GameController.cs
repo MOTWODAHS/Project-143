@@ -236,8 +236,7 @@ namespace Loving
 
         private void SendInfoToNetwork()
         {
-            string text = censor.CensorText(textMeshPro.text);
-            text = text.Replace("*", "");
+            string text = textMeshPro.text;
             textMeshPro.GetComponent<TextInputField>().enabled = false;
             textMeshPro.text = text;
             print("text length is: " + text.Length);
