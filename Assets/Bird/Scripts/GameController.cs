@@ -323,7 +323,7 @@ namespace Singing
                
                 if (gameStage == 3)
                 {
-                    gradient.transform.DOMoveY(15f, 5f);
+                    //gradient.transform.DOMoveY(15f, 5f);
                     StartCoroutine(FadeOutPrompt());
                     Invoke("SendBird", SEND_DELAY);
                     UI.SetActive(false);
@@ -464,7 +464,7 @@ namespace Singing
 
         IEnumerator JumpToEndScene()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(8f);
             SceneManager.LoadScene("EndScene");
         }
     }

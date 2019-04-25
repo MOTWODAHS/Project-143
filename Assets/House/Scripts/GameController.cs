@@ -45,6 +45,7 @@ namespace Loving
         public GameObject UI;
 
         [Header("Stage1")]
+        public GameObject hand;
         public GameObject mask1;
         public GameObject doorComponent;
         public GameObject windowComponent;
@@ -92,10 +93,11 @@ namespace Loving
             {
                 () =>
                 {
-
+                    hand.SetActive(false);
                 },
                 () =>
                 {
+                    
                     if (mask1 != null){
                         mask1.SetActive(false);
                         foreach(Collider2D c in doorComponent.GetComponentsInChildren<Collider2D>())
@@ -281,7 +283,7 @@ namespace Loving
 
         IEnumerator JumpToEndScene()
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(8f);
             SceneManager.LoadScene("EndScene");
         }
     }
