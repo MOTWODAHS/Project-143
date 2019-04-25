@@ -17,6 +17,8 @@ public class TrolleyStart : TapableObject
 
     public AudioClip trolleyChime;
 
+    public BalloonSpawner balloonSpawner;
+
     void Start()
     {
         if(flag)
@@ -40,6 +42,7 @@ public class TrolleyStart : TapableObject
         }
         else
         {
+            balloonSpawner.createRandomBalloon();
             yield return new WaitForSeconds(16);
             jumpButton.SetActive(true);
         }
