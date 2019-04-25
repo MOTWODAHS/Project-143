@@ -27,7 +27,7 @@ namespace Loving
         protected override void transformCompletedHandler(object sender, EventArgs e)
         {
             transformer.enabled = false;
-            base.ToggleScale();
+            ToggleScale();
             GetComponent<CircleCollider2D>().enabled = false;
 
             GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = false;

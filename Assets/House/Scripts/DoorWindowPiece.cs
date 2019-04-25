@@ -25,13 +25,20 @@ namespace Loving {
 
         protected bool Overlap()
         {
-            foreach (PuzzlePiece piece in pieces)
+            GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = false;
+            GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = false;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 0);
+            if (hit.collider != null && hit.collider.gameObject != this.gameObject && hit.collider.GetComponent<DoorWindowPiece>() != null)
             {
-                if (!piece.Equals(this) && piece.GetComponent<BoxCollider2D>().bounds.Intersects(thisBound))
-                {
+                if (hit.collider.GetComponent<DoorWindowPiece>().placed){
+                    print("Overlapped!");
                     return true;
                 }
             }
+
+            GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = true;
+            GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = true;
+
             return false;
         }
 
@@ -39,7 +46,7 @@ namespace Loving {
         {
             base.Start();
             position = GetComponent<Transform>().position;
-            thisBound = GetComponent<BoxCollider2D>().bounds;
+            thisBound = GetComponent<Collider2D>().bounds;
         }
 
         protected override void OnEnable()
@@ -66,41 +73,23 @@ namespace Loving {
             int placementType = PlacementType();
             bool overlap = Overlap();
 
-            if (overlap)
-            {
-                ResetTransform();
-            }
-            if (placementType == 1 && pieces.Count + 1 > MAX_CAP && !pieces.Contains(this))
-            {
-                ResetTransform();
-            }
-            else if (placementType == 0)
-            {
-                if (pieces.Contains(this))
-                {
-                    pieces.Remove(this);
-                    game.RemovePiece(this);
-                }
-                ResetTransform();
-            }
-            if (placementType == -1 && !overlap)
-            {
-                if (pieces.Contains(this))
-                {
-                    pieces.Remove(this);
-                    game.RemovePiece(this);
-                }
-                ResetTransform();
-            }
-            else if (placementType == 1 && pieces.Count + 1 <= MAX_CAP && !pieces.Contains(this) && !overlap)
+            if (placementType == 1 && !overlap)
             {
                 placed = true;
                 pieces.Add(this);
                 game.AddPiece(this);
                 OnPieceCountIncrement();
                 game.PlayDropDownSound();
+            } else {
+                if (pieces.Contains(this))
+                {
+                    pieces.Remove(this);
+                    game.RemovePiece(this);
+                }
+                ResetTransform();
             }
 
+            print("This piece is placed: " + placed);
             if (placed && Vector3.Distance(transform.position, startLocation) < 0.1f)
             {
                 GetComponent<FillInColor>().FillColor(game.selectedColor);

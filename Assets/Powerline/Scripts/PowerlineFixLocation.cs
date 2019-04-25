@@ -8,9 +8,9 @@ public class PowerlineFixLocation : MonoBehaviour
     private const float y_limit = 4f;
     void FixedUpdate()
     {
-        if(transform.position.x < -x_limit )
+        if(transform.position.x < -2f )
         {
-            transform.position = new Vector3(-x_limit, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-2f, transform.position.y, transform.position.z);
         }
 
         if(transform.position.x > x_limit)

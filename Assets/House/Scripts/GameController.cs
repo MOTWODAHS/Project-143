@@ -36,7 +36,7 @@ namespace Loving
 
         private StageTransition[] transitions;
 
-        internal Color selectedColor;
+        internal Color selectedColor = new Color(1, 1, 1);
 
         internal bool colorSelected = false;
 
@@ -107,9 +107,7 @@ namespace Loving
                             c.enabled = true;
                         }
                     }
-                },
-                () =>
-                {
+
                     if (mask2 != null)
                     {
                         mask2.SetActive(false);
@@ -120,6 +118,9 @@ namespace Loving
                         doneButton.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
                         doneButton.GetComponent<Collider2D>().enabled = true;
                     }
+                },
+                () =>
+                {
                 },
                 () =>
                 {
