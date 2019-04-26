@@ -87,7 +87,6 @@ namespace Talking
         private IEnumerator StartTimer()
         {
             yield return new WaitForSeconds(5f);
-            SceneManager.LoadScene("EndScene");
             game.SendMessageToNetwork();
         }
 
