@@ -24,6 +24,6 @@ public class BalloonSpawner : MonoBehaviour
     IEnumerator SendBalloons(int num)
     {
         yield return new WaitForSeconds(11f);
-        networkingController.SendAction(1,num,"WELCOME");
+        networkingController.SendAction(5,num,"WELCOME");
     }
 }
