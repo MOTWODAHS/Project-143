@@ -59,7 +59,7 @@ namespace Talking
                 this.message.transform.position = GetComponent<BGCcMath>().CalcPositionAndTangentByDistance(distance, out tangent);
                 this.message.transform.position = new Vector3(this.message.transform.position.x, this.message.transform.position.y, this.message.transform.position.z - 7);
                 //this is a version for 2D. For 3D, comment this line and uncomment the next one
-                distance += 4 * Time.deltaTime;
+                distance += 4 * zoomFactor * Time.deltaTime;
                 yield return null;
             }
             StartCoroutine(SendTextToNextLine());
@@ -79,7 +79,7 @@ namespace Talking
                 this.message.transform.position = math.CalcPositionAndTangentByDistance(distance, out tangent);
                 this.message.transform.position = new Vector3(this.message.transform.position.x, this.message.transform.position.y, this.message.transform.position.z - 7);
                 //this is a version for 2D. For 3D, comment this line and uncomment the next one
-                distance += 4 * Time.deltaTime;
+                distance += 4 * zoomFactor * Time.deltaTime;
                 yield return null;
             }
         }
@@ -109,7 +109,7 @@ namespace Talking
 
             GetComponent<Collider2D>().enabled = true;
             Bounds thisBound = GetComponent<Collider2D>().bounds;
-            zoomFactor = Mathf.Max(0.4f * boundX / thisBound.extents.x, (0.4f * boundY / thisBound.extents.y));
+            zoomFactor = Mathf.Max(0.6f * boundX / thisBound.extents.x, (0.6f * boundY / thisBound.extents.y));
 
             //Set the scale
             transform.localScale *= zoomFactor;
