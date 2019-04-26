@@ -246,7 +246,7 @@ public class GameControllerv2 : MonoBehaviour
 
     IEnumerator JumpToEndScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(8f);
         SceneManager.LoadScene("EndScene");
     }
 }
