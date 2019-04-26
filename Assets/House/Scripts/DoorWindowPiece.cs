@@ -25,22 +25,39 @@ namespace Loving {
 
         protected bool Overlap()
         {
-            GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = false;
-            GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = false;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 0);
-            if (hit.collider != null && hit.collider.gameObject != this.gameObject && hit.collider.GetComponent<DoorWindowPiece>() != null)
+            print("in overlap");
+
+            foreach (PuzzlePiece piece in pieces)
             {
-                print("inside loop");
-                if (hit.collider.GetComponent<DoorWindowPiece>().placed){
-                    print("Overlapped!");
+                if (!piece.Equals(this) && piece.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()))
+                {
                     return true;
                 }
             }
-
-            GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = true;
-            GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = true;
-
             return false;
+
+            //GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = false;
+            //GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = false;
+            //float z = transform.position.z;
+            //Vector3 castPosition = transform.position;
+            //transform.position = new Vector3(transform.position.x, transform.position.y, 1);
+            //RaycastHit2D hit = Physics2D.Raycast(castPosition, Vector2.zero, 0);
+            //print(hit.collider.gameObject);
+            //if (hit.collider != null && hit.collider.gameObject != this.gameObject && hit.collider.GetComponent<DoorWindowPiece>() != null)
+            //{
+            //    print("inside loop");
+            //    if (hit.collider.GetComponent<DoorWindowPiece>().placed){
+            //        print("Overlapped!");
+            //        return true;
+            //    }
+            //}
+
+            //transform.position = new Vector3(transform.position.x, transform.position.y, z);
+
+            //GameObject.FindGameObjectWithTag("roof").GetComponent<PolygonCollider2D>().enabled = true;
+            //GameObject.FindGameObjectWithTag("wall").GetComponent<PolygonCollider2D>().enabled = true;
+
+            //return false;
         }
 
         protected override void Start()
