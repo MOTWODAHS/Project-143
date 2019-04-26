@@ -36,9 +36,9 @@ public class TrolleyStart : TapableObject
     {
         if(flag)
         {
-            yield return new WaitForSeconds(18);
-            jumpButton.SetActive(true);
             menuButton.SetActive(true);
+            yield return new WaitForSeconds(9);
+            jumpButton.SetActive(true);
         }
         else
         {
