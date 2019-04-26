@@ -30,6 +30,7 @@ namespace Loving {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 0);
             if (hit.collider != null && hit.collider.gameObject != this.gameObject && hit.collider.GetComponent<DoorWindowPiece>() != null)
             {
+                print("inside loop");
                 if (hit.collider.GetComponent<DoorWindowPiece>().placed){
                     print("Overlapped!");
                     return true;
