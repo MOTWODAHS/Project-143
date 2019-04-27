@@ -74,11 +74,10 @@ public class TrolleyStart : TapableObject
         }
         else
         {
-            ScreenWord[0].GetComponent<SpriteRenderer>().DOFade(1f,7f);
-            ScreenWord[1].GetComponent<SpriteRenderer>().DOFade(1f,7f);
-            yield return new WaitForSeconds(7f);
-            ScreenWord[2].GetComponent<SpriteRenderer>().DOFade(1f,7f);
-            ScreenWord[3].GetComponent<SpriteRenderer>().DOFade(1f,7f);
+            foreach(GameObject word in ScreenWord)
+            {
+                seq.Append(word.GetComponent<SpriteRenderer>().DOFade(1f,3f));
+            }
         }
     }
 }
