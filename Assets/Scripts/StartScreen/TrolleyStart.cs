@@ -36,14 +36,15 @@ public class TrolleyStart : TapableObject
     {
         if(flag)
         {
+            yield return new WaitForSeconds(1f);
             menuButton.SetActive(true);
-            yield return new WaitForSeconds(9);
+            yield return new WaitForSeconds(8f);
             jumpButton.SetActive(true);
         }
         else
         {
             balloonSpawner.createRandomBalloon();
-            yield return new WaitForSeconds(14);
+            yield return new WaitForSeconds(14f);
             jumpButton.SetActive(true);
         }
     }
