@@ -2689,9 +2689,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.029539961, y: 0}
   serializedVersion: 2
-  m_Radius: 0.535
+  m_Radius: 2.6717117
 --- !u!212 &2050454319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2859,7 +2859,7 @@ MonoBehaviour:
   jumpButton: {fileID: 528221075}
   menuButton: {fileID: 2050454315}
   audioSource: {fileID: 2070761980}
-  trolleyChime: {fileID: 8300000, guid: d864803e746fdd14d801c3dcc66ea82b, type: 3}
+  trolleyChime: {fileID: 8300000, guid: 5847e96b557459343860c42622bb0131, type: 3}
   balloonSpawner: {fileID: 0}
 --- !u!82 &2070761980
 AudioSource:
